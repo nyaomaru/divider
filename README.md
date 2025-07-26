@@ -250,6 +250,8 @@ const result = divider('a, ,b', ',', {
 
 Welcome your contributions! If you want to add features or fix issues, feel free to submit a PR!
 
+For development setup, project structure, and scripts, see [DEVELOPER.md](./DEVELOPER.md).
+
 ### Setup
 
 ```sh
