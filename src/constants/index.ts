@@ -42,3 +42,13 @@ export const PERFORMANCE_CONSTANTS = {
  * Separator character used for cache key concatenation.
  */
 export const CACHE_KEY_SEPARATOR = '\x00';
+
+/**
+ * A constant representing a single whitespace character.
+ */
+export const WHITE_SPACE = ' ';
+
+/**
+ * Tab character constant used for indentation and formatting.
+ */
+export const TAB = '\t';

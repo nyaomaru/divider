@@ -96,3 +96,17 @@ export function isNoneMode(
 ): mode is typeof DividerExcludeModes.NONE {
   return mode === DividerExcludeModes.NONE;
 }
+
+/**
+ * Checks if a character represents an escaped quote in a string.
+ *
+ * An escaped quote is identified when the current character matches the quote character
+ * and is immediately followed by the same quote character (e.g., "" in CSV or '' in SQL).
+ */
+export function isEscapedQuote(
+  char: string,
+  next: string,
+  quoteChar: string
+): boolean {
+  return char === quoteChar && next === quoteChar;
+}

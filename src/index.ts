@@ -4,4 +4,5 @@ export { dividerLast } from '@/core/divider-last';
 export { dividerLoop } from '@/core/divider-loop';
 export { dividerNumberString } from '@/core/divider-number-string';
 export { emailDivider } from '@/presets/email-divider';
+export { csvDivider } from '@/presets/csv-divider';
 export * from './types';
