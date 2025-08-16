@@ -1,0 +1,746 @@
+# Changelog
+
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [v1.9.0] - 2025-08-10
+
+### Added
+
+- **New Presets**:
+  - `emailDivider()`: Split email addresses into local and domain parts, with optional TLD splitting and trimming. (#209)
+  - `csvDivider()`: CSV-aware splitter with quoted field support, custom delimiters, and trimming. (#218)
+  - `pathDivider()`: Path splitter using `/` and `|` as separators, with options for collapsing empty segments and trimming. (#222)
+- Exported `pathDivider` from the main entry point. (#225)
+
+### Changed
+
+- Replaced unnecessary `interface` definitions with `type` for cleaner type annotations. (#226)
+
+### Chore
+
+- Updated `CHANGELOG.md` for v1.8.18. (#219)
+- Dependency updates:
+  - `ts-jest` to v29.4.1 (#220)
+  - `typedoc` to v0.28.9 (#221)
+  - `typedoc` to v0.28.10 (#224)
+  - `eslint-plugin-prettier` to v5.5.4 (#223)
+
+## [v1.8.18] - 2025-08-03
+
+### Added
+
+- `CONTRIBUTING.md`: Contributor onboarding guide with PR process and contribution steps (#216)
+- CI improvements: Added `lint` and `test` checks to the release workflow (#213)
+
+### Chore
+
+- Updated `jest` to v30.0.5 (#214)
+- Updated `eslint` monorepo to v9.32.0 (#215)
+- Updated `CHANGELOG.md` for v1.8.17 (#212)
+
+### Contributors
+
+- Thanks to @taj54 for their first contribution! 🎉
+
+## [1.8.17] - 2025-07-27
+
+### Added
+
+- `DEVELOPER.md`: Contributor guide with setup instructions, project structure, and scripts (#211)
+- `CHANGELOG.md`: Introduced changelog to track releases and changes (#204)
+
+### Changed
+
+- Removed unused `description` field from package.json (#207)
+
+### Chore
+
+- Updated `eslint-plugin-prettier` to v5.5.3 (#202)
+- Updated `eslint-config-prettier` to v10.1.8 (#201)
+
+## [v1.8.16] - 2025-07-19
+
+### Changed
+
+- chore: formatting by @nyaomaru in https://github.com/nyaomaru/divider/pull/199
+
+### Chore
+
+- chore(deps): Update dependency @types/node to v22.16.5 by @renovate[bot] in https://github.com/nyaomaru/divider/pull/197
+- chore(deps): Update jest monorepo to v30 (major) by @renovate[bot] in https://github.com/nyaomaru/divider/pull/198
+- Release: v1.8.16 by @github-actions[bot] in https://github.com/nyaomaru/divider/pull/200
+
+## [v1.8.15] - 2025-07-12
+
+### Changed
+
+- Extract reusable test data by @nyaomaru in https://github.com/nyaomaru/divider/pull/192
+- Refactor regex cache strategy by @nyaomaru in https://github.com/nyaomaru/divider/pull/195
+
+### Chore
+
+- chore(deps): Update dependency prettier to v3.6.2 by @renovate[bot] in https://github.com/nyaomaru/divider/pull/193
+- chore(deps): Update eslint monorepo to v9.31.0 by @renovate[bot] in https://github.com/nyaomaru/divider/pull/194
+- Release: v1.8.15 by @github-actions[bot] in https://github.com/nyaomaru/divider/pull/196
+
+## [v1.8.14] - 2025-07-05
+
+### Changed
+
+- Refactor test case by @nyaomaru in https://github.com/nyaomaru/divider/pull/190
+
+### Chore
+
+- chore(deps): Update dependency typedoc to v0.28.7 by @renovate in https://github.com/nyaomaru/divider/pull/189
+- chore(deps): Update dependency @types/node to v22.16.0 by @renovate in https://github.com/nyaomaru/divider/pull/188
+- Release: v1.8.14 by @github-actions in https://github.com/nyaomaru/divider/pull/191
+
+## [v1.8.13] - 2025-06-29
+
+### Added
+
+- Add performance tests by @nyaomaru in https://github.com/nyaomaru/divider/pull/186
+
+### Changed
+
+- Release: v1.8.13 by @github-actions in https://github.com/nyaomaru/divider/pull/187
+
+## [v1.8.12] - 2025-06-28
+
+### Changed
+
+- Refactor divider loop by @nyaomaru in https://github.com/nyaomaru/divider/pull/184
+
+### Chore
+
+- chore(deps): Update dependency tsx to v4.20.3 by @renovate in https://github.com/nyaomaru/divider/pull/183
+- chore(deps): Update dependency eslint-plugin-prettier to v5.5.1 by @renovate in https://github.com/nyaomaru/divider/pull/182
+- Release: v1.8.12 by @github-actions in https://github.com/nyaomaru/divider/pull/185
+
+## [v1.8.11] - 2025-06-22
+
+### Changed
+
+- Extract dividerLoop functions and define constants by @nyaomaru in https://github.com/nyaomaru/divider/pull/180
+
+### Chore
+
+- Release: v1.8.11 by @github-actions in https://github.com/nyaomaru/divider/pull/181
+
+## [v1.8.10] - 2025-06-21
+
+### Changed
+
+- Refactor divider-first and divider-last by @nyaomaru in https://github.com/nyaomaru/divider/pull/178
+
+### Chore
+
+- chore(deps): Update dependency ts-jest to v29.4.0 by @renovate in https://github.com/nyaomaru/divider/pull/177
+- chore(deps): Update dependency @types/node to v22.15.32 by @renovate in https://github.com/nyaomaru/divider/pull/176
+- Release: v1.8.10 by @github-actions in https://github.com/nyaomaru/divider/pull/179
+
+## [v1.8.9] - 2025-06-15
+
+### Added
+
+- Add isOption to check object type by @nyaomaru in https://github.com/nyaomaru/divider/pull/174
+
+## [v1.8.8] - 2025-06-14
+
+### Added
+
+- Add type doc library by @nyaomaru in https://github.com/nyaomaru/divider/pull/171
+
+### Changed
+
+- Update README for typedoc by @nyaomaru in https://github.com/nyaomaru/divider/pull/172
+
+### Chore
+
+- chore(deps): Update eslint monorepo to v9.29.0 by @renovate in https://github.com/nyaomaru/divider/pull/170
+- Release: v1.8.8 by @github-actions in https://github.com/nyaomaru/divider/pull/173
+
+## [v1.8.7] - 2025-06-08
+
+### Changed
+
+- Improve test coverage by @nyaomaru in https://github.com/nyaomaru/divider/pull/168
+
+### Fixed
+
+- Fix unused types by @nyaomaru in https://github.com/nyaomaru/divider/pull/167
+
+### Chore
+
+- Release: v1.8.7 by @github-actions in https://github.com/nyaomaru/divider/pull/169
+
+## [v1.8.6] - 2025-06-07
+
+### Added
+
+- Add cursor rules for divider by @nyaomaru in https://github.com/nyaomaru/divider/pull/165
+
+### Changed
+
+- Create constants for divider option keys by @nyaomaru in https://github.com/nyaomaru/divider/pull/164
+
+### Chore
+
+- chore(deps): Update dependency eslint-plugin-prettier to v5.4.1 by @renovate in https://github.com/nyaomaru/divider/pull/163
+- chore(deps): Update dependency @types/node to v22.15.30 by @renovate in https://github.com/nyaomaru/divider/pull/162
+- Release: v1.8.6 by @github-actions in https://github.com/nyaomaru/divider/pull/166
+
+## [v1.8.5] - 2025-06-01
+
+### Added
+
+- Add comments to functions by @nyaomaru in https://github.com/nyaomaru/divider/pull/159
+
+### Removed
+
+- Remove unused constants by @nyaomaru in https://github.com/nyaomaru/divider/pull/160
+
+### Chore
+
+- Release: v1.8.5 by @github-actions in https://github.com/nyaomaru/divider/pull/161
+
+## [v1.8.4] - 2025-05-31
+
+### Changed
+
+- Refactor types by @nyaomaru in https://github.com/nyaomaru/divider/pull/157
+
+### Chore
+
+- Release: v1.8.4 by @github-actions in https://github.com/nyaomaru/divider/pull/158
+
+## [v1.8.3] - 2025-05-25
+
+### Changed
+
+- Refactor dividerLoop logic by @nyaomaru in https://github.com/nyaomaru/divider/pull/155
+
+### Chore
+
+- Release: v1.8.3 by @github-actions in https://github.com/nyaomaru/divider/pull/156
+
+## [v1.8.2] - 2025-05-24
+
+### Changed
+
+- Refactor regex early return by @nyaomaru in https://github.com/nyaomaru/divider/pull/153
+
+### Chore
+
+- Release: v1.8.2 by @github-actions in https://github.com/nyaomaru/divider/pull/154
+
+## [v1.8.1] - 2025-05-18
+
+### Added
+
+- Fix throw error and add tests by @nyaomaru in https://github.com/nyaomaru/divider/pull/151
+
+### Chore
+
+- chore: update README by @nyaomaru in https://github.com/nyaomaru/divider/pull/150
+- Release: v1.8.1 by @github-actions in https://github.com/nyaomaru/divider/pull/152
+
+## [v1.8.0] - 2025-05-17
+
+### Changed
+
+- Unify excludeEmpty with exclude option by @nyaomaru in https://github.com/nyaomaru/divider/pull/148
+
+### Chore
+
+- chore(deps): Update dependency eslint-config-prettier to v10.1.5 by @renovate in https://github.com/nyaomaru/divider/pull/147
+- chore(deps): Update dependency @types/node to v22.15.18 by @renovate in https://github.com/nyaomaru/divider/pull/146
+- Release: v1.8.0 by @github-actions in https://github.com/nyaomaru/divider/pull/149
+
+## [v1.7.4] - 2025-05-11
+
+### Added
+
+- Add maxChunks option to dividerLoop by @nyaomaru in https://github.com/nyaomaru/divider/pull/144
+
+### Changed
+
+- Update README by @nyaomaru in https://github.com/nyaomaru/divider/pull/143
+
+### Chore
+
+- Release: v1.7.4 by @github-actions in https://github.com/nyaomaru/divider/pull/145
+
+## [v1.7.3] - 2025-05-10
+
+### Added
+
+- Add startOffset option to dividerLoop by @nyaomaru in https://github.com/nyaomaru/divider/pull/141
+
+### Chore
+
+- chore(deps): bump 20250506 by @nyaomaru in https://github.com/nyaomaru/divider/pull/140
+- Release: v1.7.3 by @github-actions in https://github.com/nyaomaru/divider/pull/142
+
+## [v1.7.2] - 2025-05-05
+
+### Fixed
+
+- Fix type export by @nyaomaru in https://github.com/nyaomaru/divider/pull/138
+
+### Chore
+
+- chore(deps): Update dependency eslint-plugin-prettier to v5.3.1 by @renovate in https://github.com/nyaomaru/divider/pull/137
+- Release: v1.7.2 by @github-actions in https://github.com/nyaomaru/divider/pull/139
+
+## [v1.7.1] - 2025-05-04
+
+### Added
+
+- Use is type guard and add test case by @nyaomaru in https://github.com/nyaomaru/divider/pull/134
+
+### Changed
+
+- Refactor folder structure by @nyaomaru in https://github.com/nyaomaru/divider/pull/133
+
+### Chore
+
+- Release: v1.7.1 by @github-actions in https://github.com/nyaomaru/divider/pull/135
+
+## [v1.7.0] - 2025-05-03
+
+### Added
+
+- Add excludeEmpty option and fix type structure by @nyaomaru in https://github.com/nyaomaru/divider/pull/131
+
+### Chore
+
+- chore(deps): Update pnpm/action-setup action to v4 by @renovate in https://github.com/nyaomaru/divider/pull/130
+- chore(deps): Update dependency @types/node to v22.15.3 by @renovate in https://github.com/nyaomaru/divider/pull/129
+- Release: v1.7.0 by @github-actions in https://github.com/nyaomaru/divider/pull/132
+
+## [v1.6.2] - 2025-04-27
+
+### Changed
+
+- Merge options to option by @nyaomaru in https://github.com/nyaomaru/divider/pull/127
+
+### Chore
+
+- Release: v1.6.2 by @github-actions in https://github.com/nyaomaru/divider/pull/128
+
+## [v1.6.1] - 2025-04-26
+
+### Changed
+
+- Eliminate unnecessary condition from applyDividerOptions by @nyaomaru in https://github.com/nyaomaru/divider/pull/125
+
+### Fixed
+
+- Fix export dividerNumberString by @nyaomaru in https://github.com/nyaomaru/divider/pull/124
+
+### Chore
+
+- chore(deps): Update eslint monorepo to v9.25.1 by @renovate in https://github.com/nyaomaru/divider/pull/123
+
+## [v1.6.0] - 2025-04-20
+
+### Added
+
+- Add `trim` option by @nyaomaru in https://github.com/nyaomaru/divider/pull/120
+
+### Chore
+
+- Release: v1.6.0 by @github-actions in https://github.com/nyaomaru/divider/pull/121
+
+## [v1.5.3] - 2025-04-19
+
+### Changed
+
+- Extract `divideNumberString` to utils by @nyaomaru in https://github.com/nyaomaru/divider/pull/118
+
+### Chore
+
+- chore(deps): Update dependency @types/node to v22.14.1 by @renovate in https://github.com/nyaomaru/divider/pull/117
+- chore(deps): Update dependency eslint-config-prettier to v10.1.2 by @renovate in https://github.com/nyaomaru/divider/pull/116
+- Release: v1.5.3 by @github-actions in https://github.com/nyaomaru/divider/pull/119
+
+## [v1.5.2] - 2025-04-13
+
+### Added
+
+- Add integration test by @nyaomaru in https://github.com/nyaomaru/divider/pull/113
+
+### Changed
+
+- Reduce cycromatic complexity for divider by @nyaomaru in https://github.com/nyaomaru/divider/pull/114
+
+### Chore
+
+- Release: v1.5.2 by @github-actions in https://github.com/nyaomaru/divider/pull/115
+
+## [v1.5.1] - 2025-04-12
+
+### Fixed
+
+- hotfix: module not found by @nyaomaru in https://github.com/nyaomaru/divider/pull/111
+
+### Chore
+
+- Release: v1.5.1 by @github-actions in https://github.com/nyaomaru/divider/pull/112
+
+## [v1.5.0] - 2025-04-12
+
+### Added
+
+- Add dividerNumberString by @nyaomaru in https://github.com/nyaomaru/divider/pull/108
+
+### Chore
+
+- chore(deps): Update dependency typescript to v5.8.3 by @renovate in https://github.com/nyaomaru/divider/pull/107
+- chore(deps): Update dependency eslint-plugin-prettier to v5.2.6 by @renovate in https://github.com/nyaomaru/divider/pull/106
+- Release: v1.5.0 by @github-actions in https://github.com/nyaomaru/divider/pull/109
+
+## [v1.4.1] - 2025-04-06
+
+### Added
+
+- Remove unused flatten option and add isPositiveInteger by @nyaomaru in https://github.com/nyaomaru/divider/pull/104
+
+### Chore
+
+- Release: v1.4.1 by @github-actions in https://github.com/nyaomaru/divider/pull/105
+
+## [v1.4.0] - 2025-04-05
+
+### Added
+
+- Add dividerLoop by @nyaomaru in https://github.com/nyaomaru/divider/pull/102
+
+### Chore
+
+- Release: v1.4.0 by @github-actions in https://github.com/nyaomaru/divider/pull/103
+
+## [v1.3.7] - 2025-03-31
+
+### Added
+
+- Add sort ascending by @nyaomaru in https://github.com/nyaomaru/divider/pull/100
+
+### Chore
+
+- chore(deps): Update dependency @types/node to v22.13.14 by @renovate in https://github.com/nyaomaru/divider/pull/98
+- chore(deps): Update dependency eslint-plugin-prettier to v5.2.5 by @renovate in https://github.com/nyaomaru/divider/pull/99
+- Release: v1.3.7 by @github-actions in https://github.com/nyaomaru/divider/pull/101
+
+## [v1.3.6] - 2025-03-30
+
+### Changed
+
+- Ensure array by @nyaomaru in https://github.com/nyaomaru/divider/pull/96
+
+### Chore
+
+- Release: v1.3.6 by @github-actions in https://github.com/nyaomaru/divider/pull/97
+
+## [v1.3.5] - 2025-03-29
+
+### Changed
+
+- Refactor by @nyaomaru in https://github.com/nyaomaru/divider/pull/94
+
+### Chore
+
+- Release: v1.3.5 by @github-actions in https://github.com/nyaomaru/divider/pull/95
+
+## [v1.3.4] - 2025-03-28
+
+### Fixed
+
+- Fix explicit return of accumulator object by @nyaomaru in https://github.com/nyaomaru/divider/pull/90
+- Revert "Fix explicit return of accumulator object" by @nyaomaru in https://github.com/nyaomaru/divider/pull/91
+- Fix cloned args by @nyaomaru in https://github.com/nyaomaru/divider/pull/92
+
+### Chore
+
+- Release: v1.3.4 by @github-actions in https://github.com/nyaomaru/divider/pull/93
+
+## [v1.3.3] - 2025-03-27
+
+### Fixed
+
+- Fix args mutation by @nyaomaru in https://github.com/nyaomaru/divider/pull/88
+
+### Chore
+
+- Release: v1.3.3 by @github-actions in https://github.com/nyaomaru/divider/pull/89
+
+## [v1.3.2] - 2025-03-26
+
+### Added
+
+- Add isString and isNumber by @nyaomaru in https://github.com/nyaomaru/divider/pull/86
+
+### Chore
+
+- Release: v1.3.2 by @github-actions in https://github.com/nyaomaru/divider/pull/87
+
+## [v1.3.1] - 2025-03-25
+
+### Fixed
+
+- Fix unnecessary generics by @nyaomaru in https://github.com/nyaomaru/divider/pull/84
+
+### Chore
+
+- Release: v1.3.1 by @github-actions in https://github.com/nyaomaru/divider/pull/85
+
+## [v1.3.0] - 2025-03-24
+
+### Fixed
+
+- Fix dividerLast args structure by @nyaomaru in https://github.com/nyaomaru/divider/pull/81
+- Fix dividerFirst args structure by @nyaomaru in https://github.com/nyaomaru/divider/pull/82
+
+### Chore
+
+- chore(deps): Update dependency @types/node to v22.13.12 by @renovate in https://github.com/nyaomaru/divider/pull/79
+- chore(deps): Update dependency eslint-plugin-prettier to v5.2.4 by @renovate in https://github.com/nyaomaru/divider/pull/80
+- Release: v1.3.0 by @github-actions in https://github.com/nyaomaru/divider/pull/83
+
+## [v1.2.0] - 2025-03-20
+
+### Added
+
+- Add templates of issue and PR by @nyaomaru in https://github.com/nyaomaru/divider/pull/68
+- Add divider last by @nyaomaru in https://github.com/nyaomaru/divider/pull/69
+
+### Chore
+
+- Release: v1.2.0 by @github-actions in https://github.com/nyaomaru/divider/pull/70
+
+## [v1.1.0] - 2025-03-19
+
+### Added
+
+- Add dividerFirst by @nyaomaru in https://github.com/nyaomaru/divider/pull/66
+
+### Chore
+
+- Release: v1.1.0 by @github-actions in https://github.com/nyaomaru/divider/pull/67
+
+## [v1.0.21] - 2025-03-18
+
+### Added
+
+- Update README by @nyaomaru in https://github.com/nyaomaru/divider/pull/62
+- Add bugs link by @nyaomaru in https://github.com/nyaomaru/divider/pull/63
+- Add divider args type and fix type definition by @nyaomaru in https://github.com/nyaomaru/divider/pull/64
+
+### Chore
+
+- Release: v1.0.21 by @github-actions in https://github.com/nyaomaru/divider/pull/65
+
+## [v1.0.20] - 2025-03-17
+
+### Added
+
+- Fix divider result type by @nyaomaru in https://github.com/nyaomaru/divider/pull/60
+
+### Chore
+
+- Release: v1.0.20 by @github-actions in https://github.com/nyaomaru/divider/pull/61
+
+## [v1.0.19] - 2025-03-16
+
+### Added
+
+- Input type validation and console warn by @nyaomaru in https://github.com/nyaomaru/divider/pull/58
+
+### Chore
+
+- Release: v1.0.19 by @github-actions in https://github.com/nyaomaru/divider/pull/59
+
+## [v1.0.18] - 2025-03-15
+
+### Added
+
+- Refactor divider by @nyaomaru in https://github.com/nyaomaru/divider/pull/56
+
+### Chore
+
+- Release: v1.0.18 by @github-actions in https://github.com/nyaomaru/divider/pull/57
+
+## [v1.0.17] - 2025-03-14
+
+### Added
+
+- Fix type export bug by @nyaomaru in https://github.com/nyaomaru/divider/pull/54
+
+### Chore
+
+- Release: v1.0.17 by @github-actions in https://github.com/nyaomaru/divider/pull/55
+
+## [v1.0.16] - 2025-03-14
+
+### Added
+
+- Fix build setting by @nyaomaru in https://github.com/nyaomaru/divider/pull/52
+
+### Chore
+
+- Release: v1.0.16 by @github-actions in https://github.com/nyaomaru/divider/pull/53
+
+## [v1.0.15] - 2025-03-13
+
+### Added
+
+- Fix renovate config schedule by @nyaomaru in https://github.com/nyaomaru/divider/pull/44
+
+### Chore
+
+- chore(deps): Update dependency node to v22 by @renovate in https://github.com/nyaomaru/divider/pull/48
+- chore(deps): Update actions/setup-node action to v4 by @renovate in https://github.com/nyaomaru/divider/pull/47
+- chore(deps): Update dependency eslint-config-prettier to v10.1.1 by @renovate in https://github.com/nyaomaru/divider/pull/45
+- chore(deps): Update dependency typescript to v5.8.2 by @renovate in https://github.com/nyaomaru/divider/pull/46
+
+## [v1.0.14] - 2025-03-12
+
+### Added
+
+- Add test for new directory structure by @nyaomaru in https://github.com/nyaomaru/divider/pull/35
+
+### Chore
+
+- chore: Configure Renovate by @renovate in https://github.com/nyaomaru/divider/pull/37
+- chore(deps): update dependency @types/node to v22.13.10 by @renovate in https://github.com/nyaomaru/divider/pull/38
+- chore(deps): update dependency prettier to v3.5.3 by @renovate in https://github.com/nyaomaru/divider/pull/39
+- chore(deps): update dependency ts-jest to v29.2.6 by @renovate in https://github.com/nyaomaru/divider/pull/41
+
+## [v1.0.12] - 2025-03-10
+
+### Added
+
+- Add test case by @nyaomaru in https://github.com/nyaomaru/divider/pull/31
+
+### Chore
+
+- Release: v1.0.12 by @github-actions in https://github.com/nyaomaru/divider/pull/32
+
+## [v1.0.11] - 2025-03-09
+
+### Added
+
+- Fix regex key by @nyaomaru in https://github.com/nyaomaru/divider/pull/29
+
+### Chore
+
+- Release: v1.0.11 by @github-actions in https://github.com/nyaomaru/divider/pull/30
+
+## [v1.0.10] - 2025-03-08
+
+### Added
+
+- Optimize slice function by @nyaomaru in https://github.com/nyaomaru/divider/pull/27
+
+### Chore
+
+- Release: v1.0.10 by @github-actions in https://github.com/nyaomaru/divider/pull/28
+
+## [v1.0.9] - 2025-03-07
+
+### Changed
+
+- Fix merge process about bump by @nyaomaru in https://github.com/nyaomaru/divider/pull/22
+- Update package info by @nyaomaru in https://github.com/nyaomaru/divider/pull/23
+- Update DividerResult type by @nyaomaru in https://github.com/nyaomaru/divider/pull/24
+- Fix brunch version by @nyaomaru in https://github.com/nyaomaru/divider/pull/25
+
+### Chore
+
+- Release: v1.0.9 by @github-actions in https://github.com/nyaomaru/divider/pull/26
+
+## [v1.0.8] - 2025-03-06
+
+### Changed
+
+- Update README by @nyaomaru in https://github.com/nyaomaru/divider/pull/18
+- Refactor file structure and performance tuning by @nyaomaru in https://github.com/nyaomaru/divider/pull/19
+- Automate bump by @nyaomaru in https://github.com/nyaomaru/divider/pull/20
+
+### Chore
+
+- Release: v1.0.8 by @github-actions in https://github.com/nyaomaru/divider/pull/21
+
+## [v1.0.7] - 2025-03-05
+
+### Changed
+
+- Create regex at once by @nyaomaru in https://github.com/nyaomaru/divider/pull/16
+
+### Chore
+
+- 1.0.7 by @nyaomaru in https://github.com/nyaomaru/divider/pull/17
+
+## [v1.0.6] - 2025-03-04
+
+### Changed
+
+- Fix memory efficiency about sliceByIndexes by @nyaomaru in https://github.com/nyaomaru/divider/pull/14
+
+### Chore
+
+- 1.0.6 by @nyaomaru in https://github.com/nyaomaru/divider/pull/15
+
+## [v1.0.5] - 2025-03-02
+
+### Changed
+
+- fix: type guard by @nyaomaru in https://github.com/nyaomaru/divider/pull/11
+- Performance tuning by @nyaomaru in https://github.com/nyaomaru/divider/pull/12
+
+### Chore
+
+- 1.0.5 by @nyaomaru in https://github.com/nyaomaru/divider/pull/13
+
+## [v1.0.4] - 2025-03-01
+
+### Changed
+
+- test: add flat option case by @nyaomaru in https://github.com/nyaomaru/divider/pull/8
+- fix divider return type by @nyaomaru in https://github.com/nyaomaru/divider/pull/9
+
+### Chore
+
+- bump to v1.0.4 by @nyaomaru in https://github.com/nyaomaru/divider/pull/10
+
+## [v1.0.3] - 2025-02-27
+
+### Changed
+
+- Eliminate logo in package by @nyaomaru in https://github.com/nyaomaru/divider/pull/7
+
+## [v1.0.2] - 2025-02-27
+
+### Changed
+
+- Update package information by @nyaomaru in https://github.com/nyaomaru/divider/pull/4
+- Update release yml by @nyaomaru in https://github.com/nyaomaru/divider/pull/5
+- Refactor divider by @nyaomaru in https://github.com/nyaomaru/divider/pull/6
+
+## [v1.0.1] - 2025-02-26
+
+### Changed
+
+- Update package information by @nyaomaru in https://github.com/nyaomaru/divider/pull/4
+
+## [v1.0.0] - 2025-02-25
+
+### Added
+
+- Fix divider core by @nyaomaru in https://github.com/nyaomaru/divider/pull/1
+- String array by @nyaomaru in https://github.com/nyaomaru/divider/pull/2
+- Project set up by @nyaomaru in https://github.com/nyaomaru/divider/pull/3
