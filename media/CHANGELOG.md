@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.9.1] - 2025-08-16
+
+### Added
+
+- Added `CODE_OF_CONDUCT.md` to define community standards (#229)
+
+### Fixed
+
+- Fixed divider interface type definitions (#230)
+
+### Chore
+
+- Updated `CHANGELOG.md` for v1.9.0 (#228)
+
 ## [v1.9.0] - 2025-08-10
 
 ### Added
