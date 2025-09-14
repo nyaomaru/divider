@@ -1,3 +1,30 @@
+## v1.9.6 2025-09-14
+
+### Added
+
+- deno support
+- jsr support
+- jsr support
+- bun support
+- deno support
+- bun support
+- deno support
+
+### Changed
+
+- Merge pull request #257 from nyaomaru/feat/jsr-support
+- update README
+- vscode setting
+- update publish-jsr
+- update README
+- update mise
+
+### Fixed
+
+- type error
+- unexpected line
+- tsconfig error
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
