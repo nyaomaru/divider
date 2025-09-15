@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.9.6] - 2025-09-15
+
+### Added
+
+- Added support for JSR / Deno / Bun (#257)
+
+### Changed
+
+## Chore
+
+- Updated `bun-types` to v1.2.22 (#262)
+- Updated `@types/node` to v22.18.3 (#261)
+- Updated `deno.json` configuration (#259)
+- Updated publish-jsr workflow (#260)
+- Updated VSCode settings / `mise` configuration / README (#259)
+
+### Fixed
+
+- Fixed path resolution issues (#259)
+- Fixed JSR publish error (#260)
+- Fixed type error in build (#260)
+- Fixed unexpected line in config (#259)
+- Fixed `tsconfig` error (#259)
+
 ## [v1.9.5] - 2025-09-13
 
 ### Changed
