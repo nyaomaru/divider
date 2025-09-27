@@ -1,3 +1,20 @@
+## v1.9.8 2025-09-27
+
+### Changed
+
+- Merge pull request #271 from nyaomaru/chore-codex-setting
+- codex setting
+- Merge pull request #270 from nyaomaru/refactor-constants-name
+- Merge pull request #269 from nyaomaru/renovate/ts-jest-29.x-lockfile
+- Update dependency ts-jest to v29.4.4
+- Merge pull request #268 from nyaomaru/renovate/node-22.x-lockfile
+- Update dependency @types/node to v22.18.6
+
+### Fixed
+
+- constants name
+- constants name
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
