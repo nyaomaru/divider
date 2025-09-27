@@ -8,7 +8,7 @@
  * @property {string} EMPTY - Exclude empty segments (length = 0)
  * @property {string} WHITESPACE - Exclude segments that contain only whitespace characters
  */
-export const DividerExcludeModes = {
+export const DIVIDER_EXCLUDE_MODES = {
   NONE: 'none',
   EMPTY: 'empty',
   WHITESPACE: 'whitespace',
@@ -22,7 +22,7 @@ export const DividerExcludeModes = {
  * - `trim`: Whether to trim whitespace from string segments
  * - `exclude`: The exclusion mode to apply to segments (e.g., 'none', 'empty', 'whitespace')
  */
-export const dividerOptionKeys = ['flatten', 'trim', 'exclude'] as const;
+export const DIVIDER_OPTION_KEYS = ['flatten', 'trim', 'exclude'] as const;
 
 /**
  * Performance and behavior constants

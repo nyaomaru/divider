@@ -1,7 +1,7 @@
-import { DividerExcludeModes } from '@/constants';
+import { DIVIDER_EXCLUDE_MODES } from '@/constants';
 
 export type DividerExcludeMode =
-  (typeof DividerExcludeModes)[keyof typeof DividerExcludeModes];
+  (typeof DIVIDER_EXCLUDE_MODES)[keyof typeof DIVIDER_EXCLUDE_MODES];
 
 // Type guard for string input
 export type StringInput = string;

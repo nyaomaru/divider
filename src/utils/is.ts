@@ -1,5 +1,5 @@
 import type { DividerOptions } from '@/types';
-import { DividerExcludeModes, dividerOptionKeys } from '@/constants';
+import { DIVIDER_EXCLUDE_MODES, DIVIDER_OPTION_KEYS } from '@/constants';
 
 /**
  * Checks whether the given argument is a string.
@@ -30,7 +30,7 @@ export function isOptions(value: unknown): value is DividerOptions {
   if (!isObject(value)) return false;
   const options = value as Record<string, unknown>;
 
-  return dividerOptionKeys.some((key) => Object.hasOwn(options, key));
+  return DIVIDER_OPTION_KEYS.some((key) => Object.hasOwn(options, key));
 }
 
 /**
@@ -93,6 +93,6 @@ export function isEmptyString(s: string): boolean {
  */
 export function isNoneMode(
   mode: unknown
-): mode is typeof DividerExcludeModes.NONE {
-  return mode === DividerExcludeModes.NONE;
+): mode is typeof DIVIDER_EXCLUDE_MODES.NONE {
+  return mode === DIVIDER_EXCLUDE_MODES.NONE;
 }
