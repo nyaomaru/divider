@@ -1,5 +1,5 @@
 import type { DividerOptions } from '@/types';
-import { DividerExcludeModes, dividerOptionKeys } from '@/constants';
+import { DIVIDER_EXCLUDE_MODES, dividerOptionKeys } from '@/constants';
 
 /**
  * Checks whether the given argument is a string.
@@ -93,6 +93,6 @@ export function isEmptyString(s: string): boolean {
  */
 export function isNoneMode(
   mode: unknown
-): mode is typeof DividerExcludeModes.NONE {
-  return mode === DividerExcludeModes.NONE;
+): mode is typeof DIVIDER_EXCLUDE_MODES.NONE {
+  return mode === DIVIDER_EXCLUDE_MODES.NONE;
 }
