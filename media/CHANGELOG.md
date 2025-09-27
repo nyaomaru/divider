@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.9.8] - 2025-09-27
+
+### Changed
+
+- Renamed constants for clarity (#270)
+- Updated `ts-jest` to v29.4.4 (#269)
+- Updated `@types/node` to v22.18.6 (#268)
+- Adjusted Codex settings (#271)
+
+### Fixed
+
+- Incorrect constant names (#270)
+
 ## [v1.9.7] - 2025-09-20
 
 ### Changed
