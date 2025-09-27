@@ -22,7 +22,7 @@ export const DIVIDER_EXCLUDE_MODES = {
  * - `trim`: Whether to trim whitespace from string segments
  * - `exclude`: The exclusion mode to apply to segments (e.g., 'none', 'empty', 'whitespace')
  */
-export const dividerOptionKeys = ['flatten', 'trim', 'exclude'] as const;
+export const DIVIDER_OPTION_KEYS = ['flatten', 'trim', 'exclude'] as const;
 
 /**
  * Performance and behavior constants
