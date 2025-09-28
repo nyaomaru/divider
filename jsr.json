@@ -1,6 +1,6 @@
 {
   "name": "@nyaomaru/divider",
-  "version": "1.9.6",
+  "version": "1.9.8",
   "license": "MIT",
   "exports": {
     ".": {
