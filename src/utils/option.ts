@@ -5,11 +5,10 @@ import type {
   DividerArrayResult,
 } from '@/types';
 import {
-  isString,
-  isNumber,
   isOptions,
   isNestedStringArray,
   isNoneMode,
+  isStringOrNumber,
 } from '@/utils/is';
 import { excludePredicateMap } from '@/utils/exclude-predicate';
 import { DIVIDER_EXCLUDE_MODES } from '@/constants';
@@ -39,9 +38,7 @@ export function extractOptions(args: (string | number | DividerOptions)[]): {
     ? (clonedArgs.pop(), lastArg as DividerOptions)
     : {};
 
-  const cleanedArgs = clonedArgs.filter(
-    (arg): arg is string | number => isString(arg) || isNumber(arg)
-  );
+  const cleanedArgs = clonedArgs.filter(isStringOrNumber);
 
   return {
     cleanedArgs,

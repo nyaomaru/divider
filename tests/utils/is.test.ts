@@ -4,6 +4,7 @@ import {
   isPositiveInteger,
   isValidInput,
   isStringArray,
+  isStringOrNumber,
   isNestedStringArray,
   isWhitespaceOnly,
   isEmptyString,
@@ -123,6 +124,24 @@ describe('isValidInput', () => {
 
   test('false for array of non-strings', () => {
     expect(isValidInput([1, 2, 3])).toBe(false);
+  });
+});
+
+describe('isStringOrNumber', () => {
+  test('true for string', () => {
+    expect(isStringOrNumber('hello')).toBe(true);
+  });
+
+  test('true for number', () => {
+    expect(isStringOrNumber(42)).toBe(true);
+  });
+
+  test('false for other types', () => {
+    expect(isStringOrNumber(null)).toBe(false);
+    expect(isStringOrNumber(undefined)).toBe(false);
+    expect(isStringOrNumber({})).toBe(false);
+    expect(isStringOrNumber([])).toBe(false);
+    expect(isStringOrNumber(true)).toBe(false);
   });
 });
 
