@@ -55,6 +55,13 @@ export function isValidInput(value: unknown): value is string | string[] {
 }
 
 /**
+ * Checks whether the given value is a string or a number.
+ */
+export function isStringOrNumber(value: unknown): value is string | number {
+  return isString(value) || isNumber(value);
+}
+
+/**
  * Checks whether the input is an array of strings.
  */
 export function isStringArray(value: unknown): value is string[] {
