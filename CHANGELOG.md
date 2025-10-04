@@ -1,3 +1,24 @@
+## v1.9.9 2025-10-04
+
+### Changed
+
+- Merge pull request #277 from nyaomaru/refactor/is
+- extract isStringOrNumber
+- unify argument name
+- Merge pull request #276 from nyaomaru/chore/ci-workflow-node-version
+- formatting
+- Merge pull request #274 from nyaomaru/renovate/bun-types-1.x-lockfile
+- Merge pull request #275 from nyaomaru/renovate/tsx-4.x-lockfile
+- Update dependency tsx to v4.20.6
+- Update dependency bun-types to v1.2.23
+- Merge pull request #273 from nyaomaru/chore/bump-jsr-version
+- bump jsr version
+
+### Fixed
+
+- add extract token and configure steps
+- node version and OIDC authentification
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
