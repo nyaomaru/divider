@@ -4,22 +4,22 @@ import { DIVIDER_EXCLUDE_MODES, DIVIDER_OPTION_KEYS } from '@/constants';
 /**
  * Checks whether the given argument is a string.
  */
-export function isString(arg: unknown): arg is string {
-  return typeof arg === 'string';
+export function isString(value: unknown): value is string {
+  return typeof value === 'string';
 }
 
 /**
  * Checks whether the given argument is a number.
  */
-export function isNumber(arg: unknown): arg is number {
-  return typeof arg === 'number';
+export function isNumber(value: unknown): value is number {
+  return typeof value === 'number';
 }
 
 /**
  * Checks whether the given argument is an object.
  */
-export function isObject(arg: unknown): arg is object {
-  return typeof arg === 'object' && arg !== null;
+export function isObject(value: unknown): value is object {
+  return typeof value === 'object' && value !== null;
 }
 
 /**
@@ -36,8 +36,8 @@ export function isOptions(value: unknown): value is DividerOptions {
 /**
  * Checks whether the given array is empty.
  */
-export function isEmptyArray<T>(input: readonly T[]): boolean {
-  return Array.isArray(input) && input.length === 0;
+export function isEmptyArray<T>(value: readonly T[]): boolean {
+  return Array.isArray(value) && value.length === 0;
 }
 
 /**
@@ -50,49 +50,49 @@ export function isPositiveInteger(value: unknown): boolean {
 /**
  * Checks whether the input is a string or an array of strings.
  */
-export function isValidInput(input: unknown): input is string | string[] {
-  return isString(input) || (Array.isArray(input) && input.every(isString));
+export function isValidInput(value: unknown): value is string | string[] {
+  return isString(value) || (Array.isArray(value) && value.every(isString));
 }
 
 /**
  * Checks whether the input is an array of strings.
  */
-export function isStringArray(input: unknown): input is string[] {
-  return Array.isArray(input) && input.every(isString);
+export function isStringArray(value: unknown): value is string[] {
+  return Array.isArray(value) && value.every(isString);
 }
 
 /**
  * Checks whether the input is a non-empty, nested array of strings.
  */
-export function isNestedStringArray(input: unknown): input is string[][] {
+export function isNestedStringArray(value: unknown): value is string[][] {
   return (
-    Array.isArray(input) &&
-    input.length > 0 &&
-    Array.isArray(input[0]) &&
-    input[0].length > 0 &&
-    isStringArray(input[0])
+    Array.isArray(value) &&
+    value.length > 0 &&
+    Array.isArray(value[0]) &&
+    value[0].length > 0 &&
+    isStringArray(value[0])
   );
 }
 
 /**
  * Checks whether the given string contains only whitespace characters.
  */
-export function isWhitespaceOnly(s: string): boolean {
-  return s.trim() === '';
+export function isWhitespaceOnly(value: string): boolean {
+  return value.trim() === '';
 }
 
 /**
  * Checks whether the given string is empty.
  */
-export function isEmptyString(s: string): boolean {
-  return s === '';
+export function isEmptyString(value: string): boolean {
+  return value === '';
 }
 
 /**
  * Checks whether the given value is exactly the string 'none'.
  */
 export function isNoneMode(
-  mode: unknown
-): mode is typeof DIVIDER_EXCLUDE_MODES.NONE {
-  return mode === DIVIDER_EXCLUDE_MODES.NONE;
+  value: unknown
+): value is typeof DIVIDER_EXCLUDE_MODES.NONE {
+  return value === DIVIDER_EXCLUDE_MODES.NONE;
 }
