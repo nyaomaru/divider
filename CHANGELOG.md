@@ -1,30 +1,25 @@
-## v1.9.9 2025-10-04
-
-### Changed
-
-- Merge pull request #277 from nyaomaru/refactor/is
-- extract isStringOrNumber
-- unify argument name
-- Merge pull request #276 from nyaomaru/chore/ci-workflow-node-version
-- formatting
-- Merge pull request #274 from nyaomaru/renovate/bun-types-1.x-lockfile
-- Merge pull request #275 from nyaomaru/renovate/tsx-4.x-lockfile
-- Update dependency tsx to v4.20.6
-- Update dependency bun-types to v1.2.23
-- Merge pull request #273 from nyaomaru/chore/bump-jsr-version
-- bump jsr version
-
-### Fixed
-
-- add extract token and configure steps
-- node version and OIDC authentification
-
 # Changelog
 
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [v1.9.9] - 2025-10-04
+
+### Changed
+
+- Refactored is utilities (#277)
+
+### Chore
+
+- Updated `tsx` to v4.20.6 (#275)
+- Updated `bun-types` to v1.2.23 (#274)
+- Bumped JSR version (#273)
+
+### Fixed
+
+- Corrected Node.js version and OIDC authentication in workflow (#276)
 
 ## [v1.9.8] - 2025-09-27
 
