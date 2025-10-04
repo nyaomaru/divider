@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.9.9] - 2025-10-04
+
+### Changed
+
+- Refactored is utilities (#277)
+
+### Chore
+
+- Updated `tsx` to v4.20.6 (#275)
+- Updated `bun-types` to v1.2.23 (#274)
+- Bumped JSR version (#273)
+
+### Fixed
+
+- Corrected Node.js version and OIDC authentication in workflow (#276)
+
 ## [v1.9.8] - 2025-09-27
 
 ### Changed
