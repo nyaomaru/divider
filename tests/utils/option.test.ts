@@ -44,10 +44,27 @@ describe('applyDividerOptions', () => {
     expect(applyDividerOptions(result, options)).toEqual(result);
   });
 
+  test('trim keeps empty segments when preserveEmpty is true', () => {
+    const result = [
+      ['  a ', '   '],
+      ['   ', ' b '],
+    ];
+
+    expect(
+      applyDividerOptions(result, { trim: true, preserveEmpty: true })
+    ).toEqual([
+      ['a', ''],
+      ['', 'b'],
+    ]);
+  });
+
   test('handles unknown exclude mode gracefully', () => {
     const result = [['a', '', ' '], ['b']];
 
-    expect(applyDividerOptions(result, { exclude: 'unknown' } as any)).toEqual([['a', '', ' '], ['b']]);
+    expect(applyDividerOptions(result, { exclude: 'unknown' } as any)).toEqual([
+      ['a', '', ' '],
+      ['b'],
+    ]);
   });
 });
 

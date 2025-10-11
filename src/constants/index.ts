@@ -20,9 +20,15 @@ export const DIVIDER_EXCLUDE_MODES = {
  *
  * - `flatten`: Whether to flatten nested arrays into a single level
  * - `trim`: Whether to trim whitespace from string segments
+ * - `preserveEmpty`: Whether to retain empty segments created during division
  * - `exclude`: The exclusion mode to apply to segments (e.g., 'none', 'empty', 'whitespace')
  */
-export const DIVIDER_OPTION_KEYS = ['flatten', 'trim', 'exclude'] as const;
+export const DIVIDER_OPTION_KEYS = [
+  'flatten',
+  'trim',
+  'preserveEmpty',
+  'exclude',
+] as const;
 
 /**
  * Performance and behavior constants

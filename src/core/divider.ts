@@ -41,7 +41,9 @@ export function divider<T extends DividerInput>(
 
   // Apply division based on input type
   const applyDivision = (str: string) =>
-    divideString(str, numSeparators, strSeparators);
+    divideString(str, numSeparators, strSeparators, {
+      preserveEmpty: options.preserveEmpty,
+    });
 
   const result = isString(input)
     ? applyDivision(input)

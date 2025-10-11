@@ -30,6 +30,12 @@ describe('divideString', () => {
     expect(divideString('', [], [','])).toEqual([]);
   });
 
+  test('preserves empty segments when requested', () => {
+    expect(
+      divideString('foo,,bar,', [], [','], { preserveEmpty: true })
+    ).toEqual(['foo', '', 'bar', '']);
+  });
+
   test('returns the input unchanged if no separators match', () => {
     expect(divideString('hello world', [12], ['-'])).toEqual(['hello world']);
   });
