@@ -1,3 +1,26 @@
+## v1.9.10 2025-10-11
+
+### Added
+
+- allow preserving empty divider segments
+
+### Changed
+
+- Merge pull request #283 from nyaomaru/feat/preserve-empty-option
+- update README
+- Merge pull request #281 from nyaomaru/renovate/node-22.x-lockfile
+- Merge pull request #282 from nyaomaru/renovate/typedoc-0.x-lockfile
+- Update dependency @types/node to v22.18.9
+- Update dependency typedoc to v0.28.13
+- Merge pull request #280 from nyaomaru/hotfix/release
+- publish method
+- Merge pull request #279 from nyaomaru/hotfix/release
+
+### Fixed
+
+- unnecessary condition
+- release script
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
