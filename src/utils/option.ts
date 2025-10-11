@@ -117,7 +117,7 @@ export function applyDividerOptions<T extends string | readonly string[]>(
 
     const filterNested = (arr: DividerArrayResult) => {
       const filteredRows = arr.map((row) => row.filter(shouldKeep));
-      return shouldPreserveEmpty && exclude === DIVIDER_EXCLUDE_MODES.NONE
+      return shouldPreserveEmpty
         ? filteredRows
         : filteredRows.filter((row) => row.length > 0);
     };
