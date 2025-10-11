@@ -3,6 +3,11 @@ import { getRegex } from '@/utils/regex';
 import { sliceByIndexes } from '@/utils/slice';
 import { sortAscending } from '@/utils/sort';
 
+type DivideStringOptions = {
+  /** When true, keep empty segments produced by splitting. */
+  readonly preserveEmpty?: boolean;
+};
+
 /**
  * Divides a string using both numeric index positions and string delimiters.
  *
@@ -18,7 +23,8 @@ import { sortAscending } from '@/utils/sort';
 export function divideString(
   input: string,
   numSeparators: readonly number[],
-  strSeparators: readonly string[]
+  strSeparators: readonly string[],
+  options?: DivideStringOptions
 ): string[] {
   if (isEmptyArray(numSeparators) && isEmptyArray(strSeparators)) {
     return [input];
@@ -30,13 +36,16 @@ export function divideString(
 
   // Precompile regex for string separators
   const regex = getRegex(strSeparators);
+  const shouldPreserveEmpty = options?.preserveEmpty === true;
 
   // Divide by number delimiters
   const sortedNumSeparators = sortAscending(numSeparators);
   const parts: string[] = sliceByIndexes(input, sortedNumSeparators);
 
   // Divide by string delimiters
-  return regex
-    ? parts.flatMap((part) => part.split(regex)).filter(Boolean)
-    : parts;
+  const segments = regex ? parts.flatMap((part) => part.split(regex)) : parts;
+
+  return shouldPreserveEmpty
+    ? segments
+    : segments.filter((segment) => segment !== '');
 }

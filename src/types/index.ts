@@ -21,6 +21,8 @@ export type DividerOptions = {
   flatten?: boolean;
   /** If true, trims whitespace from each divided segment */
   trim?: boolean;
+  /** If true, retains empty segments produced by division */
+  preserveEmpty?: boolean;
   /** Controls how empty or whitespace segments are handled */
   exclude?: DividerExcludeMode;
 };

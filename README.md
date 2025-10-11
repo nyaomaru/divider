@@ -214,11 +214,12 @@ Some common use cases are wrapped as presets for convenience.
 
 ## 🎯 General Options
 
-| Option    | Type                                 | Default  | Description                                                               |
-| --------- | ------------------------------------ | -------- | ------------------------------------------------------------------------- |
-| `flatten` | `boolean`                            | `false`  | If `true`, the resulting nested arrays are flattened into a single array. |
-| `trim`    | `boolean`                            | `false`  | If `true`, trims whitespace from each divided segment.                    |
-| `exclude` | `'none'  /  'empty'  / 'whitespace'` | `'none'` | See detailed explanation below                                            |
+| Option          | Type                                 | Default  | Description                                                               |
+| --------------- | ------------------------------------ | -------- | ------------------------------------------------------------------------- |
+| `flatten`       | `boolean`                            | `false`  | If `true`, the resulting nested arrays are flattened into a single array. |
+| `trim`          | `boolean`                            | `false`  | If `true`, trims whitespace from each divided segment.                    |
+| `preserveEmpty` | `boolean`                            | `false`  | If `true`, keeps empty segments produced by the split.                    |
+| `exclude`       | `'none'  /  'empty'  / 'whitespace'` | `'none'` | See detailed explanation below                                            |
 
 ### `flatten` (default: `false`)
 
@@ -243,6 +244,18 @@ const result = divider(['  a  ', ' b  c '], ' ', {
 });
 // ['a', 'b', 'c']
 ```
+
+### `preserveEmpty` (default: `false`)
+
+```ts
+const defaultResult = divider('foo,,bar,', ',');
+// ['foo', 'bar']
+
+const preservedResult = divider('foo,,bar,', ',', { preserveEmpty: true });
+// ['foo', '', 'bar', '']
+```
+
+Keep placeholder blanks when they carry meaning (e.g., CSV cells, sparse logs, diff tooling). Combine with `exclude` to filter later in the pipeline.
 
 ### `exclude` (default: `'none'`)
 
@@ -282,7 +295,7 @@ const result = divider('a, ,b', ',', {
 
 - 🧩 Flexible Division: Index-based and string-based separators
 - 🧵 Handles Nested Input: Supports both string and string[]
-- 🎛️ Optional Behaviors: flatten, trim, excludeEmpty
+- 🎛️ Optional Behaviors: flatten, trim, preserveEmpty, exclude
 - 🎯 Targeted Extractors: dividerFirst(), dividerLast()
 - 🔁 Loop Support: dividerLoop() for chunked division
 - 🔢 Digit-Letter Splitter: dividerNumberString()
