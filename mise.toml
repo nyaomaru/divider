@@ -7,6 +7,9 @@ bun = "latest"
 [tasks.lint]
 run = "pnpm lint"
 
+[tasks.pnpm_install]
+run = "pnpm install --frozen-lockfile"
+
 [tasks.build]
 run = "pnpm build"
 
@@ -21,6 +24,9 @@ run = "pnpm run test:performance"
 
 [tasks.qa]
 run = ["pnpm lint", "pnpm test", "pnpm build"]
+
+[tasks.typedoc_build]
+run = "pnpm typedoc --out docs-temp"
 
 # Deno tasks
 [tasks.deno_check]
@@ -41,6 +47,12 @@ run = "deno task fmt:check"
 [tasks.deno_publish]
 run = "deno task publish"
 
+[tasks.deno_publish_dry]
+run = "deno publish --dry-run"
+
+[tasks.deno_publish_release]
+run = "deno publish"
+
 # Bun smoke test
 [tasks.bun_test]
 run = "bun test tests-bun"
@@ -48,3 +60,6 @@ run = "bun test tests-bun"
 # Integration test (Node)
 [tasks.test_integration]
 run = "pnpm exec tsx tests/integration/usage.test.ts"
+
+[tasks.publish_npm]
+run = "pnpm publish --access public --no-git-checks"
