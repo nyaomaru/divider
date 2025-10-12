@@ -276,8 +276,8 @@ const result = divider('a,,b', ',', { exclude: 'empty' });
 const result = divider('a, ,b', ',', { exclude: 'whitespace' });
 // ['a', 'b']
 
-// You can combine with `trim` for clearer results
-const result = divider('a, ,b', ',', {
+// You can combine with `trim` for clearer results (note the trailing space)
+const result = divider('a, ,b ', ',', {
   trim: true,
   exclude: 'whitespace',
 });
