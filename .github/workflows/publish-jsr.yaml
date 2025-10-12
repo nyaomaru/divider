@@ -20,19 +20,17 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Deno
-        uses: denoland/setup-deno@v2
-        with:
-          deno-version: v2.x
+      - name: Setup tools via mise
+        uses: jdx/mise-action@v2
 
       - name: Deno check
-        run: deno task check
+        run: mise run deno_check
 
       - name: Test (Deno)
-        run: deno task test
+        run: mise run deno_test
 
       - name: Dry run publish
-        run: deno publish --dry-run
+        run: mise run deno_publish_dry
 
       - name: Publish to JSR
-        run: deno publish
+        run: mise run deno_publish_release

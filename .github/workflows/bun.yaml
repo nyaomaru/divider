@@ -12,10 +12,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v5
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
-        with:
-          bun-version: latest
+      - name: Setup tools via mise
+        uses: jdx/mise-action@v2
+
+      - name: Install dependencies
+        run: mise run pnpm_install
 
       - name: Run Bun tests (smoke)
-        run: bun test tests-bun
+        run: mise run bun_test
