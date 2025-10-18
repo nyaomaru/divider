@@ -1,25 +1,22 @@
-## v1.9.11 2025-10-18
-
-### Changed
-
-- Merge pull request #289 from nyaomaru/refactor/is-plain-object
-- add isPlainObject and comment
-- Merge pull request #288 from nyaomaru/refactor/remove-unused-assetion-extract-options
-- remove unnecessary assertion
-- Merge pull request #286 from nyaomaru/renovate/node-22.x-lockfile
-- Update dependency @types/node to v22.18.10
-- Merge pull request #287 from nyaomaru/renovate/ts-jest-29.x-lockfile
-- Update dependency ts-jest to v29.4.5
-- Merge pull request #285 from nyaomaru/chore/use-mise-ci
-- update README
-- use mise in ci
-
 # Changelog
 
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [v1.9.11] - 2025-10-18
+
+### Changed
+
+- Added isPlainObject and comments (#289)
+- Removed unnecessary assertion (#288)
+
+### Chore
+
+- Updated dependency @types/node to v22.18.10 (#286)
+- Updated dependency ts-jest to v29.4.5 (#287)
+- Used mise in CI (#285)
 
 ## [v1.9.10] - 2025-10-11
 
@@ -81,9 +78,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added support for JSR / Deno / Bun (#257)
 
-### Changed
-
-## Chore
+### Chore
 
 - Updated `bun-types` to v1.2.22 (#262)
 - Updated `@types/node` to v22.18.3 (#261)
