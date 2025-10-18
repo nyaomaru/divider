@@ -1,3 +1,19 @@
+## v1.9.11 2025-10-18
+
+### Changed
+
+- Merge pull request #289 from nyaomaru/refactor/is-plain-object
+- add isPlainObject and comment
+- Merge pull request #288 from nyaomaru/refactor/remove-unused-assetion-extract-options
+- remove unnecessary assertion
+- Merge pull request #286 from nyaomaru/renovate/node-22.x-lockfile
+- Update dependency @types/node to v22.18.10
+- Merge pull request #287 from nyaomaru/renovate/ts-jest-29.x-lockfile
+- Update dependency ts-jest to v29.4.5
+- Merge pull request #285 from nyaomaru/chore/use-mise-ci
+- update README
+- use mise in ci
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
