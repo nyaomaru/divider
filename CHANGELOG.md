@@ -5,6 +5,19 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.9.11] - 2025-10-18
+
+### Changed
+
+- Added isPlainObject and comments (#289)
+- Removed unnecessary assertion (#288)
+
+### Chore
+
+- Updated dependency @types/node to v22.18.10 (#286)
+- Updated dependency ts-jest to v29.4.5 (#287)
+- Used mise in CI (#285)
+
 ## [v1.9.10] - 2025-10-11
 
 ### Added
@@ -65,9 +78,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Added support for JSR / Deno / Bun (#257)
 
-### Changed
-
-## Chore
+### Chore
 
 - Updated `bun-types` to v1.2.22 (#262)
 - Updated `@types/node` to v22.18.3 (#261)
