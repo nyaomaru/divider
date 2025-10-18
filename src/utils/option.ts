@@ -34,9 +34,7 @@ export function extractOptions(args: (string | number | DividerOptions)[]): {
   const clonedArgs = [...args];
   const lastArg = clonedArgs.at(-1);
 
-  const options = isOptions(lastArg)
-    ? (clonedArgs.pop(), lastArg as DividerOptions)
-    : {};
+  const options = isOptions(lastArg) ? (clonedArgs.pop(), lastArg) : {};
 
   const cleanedArgs = clonedArgs.filter(isStringOrNumber);
 
