@@ -1,7 +1,7 @@
 # Divider
 
 <p align="center">
-    <img src="https://raw.githubusercontent.com/nyaomaru/divider/main/logo.svg" width="200px" align="center" alt="Divider logo" />
+    <img src="https://raw.githubusercontent.com/nyaomaru/divider/main/divider_image.png" width="600px" align="center" alt="Divider logo" />
 </p>
 
 <p align="center">
