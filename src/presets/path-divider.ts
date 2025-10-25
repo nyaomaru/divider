@@ -2,6 +2,7 @@ import { divider } from '@/core/divider';
 import type { DividerStringResult } from '@/types';
 import type { PathDividerOptions } from '@/types/preset';
 import { dividePreserve } from '@/utils/quoted';
+import { isEmptyString } from '@/utils/is';
 import { PATH_SEPARATORS } from '@/constants';
 
 /**
@@ -18,7 +19,7 @@ export function pathDivider(
 ): DividerStringResult {
   const { trim = false, collapse = true } = options;
 
-  if (input === '') return [''];
+  if (isEmptyString(input)) return [''];
 
   const segments = collapse
     ? divider(input, PATH_SEPARATORS.SLASH, PATH_SEPARATORS.ALT)
@@ -31,6 +32,6 @@ export function pathDivider(
     : segments;
 
   return collapse
-    ? maybeTrimmed.filter((segment) => segment !== '')
+    ? maybeTrimmed.filter((segment) => !isEmptyString(segment))
     : maybeTrimmed;
 }

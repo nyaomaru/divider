@@ -115,15 +115,14 @@ export function quotedDivide(
   };
 
   for (const piece of pieces) {
-    currentFieldBuffer =
-      currentFieldBuffer === ''
-        ? piece
-        : currentFieldBuffer + delimiter + piece;
+    currentFieldBuffer = isEmptyString(currentFieldBuffer)
+      ? piece
+      : currentFieldBuffer + delimiter + piece;
     insideQuotes = countUnescaped(currentFieldBuffer, quote) % 2 === 1;
     if (!insideQuotes) flush();
   }
 
-  if (currentFieldBuffer !== '') flush();
+  if (!isEmptyString(currentFieldBuffer)) flush();
 
   return fields;
 }
