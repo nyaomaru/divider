@@ -1,23 +1,23 @@
-## v1.9.12 2025-10-25
-
-### Changed
-
-- Merge pull request #294 from nyaomaru/refactor/use-empty-string
-- use isEmptyString
-- Merge pull request #292 from nyaomaru/renovate/typedoc-0.x-lockfile
-- Merge pull request #291 from nyaomaru/renovate/node-22.x-lockfile
-- Merge pull request #293 from nyaomaru/chore/update-logo
-- update README
-- update logo image
-- Update dependency @types/node to v22.18.12
-- Update dependency typedoc to v0.28.14
-
 # Changelog
 
 All notable changes to this project will be documented in this file.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [v1.9.12] - 2025-10-25
+
+## v1.9.12 2025-10-25
+
+### Changed
+
+- Used isEmptyString for cleaner refactor (#294)
+
+### Chore
+
+- Updated logo image and README (#293)
+- Updated dependency @types/node to v22.18.12 (#291)
+- Updated dependency typedoc to v0.28.14 (#292)
 
 ## [v1.9.11] - 2025-10-18
 
