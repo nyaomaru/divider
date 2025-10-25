@@ -1,3 +1,17 @@
+## v1.9.12 2025-10-25
+
+### Changed
+
+- Merge pull request #294 from nyaomaru/refactor/use-empty-string
+- use isEmptyString
+- Merge pull request #292 from nyaomaru/renovate/typedoc-0.x-lockfile
+- Merge pull request #291 from nyaomaru/renovate/node-22.x-lockfile
+- Merge pull request #293 from nyaomaru/chore/update-logo
+- update README
+- update logo image
+- Update dependency @types/node to v22.18.12
+- Update dependency typedoc to v0.28.14
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
