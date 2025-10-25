@@ -9,6 +9,7 @@ import {
   isNestedStringArray,
   isNoneMode,
   isStringOrNumber,
+  isEmptyString,
 } from '@/utils/is';
 import { excludePredicateMap } from '@/utils/exclude-predicate';
 import { DIVIDER_EXCLUDE_MODES } from '@/constants';
@@ -56,7 +57,9 @@ function trimSegments(
   preserveEmpty: boolean
 ): string[] {
   const trimmed = segments.map((segment) => segment.trim());
-  return preserveEmpty ? trimmed : trimmed.filter((segment) => segment !== '');
+  return preserveEmpty
+    ? trimmed
+    : trimmed.filter((segment) => !isEmptyString(segment));
 }
 
 /**

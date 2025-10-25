@@ -1,4 +1,4 @@
-import { isEmptyArray, isNumber } from '@/utils/is';
+import { isEmptyArray, isEmptyString, isNumber } from '@/utils/is';
 import { getRegex } from '@/utils/regex';
 import { sliceByIndexes } from '@/utils/slice';
 import { sortAscending } from '@/utils/sort';
@@ -47,5 +47,5 @@ export function divideString(
 
   return shouldPreserveEmpty
     ? segments
-    : segments.filter((segment) => segment !== '');
+    : segments.filter((segment) => !isEmptyString(segment));
 }
