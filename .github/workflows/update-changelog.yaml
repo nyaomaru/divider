@@ -1,0 +1,23 @@
+name: Update Changelog on Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  call-shared:
+    uses: nyaomaru/changelog-bot/.github/workflows/changelog.yaml@main
+    permissions:
+      contents: write
+      pull-requests: write
+    with:
+      changelog_path: CHANGELOG.md
+      provider: openai
+      release_tag: ${{ github.ref_name }}
+      release_name: ${{ github.ref_name }}
+      dry_run: "false"
+    secrets:
+      REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
