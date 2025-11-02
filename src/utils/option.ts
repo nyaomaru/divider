@@ -91,24 +91,23 @@ export function applyDividerOptions<
   options: O
 ): DividerResult<T, O> {
   let output = result;
-  const resolvedOptions = options;
-  const shouldPreserveEmpty = resolvedOptions.preserveEmpty === true;
+  const shouldPreserveEmpty = options.preserveEmpty === true;
 
   // 1. Apply trim
-  if (resolvedOptions.trim) {
+  if (options.trim) {
     output = isNestedStringArray(output)
       ? trimNestedSegments(output, shouldPreserveEmpty)
       : trimSegments(output, shouldPreserveEmpty);
   }
 
   // 2. Apply flatten
-  if (resolvedOptions.flatten) {
+  if (options.flatten) {
     output = output.flat();
   }
 
   // 3. Apply exclude rules
-  if (!isNoneMode(resolvedOptions.exclude)) {
-    const exclude = resolvedOptions.exclude ?? DIVIDER_EXCLUDE_MODES.NONE;
+  if (!isNoneMode(options.exclude)) {
+    const exclude = options.exclude ?? DIVIDER_EXCLUDE_MODES.NONE;
     let shouldKeep: (s: string) => boolean = () => true;
 
     if (exclude in excludePredicateMap) {

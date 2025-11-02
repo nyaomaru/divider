@@ -5,7 +5,6 @@ import { shouldTruncateChunks, truncateChunksToMax } from '@/utils/chunk';
 import type {
   DividerInput,
   DividerLoopEmptyOptions,
-  DividerLoopOptions,
   DividerLoopOptionsLike,
   DividerResult,
 } from '@/types';
@@ -66,11 +65,10 @@ export function dividerLoop<
   }
 
   const resolvedOptions = (options ?? {}) as O;
-  const runtimeOptions = resolvedOptions as DividerLoopOptions;
   const {
     startOffset = PERFORMANCE_CONSTANTS.DEFAULT_START_OFFSET,
     maxChunks = PERFORMANCE_CONSTANTS.DEFAULT_MAX_CHUNKS,
-  } = runtimeOptions;
+  } = resolvedOptions;
 
   // Process input based on its type (string or string[])
   const result = isString(input)

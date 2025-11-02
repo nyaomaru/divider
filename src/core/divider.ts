@@ -44,12 +44,11 @@ export function divider<
   // Extract options and clean arguments
   const { cleanedArgs, options } = extractOptions(args);
   const { numSeparators, strSeparators } = classifySeparators(cleanedArgs);
-  const resolvedOptions = options;
 
   // Apply division based on input type
   const applyDivision = (str: string) =>
     divideString(str, numSeparators, strSeparators, {
-      preserveEmpty: resolvedOptions.preserveEmpty,
+      preserveEmpty: options.preserveEmpty,
     });
 
   const result = isString(input)
