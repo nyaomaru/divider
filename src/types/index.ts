@@ -11,9 +11,6 @@ export type DividerInput = StringInput | StringArrayInput;
 // Result types with more specific naming
 export type DividerStringResult = string[];
 export type DividerArrayResult = string[][];
-export type DividerResult<T extends DividerInput> = T extends StringInput
-  ? DividerStringResult
-  : DividerArrayResult;
 
 // Options with better documentation
 export type DividerOptions = {
@@ -27,6 +24,48 @@ export type DividerOptions = {
   exclude?: DividerExcludeMode;
 };
 
+/**
+ * Represents the absence of user-specified divider options while retaining
+ * property knowledge for conditional typing.
+ */
+export type DividerEmptyOptions = {
+  /** Explicitly omits flatten while preserving literal inference */
+  readonly flatten?: never;
+  /** Explicitly omits trim while preserving literal inference */
+  readonly trim?: never;
+  /** Explicitly omits preserveEmpty while preserving literal inference */
+  readonly preserveEmpty?: never;
+  /** Explicitly omits exclude while preserving literal inference */
+  readonly exclude?: never;
+};
+
+export type DividerInferredOptions = DividerOptions | DividerEmptyOptions;
+
+type HasFlattenOption<TOptions extends DividerInferredOptions> = TOptions extends {
+  readonly flatten?: infer Flag;
+}
+  ? true extends Flag
+    ? true
+    : false
+  : false;
+
+export type DividerResult<
+  T extends DividerInput,
+  TOptions extends DividerInferredOptions = DividerEmptyOptions
+> = T extends StringInput
+  ? DividerStringResult
+  : HasFlattenOption<TOptions> extends true
+  ? DividerStringResult
+  : DividerArrayResult | DividerStringResult;
+
+export type ExtractedDividerOptions<
+  TArgs extends readonly (string | number | DividerOptions)[]
+> = TArgs extends readonly [...infer _Rest, infer Last]
+  ? Last extends DividerOptions
+    ? Last
+    : DividerEmptyOptions
+  : DividerEmptyOptions;
+
 // Extended options for loop operations
 export type DividerLoopOptions = DividerOptions & {
   /** Starting position for the division (0-based) */
@@ -35,13 +74,19 @@ export type DividerLoopOptions = DividerOptions & {
   maxChunks?: number;
 };
 
+export type DividerLoopEmptyOptions = DividerEmptyOptions & {
+  /** Placeholder to signal startOffset is intentionally absent */
+  readonly startOffset?: never;
+  /** Placeholder to signal maxChunks is intentionally absent */
+  readonly maxChunks?: never;
+};
+
+export type DividerLoopOptionsLike =
+  | DividerLoopOptions
+  | DividerLoopEmptyOptions;
+
 // Separator types for better type safety
 export type NumericSeparator = number;
 export type StringSeparator = string;
 export type DividerSeparator = NumericSeparator | StringSeparator;
 export type DividerSeparators = DividerSeparator[];
-
-// Arguments type combining separators and options
-export type DividerArgs =
-  | DividerSeparators
-  | [...DividerSeparators, DividerOptions];
