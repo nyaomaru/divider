@@ -41,25 +41,26 @@ export type DividerEmptyOptions = {
 
 export type DividerInferredOptions = DividerOptions | DividerEmptyOptions;
 
-type HasFlattenOption<TOptions extends DividerInferredOptions> = TOptions extends {
-  readonly flatten?: infer Flag;
-}
-  ? true extends Flag
-    ? true
-    : false
-  : false;
+type HasFlattenOption<TOptions extends DividerInferredOptions> =
+  TOptions extends {
+    readonly flatten?: infer Flag;
+  }
+    ? Flag extends true
+      ? true
+      : false
+    : false;
 
 export type DividerResult<
   T extends DividerInput,
-  TOptions extends DividerInferredOptions = DividerEmptyOptions
+  TOptions extends DividerInferredOptions = DividerEmptyOptions,
 > = T extends StringInput
   ? DividerStringResult
   : HasFlattenOption<TOptions> extends true
-  ? DividerStringResult
-  : DividerArrayResult | DividerStringResult;
+    ? DividerStringResult
+    : DividerArrayResult;
 
 export type ExtractedDividerOptions<
-  TArgs extends readonly (string | number | DividerOptions)[]
+  TArgs extends readonly (string | number | DividerOptions)[],
 > = TArgs extends readonly [...infer _Rest, infer Last]
   ? Last extends DividerOptions
     ? Last
