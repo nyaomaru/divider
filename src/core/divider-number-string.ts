@@ -1,5 +1,10 @@
 import { isString } from '@/utils/is';
-import type { DividerInput, DividerOptions, DividerResult } from '@/types';
+import type {
+  DividerEmptyOptions,
+  DividerInferredOptions,
+  DividerInput,
+  DividerResult,
+} from '@/types';
 import { divideNumberString } from '@/utils/divide';
 import { applyDividerOptions } from '@/utils/option';
 
@@ -16,13 +21,15 @@ import { applyDividerOptions } from '@/utils/option';
  * dividerNumberString("abc123def") // returns ["abc", "123", "def"]
  * dividerNumberString("test42") // returns ["test", "42"]
  */
-export function dividerNumberString<T extends DividerInput>(
-  input: T,
-  options?: DividerOptions
-): DividerResult<T> {
+export function dividerNumberString<
+  T extends DividerInput,
+  O extends DividerInferredOptions = DividerEmptyOptions,
+>(input: T, options?: O): DividerResult<T, O> {
   const result = isString(input)
     ? divideNumberString(input)
     : input.map(divideNumberString);
 
-  return applyDividerOptions<T>(result, options ?? {});
+  const resolvedOptions = (options ?? {}) as O;
+
+  return applyDividerOptions<T, O>(result, resolvedOptions);
 }

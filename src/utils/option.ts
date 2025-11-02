@@ -1,8 +1,11 @@
 import type {
   DividerOptions,
+  DividerEmptyOptions,
+  DividerInferredOptions,
   DividerResult,
   DividerStringResult,
   DividerArrayResult,
+  ExtractedDividerOptions,
 } from '@/types';
 import {
   isOptions,
@@ -14,28 +17,20 @@ import {
 import { excludePredicateMap } from '@/utils/exclude-predicate';
 import { DIVIDER_EXCLUDE_MODES } from '@/constants';
 
-/**
- * Extracts `options` object and cleans argument list.
- *
- * This function processes a list of arguments which may include
- * an optional `DividerOptions` object at the end.
- *
- * - If the last argument is a valid `DividerOptions`, it is extracted and removed.
- * - The remaining arguments are filtered to keep only `string` or `number` types.
- *
- * @param args - An array of strings, numbers, or a `DividerOptions` object.
- * @returns An object containing:
- *   - `cleanedArgs`: An array of strings and numbers only.
- *   - `options`: The extracted `DividerOptions` object (or an empty object if none found).
- */
-export function extractOptions(args: (string | number | DividerOptions)[]): {
+export function extractOptions<
+  const TArgs extends readonly (string | number | DividerOptions)[],
+>(
+  args: TArgs
+): {
   cleanedArgs: (string | number)[];
-  options: DividerOptions;
+  options: ExtractedDividerOptions<TArgs>;
 } {
   const clonedArgs = [...args];
   const lastArg = clonedArgs.at(-1);
 
-  const options = isOptions(lastArg) ? (clonedArgs.pop(), lastArg) : {};
+  const options = (
+    isOptions(lastArg) ? (clonedArgs.pop(), lastArg) : {}
+  ) as ExtractedDividerOptions<TArgs>;
 
   const cleanedArgs = clonedArgs.filter(isStringOrNumber);
 
@@ -88,10 +83,13 @@ function trimNestedSegments(
  * @param options - The `DividerOptions` that determine how to modify the result.
  * @returns The processed result after applying the options.
  */
-export function applyDividerOptions<T extends string | readonly string[]>(
+export function applyDividerOptions<
+  T extends string | readonly string[],
+  O extends DividerInferredOptions = DividerEmptyOptions,
+>(
   result: DividerStringResult | DividerArrayResult,
-  options: DividerOptions
-): DividerResult<T> {
+  options: O
+): DividerResult<T, O> {
   let output = result;
   const shouldPreserveEmpty = options.preserveEmpty === true;
 
@@ -130,5 +128,5 @@ export function applyDividerOptions<T extends string | readonly string[]>(
       : filterFlat(output);
   }
 
-  return output as DividerResult<T>;
+  return output as DividerResult<T, O>;
 }

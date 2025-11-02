@@ -1,4 +1,10 @@
-import type { DividerResult, DividerArgs, DividerInput } from '@/types';
+import type {
+  DividerResult,
+  DividerInput,
+  DividerSeparator,
+  DividerOptions,
+  ExtractedDividerOptions,
+} from '@/types';
 import { divideString } from '@/utils/parser';
 import { isString, isEmptyArray, isValidInput } from '@/utils/is';
 import { ensureStringArray } from '@/utils/array';
@@ -18,10 +24,10 @@ import { applyDividerOptions } from '@/utils/option';
  * @param args - Array of separators (numbers/strings) and optional options object
  * @returns Divided string segments based on input type and options
  */
-export function divider<T extends DividerInput>(
-  input: T,
-  ...args: DividerArgs
-): DividerResult<T> {
+export function divider<
+  T extends DividerInput,
+  const TArgs extends readonly (DividerSeparator | DividerOptions)[],
+>(input: T, ...args: TArgs): DividerResult<T, ExtractedDividerOptions<TArgs>> {
   // Validate input
   if (!isValidInput(input)) {
     console.warn(
@@ -50,5 +56,8 @@ export function divider<T extends DividerInput>(
     : input.map(applyDivision);
 
   // Apply options and return result
-  return applyDividerOptions<T>(result, options);
+  return applyDividerOptions<T, ExtractedDividerOptions<TArgs>>(
+    result,
+    options
+  );
 }

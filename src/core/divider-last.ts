@@ -16,6 +16,6 @@ export function dividerLast(
   input: DividerInput,
   ...args: DividerSeparators
 ): string {
-  const result = divider(input, ...args, { flatten: true }) as string[];
+  const result = divider(input, ...args, { flatten: true });
   return getLastElement(result, '');
 }

@@ -2,7 +2,12 @@ import { isString, isPositiveInteger } from '@/utils/is';
 import { generateIndexes } from '@/utils/generate-indexes';
 import { applyDividerOptions } from '@/utils/option';
 import { shouldTruncateChunks, truncateChunksToMax } from '@/utils/chunk';
-import type { DividerInput, DividerLoopOptions, DividerResult } from '@/types';
+import type {
+  DividerInput,
+  DividerLoopEmptyOptions,
+  DividerLoopOptionsLike,
+  DividerResult,
+} from '@/types';
 import { divider } from '@/core/divider';
 import { PERFORMANCE_CONSTANTS } from '@/constants';
 
@@ -49,22 +54,21 @@ function createChunksFromString(
  * dividerLoop("abcdef", 2) // returns ["ab", "cd", "ef"]
  * dividerLoop("abcdef", 2, { maxChunks: 2 }) // returns ["ab", "cdef"]
  */
-export function dividerLoop<T extends DividerInput>(
-  input: T,
-  size: number,
-  options?: DividerLoopOptions
-): DividerResult<T> {
+export function dividerLoop<
+  T extends DividerInput,
+  O extends DividerLoopOptionsLike = DividerLoopEmptyOptions,
+>(input: T, size: number, options?: O): DividerResult<T, O> {
   // Validate chunk size
   if (!isPositiveInteger(size)) {
     console.warn('dividerLoop: chunk size must be a positive number');
-    return [] as DividerResult<T>;
+    return [] as DividerResult<T, O>;
   }
 
-  const finalOptions = options ?? {};
+  const resolvedOptions = (options ?? {}) as O;
   const {
     startOffset = PERFORMANCE_CONSTANTS.DEFAULT_START_OFFSET,
     maxChunks = PERFORMANCE_CONSTANTS.DEFAULT_MAX_CHUNKS,
-  } = finalOptions;
+  } = resolvedOptions;
 
   // Process input based on its type (string or string[])
   const result = isString(input)
@@ -73,5 +77,5 @@ export function dividerLoop<T extends DividerInput>(
         createChunksFromString(str, size, startOffset, maxChunks)
       );
 
-  return applyDividerOptions<T>(result, finalOptions);
+  return applyDividerOptions<T, O>(result, resolvedOptions);
 }
