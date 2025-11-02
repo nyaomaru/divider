@@ -1,21 +1,3 @@
-## v1.9.13 2025-11-02
-
-### Changed
-
-- Merge pull request #299 from nyaomaru/refactor/tighten-divider-option-type
-- remove unnecessary declaration
-- tighten divider option type
-- Merge pull request #296 from nyaomaru/renovate/typescript-5.x-lockfile
-- Merge pull request #297 from nyaomaru/renovate/bun-types-1.x-lockfile
-- Merge pull request #298 from nyaomaru/chore/update-changelog-workflow
-- update CHANGELOG workflow
-- Update dependency bun-types to v1.3.1
-- Update dependency typescript to v5.9.3
-
-### Fixed
-
-- type condition
-
 # Changelog
 
 All notable changes to this project will be documented in this file.
