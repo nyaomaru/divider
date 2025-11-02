@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [vv1.9.13] - 2025-11-02
+
+### Fixed
+
+- tighten divider option type by @nyaomaru in [#299](https://github.com/nyaomaru/divider/pull/299)
+
+### Chore
+
+- update CHANGELOG workflow by @nyaomaru in [#298](https://github.com/nyaomaru/divider/pull/298)
+- Update dependency bun-types to v1.3.1 by [bot] by @renovate in [#297](https://github.com/nyaomaru/divider/pull/297)
+- Update dependency typescript to v5.9.3 by [bot] by @renovate in [#296](https://github.com/nyaomaru/divider/pull/296)
+- bump version to v1.9.13 by [bot] by @github-actions in [#300](https://github.com/nyaomaru/divider/pull/300)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v1.9.12...v1.9.13
+
+[vv1.9.13]: https://github.com/nyaomaru/divider/compare/v1.9.12...v1.9.13
+
 ## [v1.9.12] - 2025-10-25
 
 ## v1.9.12 2025-10-25
