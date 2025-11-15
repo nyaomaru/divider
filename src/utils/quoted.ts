@@ -2,7 +2,16 @@ import { divider } from '@/core/divider';
 import { WHITE_SPACE, TAB } from '@/constants';
 import { isEmptyString } from '@/utils/is';
 
-/** Divide by `separator` while preserving consecutive/trailing empties. */
+/**
+ * Divide a string by a single `separator`, preserving consecutive and trailing empty fields.
+ *
+ * WHY: Uses the library `divider` for consistency; if the reconstructed output differs from the input
+ * (e.g., due to option defaults or implementation details), falls back to native `String.split` to
+ * guarantee strict preservation of empty segments.
+ * @param input - Source string to divide. Empty string yields a single empty field.
+ * @param separator - Single-character separator to split on.
+ * @returns Array of fields with consecutive and trailing empties preserved.
+ */
 export function dividePreserve(input: string, separator: string): string[] {
   if (isEmptyString(input)) return [''];
 
@@ -10,7 +19,13 @@ export function dividePreserve(input: string, separator: string): string[] {
   return divided.join(separator) === input ? divided : input.split(separator);
 }
 
-/** Count quotes excluding escaped pairs (""). Assumes single-char `quote`. */
+/**
+ * Count quote characters excluding escaped pairs (e.g., "" for an embedded ").
+ * Assumes `quote` is a single character.
+ * @param text - Text to scan.
+ * @param quote - Quote character to count (single character).
+ * @returns The number of unescaped quote occurrences in `text`.
+ */
 export function countUnescaped(text: string, quote: string): number {
   const pair = quote + quote;
   let count = 0;
@@ -20,7 +35,20 @@ export function countUnescaped(text: string, quote: string): number {
   return count;
 }
 
-/** Remove an outer quote pair (keep surrounding spaces) and restore "" -> ". */
+/**
+ * Remove a single outer quote pair while keeping surrounding spaces, and unescape doubled quotes.
+ *
+ * - Restores escaped pairs: "" -> "
+ * - If `lenient` is true and only a leading quote exists, removes the leading quote and a matching
+ *   trailing quote if it appears at the last non-space position.
+ * - If `lenient` is false, leaves unclosed quotes intact.
+ * @param text - Input field text which may be surrounded by spaces and quotes.
+ * @param quoteChar - Quote character to strip (single character).
+ * @param options - Behavior flags.
+ * @param [options.lenient=true] - Allow removing a solitary leading quote and a terminal trailing
+ *   quote after trimming trailing spaces.
+ * @returns The field without its outer quote pair, with doubled quotes restored.
+ */
 export function stripOuterQuotes(
   text: string,
   quoteChar: string,
@@ -85,6 +113,16 @@ export function stripOuterQuotes(
  * - Tokenize by delimiter (preserving empties)
  * - Merge tokens while inside quotes
  * - Remove outer quotes, restore escaped quotes, optionally trim
+ *
+ * @param line - A delimited line, possibly containing quoted fields and escaped quotes ("").
+ * @param options - Parsing options.
+ * @param [options.delimiter=","] - Field delimiter.
+ * @param [options.quote='"'] - Quote character for fields (single character).
+ * @param [options.trim=false] - Trim resulting fields after unquoting.
+ * @param [options.lenient=true] - Permit unclosed starting quotes to be handled leniently.
+ * @returns Array of parsed fields with quoting/escaping handled.
+ * @example
+ * quotedDivide('"a,b",c,,"d""e"') // => ['a,b', 'c', '', 'd"e']
  */
 export function quotedDivide(
   line: string,
