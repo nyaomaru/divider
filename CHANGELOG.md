@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [vv1.9.14] - 2025-11-15
+
+### Fixed
+
+- quoted comment by @nyaomaru in [#306](https://github.com/nyaomaru/divider/pull/306)
+
+### Chore
+
+- v1.9.13 by [bot] by @github-actions in [#301](https://github.com/nyaomaru/divider/pull/301)
+- Update dependency jest to v30.2.0 by [bot] by @renovate in [#303](https://github.com/nyaomaru/divider/pull/303)
+- Update dependency /node to v22.19.0 by @renovate[bot] by @types in [#302](https://github.com/nyaomaru/divider/pull/302)
+- Update eslint monorepo to v9.39.1 by [bot] by @renovate in [#305](https://github.com/nyaomaru/divider/pull/305)
+- Update dependency bun-types to v1.3.2 by [bot] by @renovate in [#304](https://github.com/nyaomaru/divider/pull/304)
+- update jsr badge by @nyaomaru in [#307](https://github.com/nyaomaru/divider/pull/307)
+- bump version to v1.9.14 by [bot] by @github-actions in [#308](https://github.com/nyaomaru/divider/pull/308)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v1.9.13...v1.9.14
+
+[vv1.9.14]: https://github.com/nyaomaru/divider/compare/v1.9.13...v1.9.14
+
 ## [vv1.9.13] - 2025-11-02
 
 ### Fixed
