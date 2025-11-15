@@ -1,26 +1,3 @@
-## v1.9.14 2025-11-15
-
-### Changed
-
-- Merge pull request #307 from nyaomaru/chore/update-README-badge
-- update jsr badge
-- Merge pull request #306 from nyaomaru/fix/quoted-comment
-- Merge pull request #304 from nyaomaru/renovate/bun-types-1.x-lockfile
-- Merge pull request #305 from nyaomaru/renovate/eslint-monorepo
-- Update eslint monorepo to v9.39.1
-- Update dependency bun-types to v1.3.2
-- Merge pull request #302 from nyaomaru/renovate/node-22.x-lockfile
-- Update dependency @types/node to v22.19.0
-- Merge pull request #303 from nyaomaru/renovate/jest-monorepo
-- Update dependency jest to v30.2.0
-- Merge pull request #301 from nyaomaru/chore/changelog-vv1.9.13
-- update CHANGELOG
-- vv1.9.13
-
-### Fixed
-
-- quoted comment
-
 # Changelog
 
 All notable changes to this project will be documented in this file.
