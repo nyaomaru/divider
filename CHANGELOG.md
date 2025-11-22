@@ -1,25 +1,3 @@
-## v1.9.15 2025-11-22
-
-### Changed
-
-- Merge pull request #313 from nyaomaru/chore/update-security-alert-dependencies
-- update lock file
-- Update pnpm-workspace.yaml
-- Update pnpm-workspace.yaml
-- update dependencies to fix security alert
-- Merge pull request #312 from nyaomaru/refactor/extract-divider-arg-type
-- extract divider arg type
-- Merge pull request #311 from nyaomaru/renovate/tsup-8.x-lockfile
-- Update dependency tsup to v8.5.1
-- Merge pull request #310 from nyaomaru/renovate/node-22.x-lockfile
-- Update dependency @types/node to v22.19.1
-- Merge pull request #309 from nyaomaru/chore/changelog-vv1.9.14
-- v1.9.14
-
-### Fixed
-
-- move type definition
-
 # Changelog
 
 All notable changes to this project will be documented in this file.
