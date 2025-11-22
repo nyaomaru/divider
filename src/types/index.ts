@@ -59,9 +59,6 @@ export type DividerResult<
     ? DividerStringResult
     : DividerArrayResult;
 
-export type DividerArg = DividerSeparator | DividerOptions;
-export type DividerArgs = readonly DividerArg[];
-
 export type ExtractedDividerOptions<TArgs extends DividerArgs> =
   TArgs extends readonly [...infer _Rest, infer Last]
     ? Last extends DividerOptions
@@ -93,3 +90,6 @@ export type NumericSeparator = number;
 export type StringSeparator = string;
 export type DividerSeparator = NumericSeparator | StringSeparator;
 export type DividerSeparators = DividerSeparator[];
+
+export type DividerArg = DividerSeparator | DividerOptions;
+export type DividerArgs = readonly DividerArg[];
