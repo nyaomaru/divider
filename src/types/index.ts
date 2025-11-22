@@ -59,13 +59,15 @@ export type DividerResult<
     ? DividerStringResult
     : DividerArrayResult;
 
-export type ExtractedDividerOptions<
-  TArgs extends readonly (string | number | DividerOptions)[],
-> = TArgs extends readonly [...infer _Rest, infer Last]
-  ? Last extends DividerOptions
-    ? Last
-    : DividerEmptyOptions
-  : DividerEmptyOptions;
+export type DividerArg = DividerSeparator | DividerOptions;
+export type DividerArgs = readonly DividerArg[];
+
+export type ExtractedDividerOptions<TArgs extends DividerArgs> =
+  TArgs extends readonly [...infer _Rest, infer Last]
+    ? Last extends DividerOptions
+      ? Last
+      : DividerEmptyOptions
+    : DividerEmptyOptions;
 
 // Extended options for loop operations
 export type DividerLoopOptions = DividerOptions & {

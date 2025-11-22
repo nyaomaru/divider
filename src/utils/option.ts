@@ -6,6 +6,8 @@ import type {
   DividerStringResult,
   DividerArrayResult,
   ExtractedDividerOptions,
+  DividerArg,
+  DividerSeparator,
 } from '@/types';
 import {
   isOptions,
@@ -17,12 +19,10 @@ import {
 import { excludePredicateMap } from '@/utils/exclude-predicate';
 import { DIVIDER_EXCLUDE_MODES } from '@/constants';
 
-export function extractOptions<
-  const TArgs extends readonly (string | number | DividerOptions)[],
->(
+export function extractOptions<const TArgs extends readonly DividerArg[]>(
   args: TArgs
 ): {
-  cleanedArgs: (string | number)[];
+  cleanedArgs: DividerSeparator[];
   options: ExtractedDividerOptions<TArgs>;
 } {
   const clonedArgs = [...args];

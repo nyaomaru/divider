@@ -4,6 +4,7 @@ import type {
   DividerSeparator,
   DividerOptions,
   ExtractedDividerOptions,
+  DividerArg,
 } from '@/types';
 import { divideString } from '@/utils/parser';
 import { isString, isEmptyArray, isValidInput } from '@/utils/is';
@@ -26,7 +27,7 @@ import { applyDividerOptions } from '@/utils/option';
  */
 export function divider<
   T extends DividerInput,
-  const TArgs extends readonly (DividerSeparator | DividerOptions)[],
+  const TArgs extends readonly DividerArg[],
 >(input: T, ...args: TArgs): DividerResult<T, ExtractedDividerOptions<TArgs>> {
   // Validate input
   if (!isValidInput(input)) {
