@@ -11,7 +11,7 @@ jobs:
 
     steps:
       - name: Checkout source code
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Setup tools via mise
         uses: jdx/mise-action@v2
