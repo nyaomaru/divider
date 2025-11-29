@@ -1,23 +1,3 @@
-## v1.9.16 2025-11-29
-
-### Changed
-
-- Merge pull request #319 from nyaomaru/fix/npm-publish-error
-- Merge pull request #318 from nyaomaru/refactor/use-divider-divide-preserve
-- delegate dividePreserve to divider with preserveEmpty
-- Merge pull request #316 from nyaomaru/renovate/bun-types-1.x-lockfile
-- Merge pull request #317 from nyaomaru/renovate/actions-checkout-6.x
-- Update actions/checkout action to v6
-- Update dependency bun-types to v1.3.3
-- Merge pull request #315 from nyaomaru/chore/changelog-vv1.9.15
-- v1.9.15
-
-### Fixed
-
-- declaration order
-- cache
-- npm publish error
-
 # Changelog
 
 All notable changes to this project will be documented in this file.
