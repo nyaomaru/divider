@@ -14,9 +14,8 @@ import { isEmptyString } from '@/utils/is';
  */
 export function dividePreserve(input: string, separator: string): string[] {
   if (isEmptyString(input)) return [''];
-
-  const divided = divider(input, separator);
-  return divided.join(separator) === input ? divided : input.split(separator);
+  // Use core divider with preserveEmpty to retain consecutive/edge empties
+  return divider(input, separator, { preserveEmpty: true });
 }
 
 /**
