@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [vv1.9.16] - 2025-11-29
+
+### Fixed
+
+- npm publish error by @nyaomaru in [#319](https://github.com/nyaomaru/divider/pull/319)
+
+### Changed
+
+- delegate dividePreserve to divider with preserveEmpty by @nyaomaru in [#318](https://github.com/nyaomaru/divider/pull/318)
+
+### Chore
+
+- v1.9.15 by [bot] by @github-actions in [#315](https://github.com/nyaomaru/divider/pull/315)
+- Update actions/checkout action to v6 by [bot] by @renovate in [#317](https://github.com/nyaomaru/divider/pull/317)
+- Update dependency bun-types to v1.3.3 by [bot] by @renovate in [#316](https://github.com/nyaomaru/divider/pull/316)
+- bump version to v1.9.16 by [bot] by @github-actions in [#320](https://github.com/nyaomaru/divider/pull/320)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v1.9.15...v1.9.16
+
+[vv1.9.16]: https://github.com/nyaomaru/divider/compare/v1.9.15...v1.9.16
+
 ## [vv1.9.15] - 2025-11-22
 
 ### Changed
