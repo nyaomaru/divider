@@ -36,6 +36,6 @@ jobs:
         run: pnpm lint && pnpm test && pnpm build
 
       - name: Publish Package
+        run: pnpm publish --access public --no-git-checks --ignore-scripts
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: pnpm publish --access public --no-git-checks --ignore-scripts
