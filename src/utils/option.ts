@@ -19,6 +19,16 @@ import {
 import { excludePredicateMap } from '@/utils/exclude-predicate';
 import { DIVIDER_EXCLUDE_MODES } from '@/constants';
 
+/**
+ * Extracts trailing options from a mixed argument list.
+ *
+ * WHY: Centralize the common "last-arg may be options" pattern so callers can
+ * keep their overloads and parsing logic simple and consistent.
+ *
+ * @param args Mixed arguments where the last item may be `DividerOptions`.
+ * @returns Object with `cleanedArgs` (string/number separators only) and
+ * `options` (inferred from `args` or an empty object).
+ */
 export function extractOptions<const TArgs extends readonly DividerArg[]>(
   args: TArgs
 ): {
