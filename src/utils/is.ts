@@ -1,4 +1,4 @@
-import type { DividerOptions } from '@/types';
+import type { DividerOptions, DividerInput } from '@/types';
 import { DIVIDER_EXCLUDE_MODES, DIVIDER_OPTION_KEYS } from '@/constants';
 
 /**
@@ -76,7 +76,7 @@ export function isPositiveInteger(value: unknown): boolean {
  * @param value Value to inspect.
  * @returns True when the value is a string or an array of strings.
  */
-export function isValidInput(value: unknown): value is string | string[] {
+export function isValidInput(value: unknown): value is DividerInput {
   return isString(value) || (Array.isArray(value) && value.every(isString));
 }
 
