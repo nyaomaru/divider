@@ -5,6 +5,30 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.9.17] - 2025-12-13
+
+### Fixed
+
+- unnecessary release_name by @nyaomaru in [#322](https://github.com/nyaomaru/divider/pull/322)
+
+### Changed
+
+- reuse explicit type definition by @nyaomaru in [#328](https://github.com/nyaomaru/divider/pull/328)
+
+### Chore
+
+- v1.9.16 by [bot] by @github-actions in [#321](https://github.com/nyaomaru/divider/pull/321)
+- Update dependency typedoc to v0.28.15 by [bot] by @renovate in [#323](https://github.com/nyaomaru/divider/pull/323)
+- Update dependency pnpm to 10.25 by [bot] by @renovate in [#324](https://github.com/nyaomaru/divider/pull/324)
+- Update dependency bun-types to v1.3.4 by [bot] by @renovate in [#325](https://github.com/nyaomaru/divider/pull/325)
+- Update dependency ts-jest to v29.4.6 by [bot] by @renovate in [#326](https://github.com/nyaomaru/divider/pull/326)
+- add comment by @nyaomaru in [#327](https://github.com/nyaomaru/divider/pull/327)
+- bump version to v1.9.17 by [bot] by @github-actions in [#329](https://github.com/nyaomaru/divider/pull/329)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v1.9.16...v1.9.17
+
+[v1.9.17]: https://github.com/nyaomaru/divider/compare/v1.9.16...v1.9.17
+
 ## [vv1.9.16] - 2025-11-29
 
 ### Fixed
