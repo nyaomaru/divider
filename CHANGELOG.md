@@ -1,3 +1,28 @@
+## v1.9.17 2025-12-13
+
+### Changed
+
+- Merge pull request #328 from nyaomaru/refactor/reuse-types
+- Merge pull request #327 from nyaomaru/chore/option-add-comment
+- reuse explicit type definition
+- add comment
+- Merge pull request #326 from nyaomaru/renovate/ts-jest-29.x-lockfile
+- Merge pull request #325 from nyaomaru/renovate/bun-types-1.x-lockfile
+- Merge pull request #324 from nyaomaru/renovate/pnpm-10.x
+- Merge pull request #323 from nyaomaru/renovate/typedoc-0.x-lockfile
+- Update dependency typedoc to v0.28.15
+- Update dependency pnpm to 10.25
+- Update dependency ts-jest to v29.4.6
+- Update dependency bun-types to v1.3.4
+- Merge pull request #321 from nyaomaru/chore/changelog-vv1.9.16
+- Merge pull request #322 from nyaomaru/fix/update-changelog
+- v1.9.16
+
+### Fixed
+
+- type error
+- unnecessary release_name
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
