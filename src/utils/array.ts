@@ -1,4 +1,4 @@
-import type { DividerResult } from '@/types';
+import type { DividerResult, DividerInput } from '@/types';
 import { isString } from '@/utils/is';
 
 /**
@@ -13,7 +13,7 @@ import { isString } from '@/utils/is';
  * @param input - A string or array of strings
  * @returns A normalized string array
  */
-export function ensureStringArray<T extends string | readonly string[]>(
+export function ensureStringArray<T extends DividerInput>(
   input: T
 ): DividerResult<T> {
   return (isString(input) ? [input] : input) as DividerResult<T>;

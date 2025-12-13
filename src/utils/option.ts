@@ -1,5 +1,5 @@
 import type {
-  DividerOptions,
+  DividerInput,
   DividerEmptyOptions,
   DividerInferredOptions,
   DividerResult,
@@ -94,7 +94,7 @@ function trimNestedSegments(
  * @returns The processed result after applying the options.
  */
 export function applyDividerOptions<
-  T extends string | readonly string[],
+  T extends DividerInput,
   O extends DividerInferredOptions = DividerEmptyOptions,
 >(
   result: DividerStringResult | DividerArrayResult,
