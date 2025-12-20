@@ -1,3 +1,27 @@
+## v1.9.18 2025-12-20
+
+### Changed
+
+- Merge pull request #338 from nyaomaru/renovate/actions-setup-node-6.x
+- Update actions/setup-node action to v6
+- Merge pull request #337 from nyaomaru/renovate/tsx-4.x-lockfile
+- Update dependency tsx to v4.21.0
+- Merge pull request #336 from nyaomaru/renovate/prettier-3.x-lockfile
+- Update dependency prettier to v3.7.4
+- Merge pull request #335 from nyaomaru/renovate/pnpm-10.x
+- Update dependency pnpm to 10.26
+- Merge pull request #334 from nyaomaru/renovate/eslint-monorepo
+- Update eslint monorepo to v9.39.2
+- Merge pull request #333 from nyaomaru/renovate/bun-types-1.x-lockfile
+- Merge pull request #331 from nyaomaru/chore/update-comment
+- Update dependency bun-types to v1.3.5
+- Update src/utils/parser.ts
+- Merge pull request #332 from nyaomaru/renovate/node-22.x-lockfile
+- Update dependency @types/node to v22.19.3
+- update comment
+- Merge pull request #330 from nyaomaru/chore/changelog-v1.9.17
+- 1.9.17
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
