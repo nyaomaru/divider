@@ -23,7 +23,7 @@ describe('sliceByIndexes', () => {
     ]);
   });
 
-  test('ignores duplicate and unordered indexes because indexes must be sorted', () => {
+  test('ignores duplicate and unordered indexes gracefully', () => {
     expect(sliceByIndexes('hello world', [2, 2, 4, 1, 4])).toEqual([
       'he',
       'll',

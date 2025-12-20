@@ -12,7 +12,7 @@ type DivideStringOptions = {
  * Divides a string using both numeric index positions and string delimiters.
  *
  * - If no separators are provided, returns the input string as a single-element array.
- * - First, splits the string at given numeric index positions.
+ * - First, splits the string at given numeric index positions (sorted ascending for stability).
  * - Then, further splits each resulting segment using the provided string delimiters (as regex).
  *
  * @param input - The input string to be divided.
