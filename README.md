@@ -209,8 +209,21 @@ Some common use cases are wrapped as presets for convenience.
 | `emailDivider` | Divide email into [local-part, domain] (by '@')           |
 | `csvDivider`   | Divide comma-separated strings, with quoted field support |
 | `pathDivider`  | Divide file paths by / or \|                              |
+| `queryDivider` | Divide query strings into [key, value] pairs (URL-safe)   |
 
 [Presets detail](src/presets/README.md)
+
+Example:
+
+```ts
+import { queryDivider } from '@nyaomaru/divider';
+
+queryDivider('?q=hello+world');
+// [['q', 'hello world']] // default: '+' treated as space and % decoded
+
+queryDivider('q=hello+world', { mode: 'raw' });
+// [['q', 'hello+world']] // raw mode keeps '+' and % as-is
+```
 
 ## 🎯 General Options
 

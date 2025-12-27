@@ -6,4 +6,5 @@ export { dividerNumberString } from '@/core/divider-number-string';
 export { csvDivider } from '@/presets/csv-divider';
 export { emailDivider } from '@/presets/email-divider';
 export { pathDivider } from '@/presets/path-divider';
+export { queryDivider } from '@/presets/query-divider';
 export * from './types';
