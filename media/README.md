@@ -153,3 +153,44 @@ pathDivider(' a / b | c ', { trim: true });
 | ---------- | ------- | -------------------------------------------------------------------------- |
 | `trim`     | `false` | If true, trims leading and trailing whitespace from each segment.          |
 | `collapse` | `true`  | If true, removes empty segments caused by repeated or trailing separators. |
+
+## `queryDivider()`
+
+Splits a query string into key/value pairs. Accepts a raw query (with or without leading `?`) or a full URL.
+
+```ts
+import { queryDivider } from '@nyaomaru/divider';
+
+queryDivider('a=1&b=2');
+// [['a', '1'], ['b', '2']]
+
+queryDivider('?q=hello+world');
+// [['q', 'hello world']]
+
+queryDivider('https://example.com/path?a=1&b=%E3%81%82');
+// [['a', '1'], ['b', 'あ']]
+```
+
+Preserves empty keys/values and trailing separators:
+
+```ts
+queryDivider('a=&b&=c&');
+// [['a', ''], ['b', ''], ['', 'c'], ['', '']]
+```
+
+Raw mode (no decoding):
+
+```ts
+queryDivider('q=hello+world', { mode: 'raw' });
+// [['q', 'hello+world']]
+
+queryDivider('a=%2B', { mode: 'raw' });
+// [['a', '%2B']]
+```
+
+### Options
+
+| name   | default  | description                                                                              |
+| ------ | -------- | ---------------------------------------------------------------------------------------- |
+| `mode` | `'auto'` | Decoding mode: `'auto'` applies standard URL decoding; `'raw'` leaves values as-is.     |
+| `trim` | `false`  | Trim whitespace around keys and values after decoding (or in raw mode, without decoding). |
