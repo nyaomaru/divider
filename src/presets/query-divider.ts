@@ -37,7 +37,6 @@ function stripLeadingQuestionMark(query: string): string {
  */
 function splitOnFirstEquals(part: string): [string, string] {
   const kv = dividePreserve(part, '=');
-  if (kv.length === 0) return ['', ''];
   if (kv.length === 1) return [kv[0] ?? '', ''];
   return [kv[0] ?? '', kv.slice(1).join('=')];
 }
