@@ -1,19 +1,28 @@
 {
   "name": "@nyaomaru/divider",
-  "version": "1.9.18",
+  "version": "1.9.19",
   "exports": "./src/mod.ts",
   "imports": {
     "@/": "./src/"
   },
-  "unstable": ["sloppy-imports"],
+  "unstable": [
+    "sloppy-imports"
+  ],
   "lint": {
     "rules": {
-      "exclude": ["import-prefix-missing"]
+      "exclude": [
+        "import-prefix-missing"
+      ]
     }
   },
   "test": {
-    "include": ["tests-deno/**/*.ts"],
-    "exclude": ["tests-bun/**", "tests/**"]
+    "include": [
+      "tests-deno/**/*.ts"
+    ],
+    "exclude": [
+      "tests-bun/**",
+      "tests/**"
+    ]
   },
   "tasks": {
     "check": "deno check ./src/mod.ts",

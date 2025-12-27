@@ -1,6 +1,6 @@
 {
   "name": "@nyaomaru/divider",
-  "version": "1.9.18",
+  "version": "1.9.19",
   "license": "MIT",
   "exports": {
     ".": {
@@ -9,6 +9,10 @@
     }
   },
   "publish": {
-    "include": ["src/**/*", "README.md", "LICENSE"]
+    "include": [
+      "src/**/*",
+      "README.md",
+      "LICENSE"
+    ]
   }
 }
