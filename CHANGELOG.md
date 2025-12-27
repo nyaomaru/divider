@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.9.19] - 2025-12-27
+
+### Added
+
+- query divider by @nyaomaru in [#343](https://github.com/nyaomaru/divider/pull/343)
+
+### Fixed
+
+- workflow lint error by @nyaomaru in [#341](https://github.com/nyaomaru/divider/pull/341)
+- version bump workflow by @nyaomaru in [#342](https://github.com/nyaomaru/divider/pull/342)
+
+### Chore
+
+- 1.9.18 by [bot] by @github-actions in [#340](https://github.com/nyaomaru/divider/pull/340)
+- Release: 1.9.19 by [bot] by @github-actions in [#344](https://github.com/nyaomaru/divider/pull/344)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v1.9.18...v1.9.19
+
+[v1.9.19]: https://github.com/nyaomaru/divider/compare/v1.9.18...v1.9.19
+
 ## [v1.9.18] - 2025-12-20
 
 ### Chore
