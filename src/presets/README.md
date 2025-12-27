@@ -178,7 +178,7 @@ queryDivider('a=&b&=c&');
 // [['a', ''], ['b', ''], ['', 'c'], ['', '']]
 ```
 
-Raw mode（デコード無効）:
+Raw mode (no decoding):
 
 ```ts
 queryDivider('q=hello+world', { mode: 'raw' });
