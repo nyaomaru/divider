@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.9.18] - 2025-12-20
+
+### Chore
+
+- 1.9.17 by [bot] by @github-actions in [#330](https://github.com/nyaomaru/divider/pull/330)
+- Update dependency /node to v22.19.3 by @renovate[bot] by @types in [#332](https://github.com/nyaomaru/divider/pull/332)
+- update comment by @nyaomaru in [#331](https://github.com/nyaomaru/divider/pull/331)
+- Update dependency bun-types to v1.3.5 by [bot] by @renovate in [#333](https://github.com/nyaomaru/divider/pull/333)
+- Update eslint monorepo to v9.39.2 by [bot] by @renovate in [#334](https://github.com/nyaomaru/divider/pull/334)
+- Update dependency pnpm to 10.26 by [bot] by @renovate in [#335](https://github.com/nyaomaru/divider/pull/335)
+- Update dependency prettier to v3.7.4 by [bot] by @renovate in [#336](https://github.com/nyaomaru/divider/pull/336)
+- Update dependency tsx to v4.21.0 by [bot] by @renovate in [#337](https://github.com/nyaomaru/divider/pull/337)
+- Update actions/setup-node action to v6 by [bot] by @renovate in [#338](https://github.com/nyaomaru/divider/pull/338)
+- bump version to v1.9.18 by [bot] by @github-actions in [#339](https://github.com/nyaomaru/divider/pull/339)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v1.9.17...v1.9.18
+
+[v1.9.18]: https://github.com/nyaomaru/divider/compare/v1.9.17...v1.9.18
+
 ## [v1.9.17] - 2025-12-13
 
 ### Fixed
