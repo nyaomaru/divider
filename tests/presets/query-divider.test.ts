@@ -61,4 +61,17 @@ describe('queryDivider', () => {
     expect(queryDivider('')).toEqual([]);
     expect(queryDivider('?')).toEqual([]);
   });
+
+  it('trims whitespace from both keys and values after decoding when trim=true', () => {
+    // '+k+' -> ' k ' -> trim -> 'k'
+    // '%20v%20' -> ' v ' -> trim -> 'v'
+    expect(queryDivider('+k+=%20v%20', { trim: true })).toEqual([
+      ['k', 'v'],
+    ]);
+
+    // Keys and values that decode to only spaces become empty strings after trim
+    expect(queryDivider('%20%20=%20', { trim: true })).toEqual([
+      ['', ''],
+    ]);
+  });
 });
