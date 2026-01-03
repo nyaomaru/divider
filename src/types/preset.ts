@@ -1,4 +1,5 @@
 import type { DividerOptions } from '@/types';
+import { QUERY_DECODE_MODES } from '@/constants';
 
 export type EmailDividerOptions = Pick<DividerOptions, 'trim'> & {
   /** Split top-level domain from the rest of the email address. */
@@ -17,7 +18,8 @@ export type PathDividerOptions = Pick<DividerOptions, 'trim'> & {
   collapse?: boolean;
 };
 
-export type QueryDecodeMode = 'auto' | 'raw';
+export type QueryDecodeMode =
+  (typeof QUERY_DECODE_MODES)[keyof typeof QUERY_DECODE_MODES];
 
 export type QueryDividerOptions = Pick<DividerOptions, 'trim'> & {
   /** Decoding mode: 'auto' applies standard URL decoding; 'raw' leaves values untouched. */
