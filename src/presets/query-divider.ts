@@ -1,5 +1,6 @@
 import type { DividerArrayResult } from '@/types';
 import type { QueryDividerOptions, QueryDecodeMode } from '@/types/preset';
+import { QUERY_DECODE_MODES, QUERY_SEPARATORS } from '@/constants';
 import { dividePreserve } from '@/utils/quoted';
 
 // WHY: Preserve consecutive and trailing empty segments to reflect query strings precisely
@@ -14,7 +15,9 @@ import { dividePreserve } from '@/utils/quoted';
 function tryExtractQuery(input: string): string {
   try {
     const url = new URL(input);
-    return url.search.startsWith('?') ? url.search.slice(1) : url.search;
+    return url.search.startsWith(QUERY_SEPARATORS.QUESTION_MARK)
+      ? url.search.slice(1)
+      : url.search;
   } catch {
     return input;
   }
@@ -26,7 +29,9 @@ function tryExtractQuery(input: string): string {
  * @returns Query string without the leading '?'.
  */
 function stripLeadingQuestionMark(query: string): string {
-  return query.startsWith('?') ? query.slice(1) : query;
+  return query.startsWith(QUERY_SEPARATORS.QUESTION_MARK)
+    ? query.slice(1)
+    : query;
 }
 
 /**
@@ -36,9 +41,9 @@ function stripLeadingQuestionMark(query: string): string {
  * @returns Tuple [key, value] with empty strings where appropriate.
  */
 function splitOnFirstEquals(part: string): [string, string] {
-  const kv = dividePreserve(part, '=');
+  const kv = dividePreserve(part, QUERY_SEPARATORS.EQUALS);
   if (kv.length === 1) return [kv[0] ?? '', ''];
-  return [kv[0] ?? '', kv.slice(1).join('=')];
+  return [kv[0] ?? '', kv.slice(1).join(QUERY_SEPARATORS.EQUALS)];
 }
 
 /**
@@ -56,7 +61,7 @@ function decodeField(
   trim: boolean
 ): string {
   let t = text;
-  if (mode === 'auto') {
+  if (mode === QUERY_DECODE_MODES.AUTO) {
     t = t.replace(/\+/g, ' ');
     try {
       t = decodeURIComponent(t);
@@ -79,14 +84,14 @@ function decodeField(
  */
 export function queryDivider(
   input: string,
-  { mode = 'auto', trim = false }: QueryDividerOptions = {}
+  { mode = QUERY_DECODE_MODES.AUTO, trim = false }: QueryDividerOptions = {}
 ): DividerArrayResult {
   if (input.length === 0) return [];
 
   const query = stripLeadingQuestionMark(tryExtractQuery(input));
   if (query.length === 0) return [];
 
-  return dividePreserve(query, '&').map((part) => {
+  return dividePreserve(query, QUERY_SEPARATORS.AMPERSAND).map((part) => {
     const [key, value] = splitOnFirstEquals(part);
     return [decodeField(key, mode, trim), decodeField(value, mode, trim)];
   });

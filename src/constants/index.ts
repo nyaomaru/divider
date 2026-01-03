@@ -66,3 +66,20 @@ export const PATH_SEPARATORS = {
   SLASH: '/',
   ALT: '|',
 } as const;
+
+/**
+ * Query string separator characters.
+ */
+export const QUERY_SEPARATORS = {
+  QUESTION_MARK: '?',
+  AMPERSAND: '&',
+  EQUALS: '=',
+} as const;
+
+/**
+ * Query string decode modes.
+ */
+export const QUERY_DECODE_MODES = {
+  AUTO: 'auto',
+  RAW: 'raw',
+} as const;
