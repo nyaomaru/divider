@@ -1,7 +1,7 @@
 {
   "name": "@nyaomaru/divider",
   "type": "module",
-  "version": "1.9.19",
+  "version": "1.9.20",
   "description": "To divide string or string[] with a given separator",
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
