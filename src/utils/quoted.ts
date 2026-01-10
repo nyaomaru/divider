@@ -58,53 +58,8 @@ export function stripOuterQuotes(
   const restoreEscapedQuotes = (fieldText: string) =>
     fieldText.split(escapedPair).join(quoteChar);
 
-  // Find first/last non-space indices
-  let left = 0;
-  let right = text.length - 1;
-  while (left <= right && isWhitespace(text[left])) left++;
-  while (right >= left && isWhitespace(text[right])) right--;
-
-  // All spaces or empty → nothing to strip
-  if (left > right) return restoreEscapedQuotes(text);
-
-  const startsWithQuote = text[left] === quoteChar;
-  if (!startsWithQuote) return restoreEscapedQuotes(text);
-
-  const endsWithQuote = text[right] === quoteChar;
-
-  // Matched pair → strip both
-  if (endsWithQuote && right > left) {
-    const withoutPair =
-      text.slice(0, left) + text.slice(left + 1, right) + text.slice(right + 1);
-    return restoreEscapedQuotes(withoutPair);
-  }
-
-  // Unclosed/mismatched start quote
-  if (!lenient) return restoreEscapedQuotes(text);
-
-  // Strip only the starting quote
-  let result = text.slice(0, left) + text.slice(left + 1);
-
-  // Find the index of the last non-space character
-  let lastNonSpaceIndexAfterTrim = result.length - 1;
-  while (
-    lastNonSpaceIndexAfterTrim >= 0 &&
-    isWhitespace(result[lastNonSpaceIndexAfterTrim])
-  ) {
-    lastNonSpaceIndexAfterTrim--;
-  }
-
-  // If it's a trailing quote, remove it
-  if (
-    lastNonSpaceIndexAfterTrim >= 0 &&
-    result[lastNonSpaceIndexAfterTrim] === quoteChar
-  ) {
-    result =
-      result.slice(0, lastNonSpaceIndexAfterTrim) +
-      result.slice(lastNonSpaceIndexAfterTrim + 1);
-  }
-
-  return restoreEscapedQuotes(result);
+  const stripped = stripOuterQuotesRaw(text, quoteChar, lenient, isWhitespace);
+  return restoreEscapedQuotes(stripped);
 }
 
 /**
@@ -138,28 +93,172 @@ export function quotedDivide(
   } = {}
 ): string[] {
   if (isEmptyString(line)) return [''];
+  return buildQuotedFields(line, delimiter, quote, trim, lenient);
+}
 
+/**
+ * Finds the first and last non-whitespace indices in the text.
+ * @param text Source text to scan.
+ * @param isWhitespace Predicate to detect whitespace.
+ * @returns Bounds of non-whitespace content.
+ */
+const findNonSpaceBounds = (
+  text: string,
+  isWhitespace: (char: string) => boolean
+) => {
+  let left = 0;
+  let right = text.length - 1;
+  while (left <= right && isWhitespace(text[left])) left++;
+  while (right >= left && isWhitespace(text[right])) right--;
+  return { left, right };
+};
+
+/**
+ * Removes a matching outer quote pair at the given bounds.
+ * @param text Source text containing quotes.
+ * @param left Index of the leading quote.
+ * @param right Index of the trailing quote.
+ * @returns Text with the outer quote pair removed.
+ */
+const stripMatchedOuterQuotes = (text: string, left: number, right: number) =>
+  text.slice(0, left) + text.slice(left + 1, right) + text.slice(right + 1);
+
+/**
+ * Removes a single character at the given index.
+ * @param text Source text.
+ * @param index Index of the character to remove.
+ * @returns Text with the character removed.
+ */
+const removeCharAt = (text: string, index: number) =>
+  text.slice(0, index) + text.slice(index + 1);
+
+/**
+ * Strips a trailing quote after trimming trailing whitespace.
+ * @param text Source text.
+ * @param quoteChar Quote character to remove.
+ * @param isWhitespace Predicate to detect whitespace.
+ * @returns Text with a trailing quote removed when present.
+ */
+const stripTrailingQuote = (
+  text: string,
+  quoteChar: string,
+  isWhitespace: (char: string) => boolean
+) => {
+  let lastNonSpaceIndex = text.length - 1;
+  while (lastNonSpaceIndex >= 0 && isWhitespace(text[lastNonSpaceIndex])) {
+    lastNonSpaceIndex--;
+  }
+
+  if (lastNonSpaceIndex < 0 || text[lastNonSpaceIndex] !== quoteChar) {
+    return text;
+  }
+
+  return removeCharAt(text, lastNonSpaceIndex);
+};
+
+/**
+ * Strips outer quotes without restoring escaped quote pairs.
+ * @param text Source text.
+ * @param quoteChar Quote character to strip.
+ * @param lenient Whether to handle unclosed leading quotes leniently.
+ * @param isWhitespace Predicate to detect whitespace.
+ * @returns Text with outer quotes removed when applicable.
+ */
+const stripOuterQuotesRaw = (
+  text: string,
+  quoteChar: string,
+  lenient: boolean,
+  isWhitespace: (char: string) => boolean
+) => {
+  const { left, right } = findNonSpaceBounds(text, isWhitespace);
+  if (left > right) return text;
+  if (text[left] !== quoteChar) return text;
+
+  if (text[right] === quoteChar && right > left) {
+    return stripMatchedOuterQuotes(text, left, right);
+  }
+
+  if (!lenient) return text;
+
+  const withoutLeading = removeCharAt(text, left);
+  return stripTrailingQuote(withoutLeading, quoteChar, isWhitespace);
+};
+
+/**
+ * Builds parsed fields from a delimited line with quotes.
+ * @param line Source line to parse.
+ * @param delimiter Field delimiter.
+ * @param quote Quote character.
+ * @param trim Whether to trim unquoted field values.
+ * @param lenient Whether to handle unclosed leading quotes leniently.
+ * @returns Parsed field values.
+ */
+const buildQuotedFields = (
+  line: string,
+  delimiter: string,
+  quote: string,
+  trim: boolean,
+  lenient: boolean
+) => {
   const pieces = dividePreserve(line, delimiter);
-  const fields: string[] = [];
-  let currentFieldBuffer = '';
-  let insideQuotes = false;
-
-  const flush = () => {
-    let fieldValue = stripOuterQuotes(currentFieldBuffer, quote, { lenient });
-    if (trim) fieldValue = fieldValue.trim();
-    fields.push(fieldValue);
-    currentFieldBuffer = '';
+  const state = {
+    fields: [] as string[],
+    current: '',
   };
 
   for (const piece of pieces) {
-    currentFieldBuffer = isEmptyString(currentFieldBuffer)
-      ? piece
-      : currentFieldBuffer + delimiter + piece;
-    insideQuotes = countUnescaped(currentFieldBuffer, quote) % 2 === 1;
-    if (!insideQuotes) flush();
+    appendPiece(state, piece, delimiter, quote, trim, lenient);
   }
 
-  if (!isEmptyString(currentFieldBuffer)) flush();
+  if (!isEmptyString(state.current)) {
+    flushField(state, quote, trim, lenient);
+  }
 
-  return fields;
-}
+  return state.fields;
+};
+
+/**
+ * Appends a token and flushes a field when not inside quotes.
+ * @param state Parser state.
+ * @param piece Token to append.
+ * @param delimiter Field delimiter.
+ * @param quote Quote character.
+ * @param trim Whether to trim field values.
+ * @param lenient Whether to handle unclosed leading quotes leniently.
+ */
+const appendPiece = (
+  state: { fields: string[]; current: string },
+  piece: string,
+  delimiter: string,
+  quote: string,
+  trim: boolean,
+  lenient: boolean
+) => {
+  state.current = isEmptyString(state.current)
+    ? piece
+    : state.current + delimiter + piece;
+
+  const insideQuotes = countUnescaped(state.current, quote) % 2 === 1;
+  if (!insideQuotes) {
+    flushField(state, quote, trim, lenient);
+  }
+};
+
+/**
+ * Flushes the current buffer into the fields array.
+ * @param state Parser state.
+ * @param quote Quote character.
+ * @param trim Whether to trim field values.
+ * @param lenient Whether to handle unclosed leading quotes leniently.
+ */
+const flushField = (
+  state: { fields: string[]; current: string },
+  quote: string,
+  trim: boolean,
+  lenient: boolean
+) => {
+  let fieldValue = stripOuterQuotes(state.current, quote, { lenient });
+  if (trim) fieldValue = fieldValue.trim();
+  state.fields.push(fieldValue);
+  state.current = '';
+};

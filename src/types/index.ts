@@ -60,9 +60,11 @@ export type DividerResult<
     : DividerArrayResult;
 
 export type ExtractedDividerOptions<TArgs extends DividerArgs> =
-  TArgs extends readonly [...infer _Rest, infer Last]
-    ? Last extends DividerOptions
-      ? Last
+  TArgs extends readonly [...infer Rest, infer Last]
+    ? Rest extends DividerArg[]
+      ? Last extends DividerOptions
+        ? Last
+        : DividerEmptyOptions
       : DividerEmptyOptions
     : DividerEmptyOptions;
 
