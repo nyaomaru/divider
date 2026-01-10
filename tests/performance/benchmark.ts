@@ -11,16 +11,16 @@ export type BenchmarkResult = {
   minTime: number;
   /** Slowest single‑iteration time observed (**ms**) */
   maxTime: number;
-  /** Throughput expressed as **operations per second** (1 000 / averageTime) */
+  /** Throughput expressed as **operations per second** (1_000 / averageTime) */
   operationsPerSecond: number;
 };
-
+  
 export type BenchmarkOptions = {
-  /** Number of iterations to *measure* (default: 1 000) */
+  /** Number of iterations to *measure* (default: 1_000) */
   iterations?: number;
   /** Warm‑up iterations to run *without* measurement (default: 100) */
   warmupIterations?: number;
-  /** Hard timeout in **ms** — abort benchmark if exceeded (default: 30 000 ms) */
+  /** Hard timeout in **ms** — abort benchmark if exceeded (default: 30_000ms) */
   timeout?: number;
 };
 
@@ -104,7 +104,7 @@ export function benchmark<T>(
   const averageTime = sum / measured;
   const minTime = Math.min(...times);
   const maxTime = Math.max(...times);
-  // ops/sec derived from *total* time for better precision when avg ≪ 1 ms
+  // ops/sec derived from *total* time for better precision when avg ≪ 1ms
   const operationsPerSecond = (measured / totalTime) * 1000;
 
   return {

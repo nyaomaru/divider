@@ -1,0 +1,9 @@
+# Refer for explanation to following link:
+# https://lefthook.dev/configuration/
+
+pre-commit:
+  parallel: true
+  jobs:
+    - name: lint
+      run: pnpm exec eslint -- {staged_files}
+      glob: "*.{js,ts}"
