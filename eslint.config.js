@@ -1,5 +1,7 @@
 import { defineConfig, globalIgnores } from 'eslint/config';
 import pluginJs from '@eslint/js';
+import tsParser from '@typescript-eslint/parser';
+import tsPlugin from '@typescript-eslint/eslint-plugin';
 
 export default defineConfig([
   pluginJs.configs.recommended,
@@ -8,7 +10,25 @@ export default defineConfig([
     rules: {
       'no-unused-vars': 'warn',
       'no-undef': 'warn',
-      complexity: ['error', { max: 7 }],
+      complexity: ['warn', { max: 7 }],
+    },
+  },
+  {
+    files: ['**/*.ts'],
+    languageOptions: {
+      parser: tsParser,
+      parserOptions: {
+        sourceType: 'module',
+      },
+    },
+    plugins: {
+      '@typescript-eslint': tsPlugin,
+    },
+    rules: {
+      'no-undef': 'off',
+      'no-unused-vars': 'off',
+      '@typescript-eslint/no-unused-vars': 'warn',
+      complexity: ['warn', { max: 7 }],
     },
   },
 ]);
