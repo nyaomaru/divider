@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.9.21] - 2026-01-10
+
+### Added
+
+- add left hook by @nyaomaru in [#354](https://github.com/nyaomaru/divider/pull/354)
+
+### Changed
+
+- reduce complexity warnings by @nyaomaru in [#355](https://github.com/nyaomaru/divider/pull/355)
+
+### Chore
+
+- update deno lock by @nyaomaru in [#351](https://github.com/nyaomaru/divider/pull/351)
+- 1.9.20 by [bot] by @github-actions in [#350](https://github.com/nyaomaru/divider/pull/350)
+- Update dependency /node to v22.19.5 by @renovate[bot] by @types in [#353](https://github.com/nyaomaru/divider/pull/353)
+- Update dependency pnpm to 10.28 by [bot] by @renovate in [#352](https://github.com/nyaomaru/divider/pull/352)
+- Release: 1.9.21 by [bot] by @github-actions in [#356](https://github.com/nyaomaru/divider/pull/356)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v1.9.20...v1.9.21
+
+[v1.9.21]: https://github.com/nyaomaru/divider/compare/v1.9.20...v1.9.21
+
 ## [v1.9.20] - 2026-01-03
 
 ### Changed
