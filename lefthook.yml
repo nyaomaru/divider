@@ -9,4 +9,4 @@ pre-commit:
       glob: "*.{js,ts}"
 
     - name: test
-      run: pnpm test {all_files}
+      run: pnpm test
