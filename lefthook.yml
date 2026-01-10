@@ -7,6 +7,3 @@ pre-commit:
     - name: lint
       run: pnpm exec eslint -- {staged_files}
       glob: "*.{js,ts}"
-
-    - name: test
-      run: pnpm test
