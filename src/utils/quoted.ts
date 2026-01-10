@@ -225,7 +225,6 @@ const buildQuotedFields = (
  * @param quote Quote character.
  * @param trim Whether to trim field values.
  * @param lenient Whether to handle unclosed leading quotes leniently.
- * @returns Void.
  */
 const appendPiece = (
   state: { fields: string[]; current: string },
@@ -251,7 +250,6 @@ const appendPiece = (
  * @param quote Quote character.
  * @param trim Whether to trim field values.
  * @param lenient Whether to handle unclosed leading quotes leniently.
- * @returns Void.
  */
 const flushField = (
   state: { fields: string[]; current: string },
