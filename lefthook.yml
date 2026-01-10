@@ -4,8 +4,8 @@
 pre-commit:
   parallel: true
   jobs:
-    - name: test
-      run: pnpm lint {staged_files}
+    - name: lint
+      run: pnpm exec eslint -- {staged_files}
       glob: "*.{js,ts}"
 
     - name: test
