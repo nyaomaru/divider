@@ -1,8 +1,6 @@
 import type {
   DividerResult,
   DividerInput,
-  DividerSeparator,
-  DividerOptions,
   ExtractedDividerOptions,
   DividerArg,
 } from '@/types';

@@ -26,13 +26,11 @@ export function divideString(
   strSeparators: readonly string[],
   options?: DivideStringOptions
 ): string[] {
-  if (isEmptyArray(numSeparators) && isEmptyArray(strSeparators)) {
+  if (hasNoSeparators(numSeparators, strSeparators)) {
     return [input];
   }
 
-  if (!Array.isArray(numSeparators) || !numSeparators.every(isNumber)) {
-    throw new Error('Invalid numeric separators');
-  }
+  assertValidNumSeparators(numSeparators);
 
   // Precompile regex for string separators
   const regex = getRegex(strSeparators);
@@ -49,3 +47,25 @@ export function divideString(
     ? segments
     : segments.filter((segment) => !isEmptyString(segment));
 }
+
+/**
+ * Checks whether both numeric and string separators are empty.
+ * @param numSeparators Numeric separators to check.
+ * @param strSeparators String separators to check.
+ * @returns True when there are no separators.
+ */
+const hasNoSeparators = (
+  numSeparators: readonly number[],
+  strSeparators: readonly string[]
+) => isEmptyArray(numSeparators) && isEmptyArray(strSeparators);
+
+/**
+ * Validates numeric separators before slicing.
+ * @param numSeparators Numeric separator candidates.
+ * @returns Throws when the separators are not numeric.
+ */
+const assertValidNumSeparators = (numSeparators: readonly number[]) => {
+  if (!Array.isArray(numSeparators) || !numSeparators.every(isNumber)) {
+    throw new Error('Invalid numeric separators');
+  }
+};
