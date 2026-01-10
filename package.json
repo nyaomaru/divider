@@ -22,7 +22,8 @@
     "lint": "eslint .",
     "build": "tsup",
     "prepack": "pnpm run build",
-    "typedoc": "typedoc"
+    "typedoc": "typedoc",
+    "prepare": "lefthook install"
   },
   "keywords": [
     "divider",
