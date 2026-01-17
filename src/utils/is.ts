@@ -104,13 +104,11 @@ export function isStringArray(value: unknown): value is string[] {
  * @returns True when the value is a nested string array.
  */
 export function isNestedStringArray(value: unknown): value is string[][] {
-  return (
-    Array.isArray(value) &&
-    value.length > 0 &&
-    Array.isArray(value[0]) &&
-    value[0].length > 0 &&
-    isStringArray(value[0])
-  );
+  if (!Array.isArray(value) || value.length === 0) return false;
+  const firstRow = value[0];
+  // WHY: Divider outputs are trusted; checking only the first row avoids
+  // a full scan while still distinguishing nested vs flat arrays.
+  return Array.isArray(firstRow) && firstRow.every((item) => isString(item));
 }
 
 /**

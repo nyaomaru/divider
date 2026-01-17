@@ -194,8 +194,12 @@ describe('isNestedStringArray', () => {
     expect(isNestedStringArray([])).toBe(false);
   });
 
-  test('false for empty inner arrays', () => {
-    expect(isNestedStringArray([[]])).toBe(false);
+  test('true for empty inner arrays', () => {
+    expect(isNestedStringArray([[]])).toBe(true);
+  });
+
+  test('true when first row is empty but later rows have strings', () => {
+    expect(isNestedStringArray([[], ['a']])).toBe(true);
   });
 
   test('false for non-array input', () => {
