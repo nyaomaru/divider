@@ -17,7 +17,6 @@ import {
   isEmptyString,
 } from '@/utils/is';
 import { excludePredicateMap } from '@/utils/exclude-predicate';
-import { DIVIDER_EXCLUDE_MODES } from '@/constants';
 
 /**
  * Extracts trailing options from a mixed argument list.
