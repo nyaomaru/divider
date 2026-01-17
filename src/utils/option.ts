@@ -30,7 +30,7 @@ import { DIVIDER_EXCLUDE_MODES } from '@/constants';
  * `options` (inferred from `args` or an empty object).
  */
 export function extractOptions<const TArgs extends readonly DividerArg[]>(
-  args: TArgs
+  args: TArgs,
 ): {
   cleanedArgs: DividerSeparator[];
   options: ExtractedDividerOptions<TArgs>;
@@ -59,7 +59,7 @@ export function extractOptions<const TArgs extends readonly DividerArg[]>(
  */
 function trimSegments(
   segments: readonly string[],
-  preserveEmpty: boolean
+  preserveEmpty: boolean,
 ): string[] {
   const trimmed = segments.map((segment) => segment.trim());
   return preserveEmpty
@@ -76,7 +76,7 @@ function trimSegments(
  */
 function trimNestedSegments(
   rows: readonly string[][],
-  preserveEmpty: boolean
+  preserveEmpty: boolean,
 ): string[][] {
   return rows.map((row) => trimSegments(row, preserveEmpty));
 }
@@ -98,7 +98,7 @@ export function applyDividerOptions<
   O extends DividerInferredOptions = DividerEmptyOptions,
 >(
   result: DividerStringResult | DividerArrayResult,
-  options: O
+  options: O,
 ): DividerResult<T, O> {
   const shouldPreserveEmpty = options.preserveEmpty === true;
   let output = result;
@@ -120,7 +120,7 @@ export function applyDividerOptions<
 const applyTrimOption = (
   output: DividerStringResult | DividerArrayResult,
   options: DividerInferredOptions,
-  shouldPreserveEmpty: boolean
+  shouldPreserveEmpty: boolean,
 ) => {
   if (!options.trim) return output;
   return isNestedStringArray(output)
@@ -136,7 +136,7 @@ const applyTrimOption = (
  */
 const applyFlattenOption = (
   output: DividerStringResult | DividerArrayResult,
-  options: DividerInferredOptions
+  options: DividerInferredOptions,
 ) => (options.flatten ? output.flat() : output);
 
 /**
@@ -149,11 +149,11 @@ const applyFlattenOption = (
 const applyExcludeOption = (
   output: DividerStringResult | DividerArrayResult,
   options: DividerInferredOptions,
-  shouldPreserveEmpty: boolean
+  shouldPreserveEmpty: boolean,
 ) => {
   if (options.exclude == null || isNoneMode(options.exclude)) return output;
 
-  const exclude = options.exclude ?? DIVIDER_EXCLUDE_MODES.NONE;
+  const exclude = options.exclude;
   let shouldKeep: (s: string) => boolean = () => true;
 
   if (exclude in excludePredicateMap) {
