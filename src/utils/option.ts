@@ -151,7 +151,7 @@ const applyExcludeOption = (
   options: DividerInferredOptions,
   shouldPreserveEmpty: boolean
 ) => {
-  if (isNoneMode(options.exclude)) return output;
+  if (options.exclude == null || isNoneMode(options.exclude)) return output;
 
   const exclude = options.exclude ?? DIVIDER_EXCLUDE_MODES.NONE;
   let shouldKeep: (s: string) => boolean = () => true;
