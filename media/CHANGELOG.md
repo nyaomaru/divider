@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.9.22] - 2026-01-17
+
+### Changed
+
+- is nested string array by @nyaomaru in [#362](https://github.com/nyaomaru/divider/pull/362)
+
+### Chore
+
+- 1.9.21 by [bot] by @github-actions in [#357](https://github.com/nyaomaru/divider/pull/357)
+- Update dependency bun-types to v1.3.6 by [bot] by @renovate in [#358](https://github.com/nyaomaru/divider/pull/358)
+- Update dependency prettier to v3.8.0 by [bot] by @renovate in [#360](https://github.com/nyaomaru/divider/pull/360)
+- Update dependency /node to v22.19.7 by @renovate[bot] by @types in [#359](https://github.com/nyaomaru/divider/pull/359)
+- fix web_search config by @nyaomaru in [#361](https://github.com/nyaomaru/divider/pull/361)
+- Release: 1.9.22 by [bot] by @github-actions in [#363](https://github.com/nyaomaru/divider/pull/363)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v1.9.21...v1.9.22
+
+[v1.9.22]: https://github.com/nyaomaru/divider/compare/v1.9.21...v1.9.22
+
 ## [v1.9.21] - 2026-01-10
 
 ### Added
