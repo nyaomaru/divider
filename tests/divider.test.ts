@@ -170,6 +170,10 @@ describe('divider with string[]', () => {
     expect(divider([''], 'a')).toEqual([[]]);
   });
 
+  test('handles empty rows with trim option', () => {
+    expect(divider([''], 'a', { trim: true })).toEqual([[]]);
+  });
+
   test('handles edge cases', () => {
     expect(divider(['hello', 'world'])).toEqual(['hello', 'world']);
     expect(divider(['hello'], 0)).toEqual([['hello']]);
