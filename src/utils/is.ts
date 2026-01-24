@@ -48,7 +48,7 @@ export function isPlainObject(
  */
 export function isOptions(value: unknown): value is DividerOptions {
   if (!isPlainObject(value)) return false;
-  const options = value as Record<string, unknown>;
+  const options = value;
 
   return DIVIDER_OPTION_KEYS.some((key) => Object.hasOwn(options, key));
 }
@@ -68,7 +68,7 @@ export function isEmptyArray<T>(value: readonly T[]): boolean {
  * @returns True when the value is an integer greater than zero.
  */
 export function isPositiveInteger(value: unknown): boolean {
-  return Number.isInteger(value) && (value as number) > 0;
+  return typeof value === 'number' && Number.isInteger(value) && value > 0;
 }
 
 /**

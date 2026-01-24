@@ -201,8 +201,8 @@ const buildQuotedFields = (
   lenient: boolean
 ) => {
   const pieces = dividePreserve(line, delimiter);
-  const state = {
-    fields: [] as string[],
+  const state: { fields: string[]; current: string } = {
+    fields: [],
     current: '',
   };
 

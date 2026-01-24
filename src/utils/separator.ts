@@ -15,12 +15,12 @@ import { isString, isNumber } from '@/utils/is';
  * @returns An object with `numSeparators` and `strSeparators` arrays
  */
 export function classifySeparators(args: DividerSeparators) {
-  return args.reduce(
+  return args.reduce<{ numSeparators: number[]; strSeparators: string[] }>(
     (acc, arg) => {
       if (isNumber(arg)) acc.numSeparators.push(arg);
       else if (isString(arg)) acc.strSeparators.push(arg);
       return acc;
     },
-    { numSeparators: [] as number[], strSeparators: [] as string[] }
+    { numSeparators: [], strSeparators: [] }
   );
 }
