@@ -61,7 +61,7 @@ export function dividerLoop<
   // Validate chunk size
   if (!isPositiveInteger(size)) {
     console.warn('dividerLoop: chunk size must be a positive number');
-    return [] as DividerResult<T, O>;
+    return [];
   }
 
   const resolvedOptions = (options ?? {}) as O;
