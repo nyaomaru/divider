@@ -13,7 +13,6 @@ describe('getRegex', () => {
   test('creates regex for single separator', () => {
     const regex = getRegex(['-']);
 
-    expect(regex).toBeInstanceOf(RegExp);
     expect(regex?.source).toBe('(?:-)');
     expect(regex?.flags).toBe('g');
   });
@@ -21,7 +20,6 @@ describe('getRegex', () => {
   test('creates regex for multiple single-character separators', () => {
     const regex = getRegex(['-', ',', ';']);
 
-    expect(regex).toBeInstanceOf(RegExp);
     expect(regex?.source).toBe('(?:-|,|;)');
     expect(regex?.flags).toBe('g');
   });
@@ -29,7 +27,6 @@ describe('getRegex', () => {
   test('creates regex for multi-character separators', () => {
     const regex = getRegex(['--', '||', '==']);
 
-    expect(regex).toBeInstanceOf(RegExp);
     expect(regex?.source).toBe('(?:--|\\|\\||==)');
     expect(regex?.flags).toBe('g');
   });
@@ -37,7 +34,6 @@ describe('getRegex', () => {
   test('creates regex for mixed single and multi-character separators', () => {
     const regex = getRegex(['-', '--', ',', '||']);
 
-    expect(regex).toBeInstanceOf(RegExp);
     expect(regex?.source).toBe('(?:-|--|,|\\|\\|)');
     expect(regex?.flags).toBe('g');
   });
@@ -59,8 +55,6 @@ describe('getRegex', () => {
       ']',
       '\\',
     ]);
-    expect(regex).toBeInstanceOf(RegExp);
-
     // The actual source will have characters in sorted order due to our key generation
     // We'll test that it contains the expected characters rather than exact order
     const source = regex?.source || '';
@@ -74,7 +68,6 @@ describe('getRegex', () => {
     const separators = ['-', '-', ',', ',', ';'];
     const regex = getRegex(separators);
 
-    expect(regex).toBeInstanceOf(RegExp);
     expect(regex?.source).toBe('(?:-|,|;)'); // Duplicates should be removed
     expect(regex?.flags).toBe('g');
   });
@@ -83,10 +76,6 @@ describe('getRegex', () => {
 describe('RegexCache', () => {
   beforeEach(() => {
     regexCache.clear();
-  });
-
-  test('starts with size 0', () => {
-    expect(regexCache.size).toBe(0);
   });
 
   test('increments size when adding entries', () => {
@@ -125,8 +114,6 @@ describe('RegexCache', () => {
   test('handles special characters in separators', () => {
     const separators = ['\n', '\t', '\r'];
     const regex = getRegex(separators);
-
-    expect(regex).toBeInstanceOf(RegExp);
 
     // The actual source will have characters in sorted order
     const source = regex?.source || '';

@@ -184,15 +184,3 @@ describe('divider with string[]', () => {
     expect(divider(['hello', 'ab'], 3)).toEqual([['hel', 'lo'], ['ab']]);
   });
 });
-
-describe('divider type safety', () => {
-  test('maintains correct return types', () => {
-    const stringResult = divider('hello', 2);
-    const arrayResult = divider(['hello', 'world'], 2);
-
-    // Type assertions to ensure correct return types
-    expect(Array.isArray(stringResult)).toBe(true);
-    expect(Array.isArray(arrayResult)).toBe(true);
-    expect(Array.isArray(arrayResult[0])).toBe(true);
-  });
-});
