@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v1.9.23] - 2026-01-24
+
+### Changed
+
+- remove redundant type assertions by @nyaomaru in [#367](https://github.com/nyaomaru/divider/pull/367)
+
+### Chore
+
+- 1.9.22 by [bot] by @github-actions in [#364](https://github.com/nyaomaru/divider/pull/364)
+- Update dependency prettier to v3.8.1 by [bot] by @renovate in [#365](https://github.com/nyaomaru/divider/pull/365)
+- remove unnecessary tests by @nyaomaru in [#366](https://github.com/nyaomaru/divider/pull/366)
+- Release: 1.9.23 by [bot] by @github-actions in [#368](https://github.com/nyaomaru/divider/pull/368)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v1.9.22...v1.9.23
+
+[v1.9.23]: https://github.com/nyaomaru/divider/compare/v1.9.22...v1.9.23
+
 ## [v1.9.22] - 2026-01-17
 
 ### Changed
