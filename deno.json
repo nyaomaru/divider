@@ -1,6 +1,6 @@
 {
   "name": "@nyaomaru/divider",
-  "version": "1.9.23",
+  "version": "2.0.0",
   "exports": "./src/mod.ts",
   "imports": {
     "@/": "./src/"
