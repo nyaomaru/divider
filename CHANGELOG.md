@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.0] - 2026-01-31
+
+### Changed
+
+- unused exports by @nyaomaru in [#372](https://github.com/nyaomaru/divider/pull/372)
+
+### Chore
+
+- 1.9.23 by [bot] by @github-actions in [#369](https://github.com/nyaomaru/divider/pull/369)
+- update node support version by @nyaomaru in [#373](https://github.com/nyaomaru/divider/pull/373)
+- Release: 2.0.0 by [bot] by @github-actions in [#374](https://github.com/nyaomaru/divider/pull/374)
+- Update dependency bun-types to v1.3.8 by [bot] by @renovate in [#370](https://github.com/nyaomaru/divider/pull/370)
+- add knip to refactor unused definitions by @nyaomaru in [#371](https://github.com/nyaomaru/divider/pull/371)
+
+### Breaking Changes
+
+- Require Node.js >= 20 (drop Node 18 support).
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v1.9.23...v2.0.0
+
+[v2.0.0]: https://github.com/nyaomaru/divider/compare/v1.9.23...v2.0.0
+
 ## [v1.9.23] - 2026-01-24
 
 ### Changed
