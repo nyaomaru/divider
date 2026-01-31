@@ -2,5 +2,10 @@
   "$schema": "https://unpkg.com/knip@5/schema.json",
   "tags": [
     "-lintignore"
+  ],
+  "ignore": [
+    "src/mod.ts",
+    "tests-bun/smoke.test.ts",
+    "tests-deno/divider_smoke.test.ts"
   ]
 }

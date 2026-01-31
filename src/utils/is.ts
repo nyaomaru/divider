@@ -24,7 +24,7 @@ export function isNumber(value: unknown): value is number {
  * @param value Value to inspect.
  * @returns True when the value is an object.
  */
-export function isObject(value: unknown): value is object {
+function isObject(value: unknown): value is object {
   return typeof value === 'object' && value !== null;
 }
 
@@ -33,7 +33,7 @@ export function isObject(value: unknown): value is object {
  * @param value Value to inspect.
  * @returns True when the value behaves like a plain object.
  */
-export function isPlainObject(
+function isPlainObject(
   value: unknown
 ): value is Record<string, unknown> {
   if (!isObject(value)) return false;
