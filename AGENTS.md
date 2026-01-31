@@ -9,7 +9,7 @@
 
 ## Build, Test, and Development Commands
 
-- Install: `pnpm install` (Node >= 18).
+- Install: `pnpm install` (Node >= 20).
 - Lint: `pnpm lint` — ESLint + Prettier plugin; fix warnings/errors. Complexity ≤ 7.
 - Build: `pnpm build` — bundles with `tsup` to ESM/CJS and emits `.d.ts`.
 - Test (all unit): `pnpm test` or `pnpm run test:unit`.
