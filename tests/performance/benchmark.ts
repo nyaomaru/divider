@@ -25,7 +25,7 @@ export type BenchmarkOptions = {
 };
 
 /** Non‑overridable default options */
-export const DEFAULT_OPTIONS: Required<BenchmarkOptions> = {
+const DEFAULT_OPTIONS: Required<BenchmarkOptions> = {
   iterations: 1_000,
   warmupIterations: 100,
   timeout: 30 * 1000,
