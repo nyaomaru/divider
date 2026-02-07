@@ -59,6 +59,23 @@ export type DividerResult<
     ? DividerStringResult
     : DividerArrayResult;
 
+/**
+ * Computes the divider return type based on the input and provided arguments.
+ *
+ * WHY: When no arguments are provided, divider returns the input as-is for
+ * string arrays. This type keeps the signature aligned with runtime behavior.
+ */
+export type DividerReturn<
+  T extends DividerInput,
+  TArgs extends DividerArgs,
+> = T extends StringInput
+  ? DividerStringResult
+  : TArgs['length'] extends 0
+    ? T
+    : HasFlattenOption<ExtractedDividerOptions<TArgs>> extends true
+      ? DividerStringResult
+      : DividerArrayResult;
+
 export type ExtractedDividerOptions<TArgs extends DividerArgs> =
   TArgs extends readonly [...infer Rest, infer Last]
     ? Rest extends DividerArg[]
@@ -91,7 +108,7 @@ export type DividerLoopOptionsLike =
 export type NumericSeparator = number;
 export type StringSeparator = string;
 export type DividerSeparator = NumericSeparator | StringSeparator;
-export type DividerSeparators = DividerSeparator[];
+export type DividerSeparators = readonly DividerSeparator[];
 
 export type DividerArg = DividerSeparator | DividerOptions;
 export type DividerArgs = readonly DividerArg[];

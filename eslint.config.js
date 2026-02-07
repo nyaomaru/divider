@@ -27,6 +27,7 @@ export default defineConfig([
     rules: {
       'no-undef': 'off',
       'no-unused-vars': 'off',
+      'no-redeclare': 'off',
       '@typescript-eslint/no-unused-vars': 'warn',
       complexity: ['warn', { max: 7 }],
     },
