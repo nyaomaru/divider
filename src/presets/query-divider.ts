@@ -19,8 +19,29 @@ function tryExtractQuery(input: string): string {
       ? url.search.slice(1)
       : url.search;
   } catch {
-    return input;
+    return extractQueryFromQuestionMark(input);
   }
+}
+
+/**
+ * Extract query substring from a non-absolute URL-like input.
+ * WHY: Relative URLs (e.g. "/path?a=1&b=2#frag") cannot be passed to `new URL`
+ * without a base, so this fallback keeps query parsing behavior consistent.
+ * @param input Raw input string that may contain path/query/fragment.
+ * @returns Query portion when `?` exists before `#`; otherwise the original input without fragment.
+ */
+function extractQueryFromQuestionMark(input: string): string {
+  const fragmentIndex = input.indexOf('#');
+  const withoutFragment =
+    fragmentIndex >= 0 ? input.slice(0, fragmentIndex) : input;
+
+  const questionMarkIndex = withoutFragment.indexOf(
+    QUERY_SEPARATORS.QUESTION_MARK,
+  );
+
+  return questionMarkIndex >= 0
+    ? withoutFragment.slice(questionMarkIndex + 1)
+    : withoutFragment;
 }
 
 /**
@@ -58,7 +79,7 @@ function splitOnFirstEquals(part: string): [string, string] {
 function decodeField(
   text: string,
   mode: QueryDecodeMode,
-  trim: boolean
+  trim: boolean,
 ): string {
   let t = text;
   if (mode === QUERY_DECODE_MODES.AUTO) {
@@ -84,7 +105,7 @@ function decodeField(
  */
 export function queryDivider(
   input: string,
-  { mode = QUERY_DECODE_MODES.AUTO, trim = false }: QueryDividerOptions = {}
+  { mode = QUERY_DECODE_MODES.AUTO, trim = false }: QueryDividerOptions = {},
 ): DividerArrayResult {
   if (input.length === 0) return [];
 

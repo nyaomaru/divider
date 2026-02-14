@@ -57,6 +57,19 @@ describe('queryDivider', () => {
     ]);
   });
 
+  it('accepts relative URLs and extracts the query', () => {
+    expect(queryDivider('/path/to/resource?a=1&b=%E3%81%82#hash')).toEqual([
+      ['a', '1'],
+      ['b', 'あ'],
+    ]);
+  });
+
+  it('removes fragment from query-like input with leading question mark', () => {
+    expect(queryDivider('?q=hello#hash')).toEqual([
+      ['q', 'hello'],
+    ]);
+  });
+
   it('returns empty array for empty input or just question mark', () => {
     expect(queryDivider('')).toEqual([]);
     expect(queryDivider('?')).toEqual([]);
