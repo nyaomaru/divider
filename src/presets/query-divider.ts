@@ -39,9 +39,31 @@ function extractQueryFromQuestionMark(input: string): string {
     QUERY_SEPARATORS.QUESTION_MARK,
   );
 
-  return questionMarkIndex >= 0
-    ? withoutFragment.slice(questionMarkIndex + 1)
-    : withoutFragment;
+  // Only treat '?' as starting the query when:
+  // - it is the very first character (e.g. '?a=1'), or
+  // - there is no '=' or '&' before it (looks like '/path?query').
+  // Otherwise, assume it's part of a raw query value/key and keep the string intact.
+  if (questionMarkIndex < 0) {
+    return withoutFragment;
+  }
+
+  // Leading '?' – behave like URL.search and strip it.
+  if (questionMarkIndex === 0) {
+    return withoutFragment.slice(1);
+  }
+
+  const prefix = withoutFragment.slice(0, questionMarkIndex);
+  const hasQuerySeparatorBefore =
+    prefix.includes(QUERY_SEPARATORS.AMPERSAND) ||
+    prefix.includes(QUERY_SEPARATORS.EQUALS);
+
+  if (hasQuerySeparatorBefore) {
+    // Looks like a raw query string (e.g. 'a=b?c=d'); do not split on '?'.
+    return withoutFragment;
+  }
+
+  // Treat as path?query and return the part after '?'.
+  return withoutFragment.slice(questionMarkIndex + 1);
 }
 
 /**
