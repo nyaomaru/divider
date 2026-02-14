@@ -19,8 +19,51 @@ function tryExtractQuery(input: string): string {
       ? url.search.slice(1)
       : url.search;
   } catch {
-    return input;
+    return extractQueryFromQuestionMark(input);
   }
+}
+
+/**
+ * Extract query substring from a non-absolute URL-like input.
+ * WHY: Relative URLs (e.g. "/path?a=1&b=2#frag") cannot be passed to `new URL`
+ * without a base, so this fallback keeps query parsing behavior consistent.
+ * @param input Raw input string that may contain path/query/fragment.
+ * @returns Query portion when `?` exists before `#`; otherwise the original input without fragment.
+ */
+function extractQueryFromQuestionMark(input: string): string {
+  const fragmentIndex = input.indexOf('#');
+  const withoutFragment =
+    fragmentIndex >= 0 ? input.slice(0, fragmentIndex) : input;
+
+  const questionMarkIndex = withoutFragment.indexOf(
+    QUERY_SEPARATORS.QUESTION_MARK,
+  );
+
+  // Only treat '?' as starting the query when:
+  // - it is the very first character (e.g. '?a=1'), or
+  // - there is no '=' or '&' before it (looks like '/path?query').
+  // Otherwise, assume it's part of a raw query value/key and keep the string intact.
+  if (questionMarkIndex < 0) {
+    return withoutFragment;
+  }
+
+  // Leading '?' – behave like URL.search and strip it.
+  if (questionMarkIndex === 0) {
+    return withoutFragment.slice(1);
+  }
+
+  const prefix = withoutFragment.slice(0, questionMarkIndex);
+  const hasQuerySeparatorBefore =
+    prefix.includes(QUERY_SEPARATORS.AMPERSAND) ||
+    prefix.includes(QUERY_SEPARATORS.EQUALS);
+
+  if (hasQuerySeparatorBefore) {
+    // Looks like a raw query string (e.g. 'a=b?c=d'); do not split on '?'.
+    return withoutFragment;
+  }
+
+  // Treat as path?query and return the part after '?'.
+  return withoutFragment.slice(questionMarkIndex + 1);
 }
 
 /**
@@ -58,7 +101,7 @@ function splitOnFirstEquals(part: string): [string, string] {
 function decodeField(
   text: string,
   mode: QueryDecodeMode,
-  trim: boolean
+  trim: boolean,
 ): string {
   let t = text;
   if (mode === QUERY_DECODE_MODES.AUTO) {
@@ -84,7 +127,7 @@ function decodeField(
  */
 export function queryDivider(
   input: string,
-  { mode = QUERY_DECODE_MODES.AUTO, trim = false }: QueryDividerOptions = {}
+  { mode = QUERY_DECODE_MODES.AUTO, trim = false }: QueryDividerOptions = {},
 ): DividerArrayResult {
   if (input.length === 0) return [];
 
