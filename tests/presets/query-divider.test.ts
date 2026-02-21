@@ -9,9 +9,7 @@ describe('queryDivider', () => {
   });
 
   it('handles leading question mark', () => {
-    expect(queryDivider('?q=hello')).toEqual([
-      ['q', 'hello'],
-    ]);
+    expect(queryDivider('?q=hello')).toEqual([['q', 'hello']]);
   });
 
   it('decodes percent-escapes and + as space by default', () => {
@@ -28,9 +26,7 @@ describe('queryDivider', () => {
   });
 
   it('raw mode disables percent-decoding', () => {
-    expect(queryDivider('a=%2B', { mode: 'raw' })).toEqual([
-      ['a', '%2B'],
-    ]);
+    expect(queryDivider('a=%2B', { mode: 'raw' })).toEqual([['a', '%2B']]);
   });
 
   it('preserves empty values and keys', () => {
@@ -43,14 +39,12 @@ describe('queryDivider', () => {
   });
 
   it('splits only on the first equals', () => {
-    expect(queryDivider('a=1=2')).toEqual([
-      ['a', '1=2'],
-    ]);
+    expect(queryDivider('a=1=2')).toEqual([['a', '1=2']]);
   });
 
   it('accepts full URLs and extracts the query', () => {
     expect(
-      queryDivider('https://example.com/path?a=1&b=%E3%81%82#hash')
+      queryDivider('https://example.com/path?a=1&b=%E3%81%82#hash'),
     ).toEqual([
       ['a', '1'],
       ['b', 'あ'],
@@ -64,10 +58,15 @@ describe('queryDivider', () => {
     ]);
   });
 
-  it('removes fragment from query-like input with leading question mark', () => {
-    expect(queryDivider('?q=hello#hash')).toEqual([
-      ['q', 'hello'],
+  it('accepts relative URLs without fragment and extracts the query', () => {
+    expect(queryDivider('/path?a=1&b=2')).toEqual([
+      ['a', '1'],
+      ['b', '2'],
     ]);
+  });
+
+  it('removes fragment from query-like input with leading question mark', () => {
+    expect(queryDivider('?q=hello#hash')).toEqual([['q', 'hello']]);
   });
 
   it('returns empty array for empty input or just question mark', () => {
@@ -78,13 +77,9 @@ describe('queryDivider', () => {
   it('trims whitespace from both keys and values after decoding when trim=true', () => {
     // '+k+' -> ' k ' -> trim -> 'k'
     // '%20v%20' -> ' v ' -> trim -> 'v'
-    expect(queryDivider('+k+=%20v%20', { trim: true })).toEqual([
-      ['k', 'v'],
-    ]);
+    expect(queryDivider('+k+=%20v%20', { trim: true })).toEqual([['k', 'v']]);
 
     // Keys and values that decode to only spaces become empty strings after trim
-    expect(queryDivider('%20%20=%20', { trim: true })).toEqual([
-      ['', ''],
-    ]);
+    expect(queryDivider('%20%20=%20', { trim: true })).toEqual([['', '']]);
   });
 });
