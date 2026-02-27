@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.3] - 2026-02-21
+
+### Chore
+
+- 2.0.2 by [bot] by @github-actions in [#385](https://github.com/nyaomaru/divider/pull/385)
+- add URL fallback case by @nyaomaru in [#389](https://github.com/nyaomaru/divider/pull/389)
+- Release: 2.0.3 by [bot] by @github-actions in [#390](https://github.com/nyaomaru/divider/pull/390)
+- Update eslint monorepo to v9.39.3 by [bot] by @renovate in [#386](https://github.com/nyaomaru/divider/pull/386)
+- bump ajv from 6.12.6 to 6.14.0 by [bot] by @dependabot in [#387](https://github.com/nyaomaru/divider/pull/387)
+- bump markdown-it from 14.1.0 to 14.1.1 by [bot] by @dependabot in [#388](https://github.com/nyaomaru/divider/pull/388)
+
+### New Contributors
+
+* @dependabot[bot] made their first contribution in https://github.com/nyaomaru/divider/pull/387
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.2...v2.0.3
+
+[v2.0.3]: https://github.com/nyaomaru/divider/compare/v2.0.2...v2.0.3
+
 ## [v2.0.2] - 2026-02-14
 
 ### Fixed
