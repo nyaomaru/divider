@@ -2,12 +2,25 @@ import { isEmptyArray, isEmptyString } from '@/utils/is';
 import { PERFORMANCE_CONSTANTS, CACHE_KEY_SEPARATOR } from '@/constants';
 
 // WHY: Normalizing separators (dedupe + remove empties) is needed both for
-// cache key creation and pattern generation. Centralize the logic to avoid
-// divergence and accidental inconsistencies across call sites.
+// cache key creation and pattern generation. Sorting by length descending
+// ensures longer delimiters (e.g. "--") are matched before shorter ones
+// they include (e.g. "-"), preventing unstable split results.
 function normalizeSeparators(separators: readonly string[]): string[] {
   return Array.from(new Set(separators)).filter(
     (separator) => !isEmptyString(separator)
-  );
+  ).sort((left, right) => right.length - left.length);
+}
+
+/**
+ * Creates a cache key from already-normalized separators.
+ *
+ * @param normalizedSeparators - Separators after dedupe/filter/sort normalization
+ * @returns Cache key string
+ */
+function createCacheKey(
+  normalizedSeparators: readonly string[],
+): string {
+  return normalizedSeparators.join(CACHE_KEY_SEPARATOR);
 }
 
 /**
@@ -30,6 +43,16 @@ class RegexCache {
    */
   get(separators: readonly string[]): RegExp | null {
     const key = this.createKey(separators);
+    return this.getByKey(key);
+  }
+
+  /**
+   * Retrieves a cached RegExp for a precomputed cache key.
+   *
+   * @param key - Cache key string
+   * @returns Cached RegExp or null if not found
+   */
+  getByKey(key: string): RegExp | null {
     const regex = this.cache.get(key);
 
     if (regex) {
@@ -49,7 +72,16 @@ class RegexCache {
    */
   set(separators: readonly string[], regex: RegExp): void {
     const key = this.createKey(separators);
+    this.setByKey(key, regex);
+  }
 
+  /**
+   * Stores a RegExp in the cache for a precomputed cache key.
+   *
+   * @param key - Cache key string
+   * @param regex - Compiled RegExp to cache
+   */
+  setByKey(key: string, regex: RegExp): void {
     // If key already exists, remove it first to update position
     if (this.cache.has(key)) {
       this.cache.delete(key);
@@ -77,7 +109,7 @@ class RegexCache {
     // Normalize separators: dedupe and filter out empty strings
     const normalizedSeparators = normalizeSeparators(separators);
     // Use join with separator that's unlikely to appear in actual separators
-    return normalizedSeparators.join(CACHE_KEY_SEPARATOR);
+    return createCacheKey(normalizedSeparators);
   }
 
   /**
@@ -117,24 +149,24 @@ const regexCache = new RegexCache();
 export function getRegex(separators: readonly string[]): RegExp | null {
   if (isEmptyArray(separators)) return null;
 
-  // Check cache first
-  const cached = regexCache.get(separators);
-  if (cached) return cached;
-
-  // Compile new regex and cache it
-  // Remove duplicates and handle empty strings
+  // Normalize once per call so cache lookup and compilation share the same data.
   const uniqueSeparators = normalizeSeparators(separators);
-
   if (uniqueSeparators.length === 0) {
     // If all separators were empty strings, return null
     return null;
   }
+  const cacheKey = createCacheKey(uniqueSeparators);
 
+  // Check cache first
+  const cached = regexCache.getByKey(cacheKey);
+  if (cached) return cached;
+
+  // Compile new regex and cache it
   // Build pattern using alternation for multi-character support
   const pattern = uniqueSeparators.map(escapeRegExp).join('|');
   const regex = new RegExp(`(?:${pattern})`, 'g');
 
-  regexCache.set(separators, regex);
+  regexCache.setByKey(cacheKey, regex);
   return regex;
 }
 

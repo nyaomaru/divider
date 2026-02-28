@@ -13,4 +13,11 @@ describe('divider', () => {
       '',
     ]);
   });
+
+  it('prefers longer separators when they overlap', () => {
+    expect(divider('a--b', '-', '--', { preserveEmpty: true })).toEqual([
+      'a',
+      'b',
+    ]);
+  });
 });
