@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.4] - 2026-02-28
+
+### Fixed
+
+- prioritize overlapping delimiters and normalize separator by @nyaomaru in [#396](https://github.com/nyaomaru/divider/pull/396)
+
+### Chore
+
+- 2.0.3 by [bot] by @github-actions in [#391](https://github.com/nyaomaru/divider/pull/391)
+- Release: 2.0.4 by [bot] by @github-actions in [#397](https://github.com/nyaomaru/divider/pull/397)
+- Update dependency /node to v22.19.13 by @renovate[bot] by @types in [#392](https://github.com/nyaomaru/divider/pull/392)
+- Update dependency bun-types to v1.3.10 by [bot] by @renovate in [#393](https://github.com/nyaomaru/divider/pull/393)
+- bump rollup from 4.53.2 to 4.59.0 by [bot] by @dependabot in [#394](https://github.com/nyaomaru/divider/pull/394)
+- bump minimatch from 3.1.2 to 3.1.5 by [bot] by @dependabot in [#395](https://github.com/nyaomaru/divider/pull/395)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.3...v2.0.4
+
+[v2.0.4]: https://github.com/nyaomaru/divider/compare/v2.0.3...v2.0.4
+
 ## [v2.0.3] - 2026-02-21
 
 ### Chore
