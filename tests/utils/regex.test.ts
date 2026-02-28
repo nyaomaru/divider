@@ -34,8 +34,14 @@ describe('getRegex', () => {
   test('creates regex for mixed single and multi-character separators', () => {
     const regex = getRegex(['-', '--', ',', '||']);
 
-    expect(regex?.source).toBe('(?:-|--|,|\\|\\|)');
+    expect(regex?.source).toBe('(?:--|\\|\\||-|,)');
     expect(regex?.flags).toBe('g');
+  });
+
+  test('prioritizes longer overlapping separators', () => {
+    const regex = getRegex(['-', '--']);
+
+    expect('a--b'.split(regex ?? /never-match/)).toEqual(['a', 'b']);
   });
 
   test('escapes special regex characters', () => {
