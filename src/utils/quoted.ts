@@ -26,11 +26,17 @@ export function dividePreserve(input: string, separator: string): string[] {
  * @returns The number of unescaped quote occurrences in `text`.
  */
 export function countUnescaped(text: string, quote: string): number {
-  const pair = quote + quote;
   let count = 0;
-  for (const chunk of dividePreserve(text, pair)) {
-    count += dividePreserve(chunk, quote).length - 1;
+
+  for (let index = 0; index < text.length; index++) {
+    if (text[index] !== quote) continue;
+    if (text[index + 1] === quote) {
+      index++;
+      continue;
+    }
+    count++;
   }
+
   return count;
 }
 
@@ -201,9 +207,10 @@ const buildQuotedFields = (
   lenient: boolean
 ) => {
   const pieces = dividePreserve(line, delimiter);
-  const state: { fields: string[]; current: string } = {
+  const state: { fields: string[]; current: string; insideQuotes: boolean } = {
     fields: [],
     current: '',
+    insideQuotes: false,
   };
 
   for (const piece of pieces) {
@@ -218,6 +225,28 @@ const buildQuotedFields = (
 };
 
 /**
+ * Advances quote state by scanning only the newly appended segment.
+ *
+ * WHY: Escaped quote pairs remove two quote characters, so parity is unchanged.
+ * Toggling on every quote character is sufficient to know whether we are inside quotes.
+ * @param insideQuotes Current quote state.
+ * @param segment Newly appended text segment.
+ * @param quote Quote character.
+ * @returns Next quote state after scanning the segment.
+ */
+const advanceQuoteState = (
+  insideQuotes: boolean,
+  segment: string,
+  quote: string
+) => {
+  let nextInsideQuotes = insideQuotes;
+  for (const char of segment) {
+    if (char === quote) nextInsideQuotes = !nextInsideQuotes;
+  }
+  return nextInsideQuotes;
+};
+
+/**
  * Appends a token and flushes a field when not inside quotes.
  * @param state Parser state.
  * @param piece Token to append.
@@ -227,19 +256,18 @@ const buildQuotedFields = (
  * @param lenient Whether to handle unclosed leading quotes leniently.
  */
 const appendPiece = (
-  state: { fields: string[]; current: string },
+  state: { fields: string[]; current: string; insideQuotes: boolean },
   piece: string,
   delimiter: string,
   quote: string,
   trim: boolean,
   lenient: boolean
 ) => {
-  state.current = isEmptyString(state.current)
-    ? piece
-    : state.current + delimiter + piece;
+  const segment = isEmptyString(state.current) ? piece : delimiter + piece;
+  state.current += segment;
 
-  const insideQuotes = countUnescaped(state.current, quote) % 2 === 1;
-  if (!insideQuotes) {
+  state.insideQuotes = advanceQuoteState(state.insideQuotes, segment, quote);
+  if (!state.insideQuotes) {
     flushField(state, quote, trim, lenient);
   }
 };
@@ -252,7 +280,7 @@ const appendPiece = (
  * @param lenient Whether to handle unclosed leading quotes leniently.
  */
 const flushField = (
-  state: { fields: string[]; current: string },
+  state: { fields: string[]; current: string; insideQuotes: boolean },
   quote: string,
   trim: boolean,
   lenient: boolean
@@ -261,4 +289,5 @@ const flushField = (
   if (trim) fieldValue = fieldValue.trim();
   state.fields.push(fieldValue);
   state.current = '';
+  state.insideQuotes = false;
 };
