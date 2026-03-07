@@ -39,6 +39,17 @@ describe('countUnescaped', () => {
     expect(countUnescaped('He said ""Hi""', '"')).toBe(0);
     expect(countUnescaped('"a","b"', '"')).toBe(4);
   });
+
+  it('supports multi-character quote strings', () => {
+    expect(countUnescaped('ab', 'ab')).toBe(1);
+    expect(countUnescaped('abab', 'ab')).toBe(0);
+    expect(countUnescaped('ababab', 'ab')).toBe(1);
+    expect(countUnescaped('xabyababzab', 'ab')).toBe(2);
+  });
+
+  it('returns 0 for empty quote string', () => {
+    expect(countUnescaped('abc', '')).toBe(0);
+  });
 });
 
 describe('stripOuterQuotes', () => {
