@@ -18,14 +18,7 @@ export function dividePreserve(input: string, separator: string): string[] {
   return divider(input, separator, { preserveEmpty: true });
 }
 
-/**
- * Count quote characters excluding escaped pairs (e.g., "" for an embedded ").
- * Assumes `quote` is a single character.
- * @param text - Text to scan.
- * @param quote - Quote character to count (single character).
- * @returns The number of unescaped quote occurrences in `text`.
- */
-export function countUnescaped(text: string, quote: string): number {
+const countUnescapedSingleChar = (text: string, quote: string) => {
   let count = 0;
 
   for (let index = 0; index < text.length; index++) {
@@ -38,6 +31,41 @@ export function countUnescaped(text: string, quote: string): number {
   }
 
   return count;
+};
+
+const countUnescapedMultiChar = (text: string, quote: string) => {
+  const escapedPair = quote + quote;
+  const quoteLength = quote.length;
+  const escapedPairLength = escapedPair.length;
+  let count = 0;
+
+  for (let index = 0; index < text.length; ) {
+    if (text.startsWith(escapedPair, index)) {
+      index += escapedPairLength;
+      continue;
+    }
+    if (text.startsWith(quote, index)) {
+      count++;
+      index += quoteLength;
+      continue;
+    }
+    index++;
+  }
+
+  return count;
+};
+
+/**
+ * Count quote markers excluding escaped pairs (e.g., `""""` -> 0 for `quote='"'`).
+ * Supports both single-character and multi-character quote strings.
+ * @param text - Text to scan.
+ * @param quote - Quote string to count.
+ * @returns The number of unescaped quote occurrences in `text`.
+ */
+export function countUnescaped(text: string, quote: string): number {
+  if (isEmptyString(quote)) return 0;
+  if (quote.length === 1) return countUnescapedSingleChar(text, quote);
+  return countUnescapedMultiChar(text, quote);
 }
 
 /**
@@ -225,7 +253,7 @@ const buildQuotedFields = (
 };
 
 /**
- * Advances quote state by scanning only the newly appended segment.
+ * Advances quote state for single-character quotes by scanning only the newly appended segment.
  *
  * WHY: Escaped quote pairs remove two quote characters, so parity is unchanged.
  * Toggling on every quote character is sufficient to know whether we are inside quotes.
@@ -266,7 +294,10 @@ const appendPiece = (
   const segment = isEmptyString(state.current) ? piece : delimiter + piece;
   state.current += segment;
 
-  state.insideQuotes = advanceQuoteState(state.insideQuotes, segment, quote);
+  state.insideQuotes =
+    quote.length === 1
+      ? advanceQuoteState(state.insideQuotes, segment, quote)
+      : countUnescaped(state.current, quote) % 2 === 1;
   if (!state.insideQuotes) {
     flushField(state, quote, trim, lenient);
   }
