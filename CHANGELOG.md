@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.5] - 2026-03-07
+
+### Changed
+
+- avoid repeated quote rescans in quoted parser by @nyaomaru in [#401](https://github.com/nyaomaru/divider/pull/401)
+
+### Chore
+
+- 2.0.4 by [bot] by @github-actions in [#398](https://github.com/nyaomaru/divider/pull/398)
+- Release: 2.0.5 by [bot] by @github-actions in [#403](https://github.com/nyaomaru/divider/pull/403)
+- Update dependency /node to v22.19.15 by @renovate[bot] by @types in [#399](https://github.com/nyaomaru/divider/pull/399)
+- Update eslint monorepo to v9.39.4 by [bot] by @renovate in [#400](https://github.com/nyaomaru/divider/pull/400)
+- bump rollup from 4.53.2 to 4.59.0 by [bot] by @dependabot in [#402](https://github.com/nyaomaru/divider/pull/402)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.4...v2.0.5
+
+[v2.0.5]: https://github.com/nyaomaru/divider/compare/v2.0.4...v2.0.5
+
 ## [v2.0.4] - 2026-02-28
 
 ### Fixed
