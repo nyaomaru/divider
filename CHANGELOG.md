@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.6] - 2026-03-14
+
+### Changed
+
+- divider args typing by @nyaomaru in [#408](https://github.com/nyaomaru/divider/pull/408)
+
+### Chore
+
+- 2.0.5 by [bot] by @github-actions in [#404](https://github.com/nyaomaru/divider/pull/404)
+- fix config by @nyaomaru in [#407](https://github.com/nyaomaru/divider/pull/407)
+- Release: 2.0.6 by [bot] by @github-actions in [#410](https://github.com/nyaomaru/divider/pull/410)
+- Update dependency pnpm to 10.31 by [bot] by @renovate in [#405](https://github.com/nyaomaru/divider/pull/405)
+- Update dependency pnpm to 10.32 by [bot] by @renovate in [#406](https://github.com/nyaomaru/divider/pull/406)
+- Update pnpm to v10.32.1 by [bot] by @renovate in [#409](https://github.com/nyaomaru/divider/pull/409)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.5...v2.0.6
+
+[v2.0.6]: https://github.com/nyaomaru/divider/compare/v2.0.5...v2.0.6
+
 ## [v2.0.5] - 2026-03-07
 
 ### Changed
