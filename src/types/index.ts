@@ -69,7 +69,7 @@ type IsFlattenEnabled<TOptions extends DividerInferredOptions> =
   TOptions extends {
     readonly flatten?: infer Flag;
   }
-    ? Flag extends true
+    ? [Flag] extends [true]
       ? true
       : false
     : false;
