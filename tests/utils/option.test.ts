@@ -1,4 +1,5 @@
 import { applyDividerOptions, extractOptions } from '../../src/utils/option';
+import type { DividerArgs } from '../../src/types';
 
 describe('applyDividerOptions', () => {
   test('trim only', () => {
@@ -70,7 +71,7 @@ describe('applyDividerOptions', () => {
 
 describe('extractOptions', () => {
   test('separate options from args', () => {
-    const args = [1, 'x', { flatten: true }];
+    const args = [1, 'x', { flatten: true }] as const satisfies DividerArgs;
 
     const { cleanedArgs, options } = extractOptions(args);
 
@@ -79,7 +80,7 @@ describe('extractOptions', () => {
   });
 
   test('return empty options when not provided', () => {
-    const args = [1, 'x'];
+    const args = [1, 'x'] as const satisfies DividerArgs;
 
     const { cleanedArgs, options } = extractOptions(args);
 
@@ -88,7 +89,7 @@ describe('extractOptions', () => {
   });
 
   test('return all cleanedArgs if only strings and numbers', () => {
-    const args = ['a', 2, 3, 'b'];
+    const args = ['a', 2, 3, 'b'] as const satisfies DividerArgs;
 
     const { cleanedArgs, options } = extractOptions(args);
 
@@ -97,7 +98,7 @@ describe('extractOptions', () => {
   });
 
   test('handle empty args', () => {
-    const args: (string | number)[] = [];
+    const args = [] as const satisfies DividerArgs;
 
     const { cleanedArgs, options } = extractOptions(args);
 
