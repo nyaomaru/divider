@@ -72,5 +72,6 @@
   "sideEffects": false,
   "bugs": {
     "url": "https://github.com/nyaomaru/divider/issues"
-  }
+  },
+  "packageManager": "pnpm@10.31.0"
 }
