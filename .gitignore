@@ -7,3 +7,5 @@ coverage
 !.cursor/rules
 
 docs/api
+
+.serena
