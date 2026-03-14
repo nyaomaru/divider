@@ -3,19 +3,19 @@ import { QUERY_DECODE_MODES } from '@/constants';
 
 export type EmailDividerOptions = Pick<DividerOptions, 'trim'> & {
   /** Split top-level domain from the rest of the email address. */
-  splitTLD?: boolean;
+  readonly splitTLD?: boolean;
 };
 
 export type CsvDividerOptions = Pick<DividerOptions, 'trim'> & {
   /** Character used for quoting values. */
-  quoteChar?: string;
+  readonly quoteChar?: string;
   /** Character used to separate CSV fields. */
-  delimiter?: string;
+  readonly delimiter?: string;
 };
 
 export type PathDividerOptions = Pick<DividerOptions, 'trim'> & {
   /** Collapse empty segments produced by leading/trailing or repeated separators. */
-  collapse?: boolean;
+  readonly collapse?: boolean;
 };
 
 export type QueryDecodeMode =
@@ -23,5 +23,5 @@ export type QueryDecodeMode =
 
 export type QueryDividerOptions = Pick<DividerOptions, 'trim'> & {
   /** Decoding mode: 'auto' applies standard URL decoding; 'raw' leaves values untouched. */
-  mode?: QueryDecodeMode;
+  readonly mode?: QueryDecodeMode;
 };

@@ -6,8 +6,8 @@ import type {
   DividerStringResult,
   DividerArrayResult,
   ExtractedDividerOptions,
-  DividerArg,
   DividerSeparator,
+  DividerArgs,
 } from '@/types';
 import {
   isOptions,
@@ -28,7 +28,7 @@ import { excludePredicateMap } from '@/utils/exclude-predicate';
  * @returns Object with `cleanedArgs` (string/number separators only) and
  * `options` (inferred from `args` or an empty object).
  */
-export function extractOptions<const TArgs extends readonly DividerArg[]>(
+export function extractOptions<const TArgs extends DividerArgs>(
   args: TArgs,
 ): {
   cleanedArgs: DividerSeparator[];

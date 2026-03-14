@@ -1,4 +1,4 @@
-import type { DividerInput, DividerArg, DividerReturn } from '@/types';
+import type { DividerInput, DividerArgs, DividerReturn } from '@/types';
 import { divideString } from '@/utils/parser';
 import { isString, isEmptyArray, isValidInput } from '@/utils/is';
 import { ensureStringArray } from '@/utils/array';
@@ -20,9 +20,9 @@ import { applyDividerOptions } from '@/utils/option';
  */
 export function divider<
   T extends DividerInput,
-  const TArgs extends readonly DividerArg[],
+  const TArgs extends DividerArgs,
 >(input: T, ...args: TArgs): DividerReturn<T, TArgs>;
-export function divider(input: DividerInput, ...args: readonly DividerArg[]) {
+export function divider(input: DividerInput, ...args: DividerArgs) {
   // Validate input
   if (!isValidInput(input)) {
     console.warn(
