@@ -3,9 +3,7 @@ hide_agent_reasoning = true
 network_access = true
 web_search = "live"
 
-# NOTE: Disabled locally because `uvx` is not installed in this environment.
-# Re-enable after installing `uv`/`uvx` if this workspace needs the Serena MCP server.
-#
-# [mcp_servers.serena]
-# command = "uvx"
-# args = ["--from", "git+https://github.com/oraios/serena", "serena", "start-mcp-server", "--context", "codex"]
+[mcp_servers.serena]
+command = "uvx"
+args = ["--from", "git+https://github.com/oraios/serena", "serena", "start-mcp-server", "--context", "codex"]
+startup_timeout_sec = 30
