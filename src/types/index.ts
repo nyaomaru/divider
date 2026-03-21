@@ -125,7 +125,7 @@ export type DividerArgs =
  * Extracts trailing divider options from a variadic argument tuple.
  */
 export type ExtractedDividerOptions<TArgs extends readonly unknown[]> =
-  TArgs extends readonly [...infer _, infer Last]
+  TArgs extends readonly [...unknown[], infer Last]
     ? Last extends DividerOptions
       ? Last
       : DividerEmptyOptions
