@@ -1,6 +1,5 @@
-import { isString, isPositiveInteger } from '@/utils/is';
+import { isPositiveInteger } from '@/utils/is';
 import { generateIndexes } from '@/utils/generate-indexes';
-import { applyDividerOptions } from '@/utils/option';
 import { shouldTruncateChunks, truncateChunksToMax } from '@/utils/chunk';
 import type {
   DividerInput,
@@ -10,6 +9,7 @@ import type {
 } from '@/types';
 import { divider } from '@/core/divider';
 import { PERFORMANCE_CONSTANTS } from '@/constants';
+import { transformDividerInput } from '@/utils/transform-divider-input';
 
 /**
  * Splits the input string into chunks based on size and offset,
@@ -64,18 +64,14 @@ export function dividerLoop<
     return [];
   }
 
-  const resolvedOptions = (options ?? {}) as O;
   const {
     startOffset = PERFORMANCE_CONSTANTS.DEFAULT_START_OFFSET,
     maxChunks = PERFORMANCE_CONSTANTS.DEFAULT_MAX_CHUNKS,
-  } = resolvedOptions;
+  } = (options ?? {}) as O;
 
-  // Process input based on its type (string or string[])
-  const result = isString(input)
-    ? createChunksFromString(input, size, startOffset, maxChunks)
-    : input.map((str) =>
-        createChunksFromString(str, size, startOffset, maxChunks)
-      );
-
-  return applyDividerOptions<T, O>(result, resolvedOptions);
+  return transformDividerInput(
+    input,
+    (str) => createChunksFromString(str, size, startOffset, maxChunks),
+    options,
+  );
 }

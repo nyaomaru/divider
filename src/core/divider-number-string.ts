@@ -1,4 +1,3 @@
-import { isString } from '@/utils/is';
 import type {
   DividerEmptyOptions,
   DividerInferredOptions,
@@ -6,7 +5,7 @@ import type {
   DividerResult,
 } from '@/types';
 import { divideNumberString } from '@/utils/divide';
-import { applyDividerOptions } from '@/utils/option';
+import { transformDividerInput } from '@/utils/transform-divider-input';
 
 /**
  * Divides a string or array of strings by separating numbers from non-numbers.
@@ -25,11 +24,5 @@ export function dividerNumberString<
   T extends DividerInput,
   O extends DividerInferredOptions = DividerEmptyOptions,
 >(input: T, options?: O): DividerResult<T, O> {
-  const result = isString(input)
-    ? divideNumberString(input)
-    : input.map(divideNumberString);
-
-  const resolvedOptions = (options ?? {}) as O;
-
-  return applyDividerOptions<T, O>(result, resolvedOptions);
+  return transformDividerInput(input, divideNumberString, options);
 }
