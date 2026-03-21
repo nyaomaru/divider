@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.7] - 2026-03-21
+
+### Changed
+
+- extract shared divider input pipeline by @nyaomaru in [#414](https://github.com/nyaomaru/divider/pull/414)
+
+### Chore
+
+- use same version by @nyaomaru in [#412](https://github.com/nyaomaru/divider/pull/412)
+- 2.0.6 by [bot] by @github-actions in [#411](https://github.com/nyaomaru/divider/pull/411)
+- Release: 2.0.7 by [bot] by @github-actions in [#415](https://github.com/nyaomaru/divider/pull/415)
+- Update dependency bun-types to v1.3.11 by [bot] by @renovate in [#413](https://github.com/nyaomaru/divider/pull/413)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.6...v2.0.7
+
+[v2.0.7]: https://github.com/nyaomaru/divider/compare/v2.0.6...v2.0.7
+
 ## [v2.0.6] - 2026-03-14
 
 ### Changed
