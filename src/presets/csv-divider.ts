@@ -1,6 +1,6 @@
 import type { DividerStringResult } from '@/types';
 import type { CsvDividerOptions } from '@/types/preset';
-import { quotedDivide } from '@/utils/quoted';
+import { quotedDivide } from '@/utils/quoted-parser';
 
 /**
  * Divides a CSV line into an array of fields, handling quoted values appropriately.

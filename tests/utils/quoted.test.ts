@@ -1,9 +1,7 @@
-import {
-  dividePreserve,
-  countUnescaped,
-  stripOuterQuotes,
-  quotedDivide,
-} from '../../src/utils/quoted';
+import { countUnescaped } from '../../src/utils/count-unescaped';
+import { dividePreserve } from '../../src/utils/divide-preserve';
+import { quotedDivide } from '../../src/utils/quoted-parser';
+import { stripOuterQuotes } from '../../src/utils/strip-outer-quotes';
 
 describe('dividePreserve', () => {
   it('splits normally with single delimiter', () => {
