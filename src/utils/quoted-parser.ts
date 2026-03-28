@@ -21,7 +21,7 @@ type QuotedParserState = {
 type QuotedDivideOptions = {
   /** Field delimiter used to split the source line */
   delimiter?: string;
-  /** Quote string used to detect and unescape quoted fields */
+  /** Quote string used to detect, strip, and unescape quoted fields */
   quote?: string;
   /** Whether to trim field values after unquoting */
   trim?: boolean;
@@ -34,7 +34,9 @@ type QuotedDivideOptions = {
  *
  * WHY: For single-character quotes, escaped pairs contribute an even number of
  * quote markers, so toggling parity on each encountered quote is enough to
- * track whether the parser is currently inside a quoted field.
+ * track whether the parser is currently inside a quoted field. Multi-character
+ * quote strings use `countUnescaped` instead because scanning one character at
+ * a time cannot detect escaped quote tokens correctly.
  *
  * @param insideQuotes Current parser quote state.
  * @param segment Newly appended text segment.
