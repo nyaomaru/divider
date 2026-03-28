@@ -7,8 +7,8 @@ import { quotedDivide } from '@/utils/quoted-parser';
  *
  * @param line - The CSV line string to be divided into fields
  * @param options - Configuration options for CSV parsing
- * @param options.delimiter - The character used to separate fields (default: ',')
- * @param options.quoteChar - The character used to quote fields containing delimiters or newlines (default: '"')
+ * @param options.delimiter - The delimiter string used to separate fields (default: ',')
+ * @param options.quoteChar - The quote string used to wrap fields containing delimiters or newlines (default: '"')
  * @param options.trim - Whether to trim whitespace from field values (default: false)
  * @returns A DividerStringResult containing the parsed CSV fields
  */

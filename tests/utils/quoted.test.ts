@@ -56,8 +56,21 @@ describe('stripOuterQuotes', () => {
     expect(stripOuterQuotes('\t"abc"\t', '"')).toBe('\tabc\t');
   });
 
+  it('supports multi-character outer quote strings', () => {
+    expect(stripOuterQuotes(' <<abc<< ', '<<')).toBe(' abc ');
+    expect(stripOuterQuotes('\t<<abc<<\t', '<<')).toBe('\tabc\t');
+    expect(stripOuterQuotes(' <<a>> ', '<<')).toBe(' a>> ');
+    expect(stripOuterQuotes(' <<a>> ', '<<', { lenient: false })).toBe(
+      ' <<a>> ',
+    );
+  });
+
   it('restores escaped quotes inside', () => {
     expect(stripOuterQuotes('"He said ""Hi"""', '"')).toBe('He said "Hi"');
+  });
+
+  it('restores escaped multi-character quotes inside', () => {
+    expect(stripOuterQuotes('<<a<<<<b<<', '<<')).toBe('a<<b');
   });
 
   it('returns original when not starting with a quote (except escape restore)', () => {
@@ -122,6 +135,14 @@ describe('quotedDivide', () => {
 
   it('respects single-quote as quote char', () => {
     expect(quotedDivide("'a,b',c", { quote: "'" })).toEqual(['a,b', 'c']);
+  });
+
+  it('supports multi-character quote strings', () => {
+    expect(quotedDivide('<<a,b<<,c', { quote: '<<' })).toEqual(['a,b', 'c']);
+    expect(quotedDivide('<<a<<<<b<<,c', { quote: '<<' })).toEqual([
+      'a<<b',
+      'c',
+    ]);
   });
 
   it('handles quoted empty strings and normal values', () => {
