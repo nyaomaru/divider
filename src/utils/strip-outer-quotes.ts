@@ -88,9 +88,11 @@ export function stripOuterQuotes(
   quoteChar: string,
   { lenient = true }: { lenient?: boolean } = {},
 ): string {
-  const escapedPair = quoteChar + quoteChar;
   const isWhitespace = (char: string) => char === WHITE_SPACE || char === TAB;
   const stripped = stripOuterQuotesRaw(text, quoteChar, lenient, isWhitespace);
+  if (quoteChar.length === 0) return stripped;
+
+  const escapedPair = quoteChar + quoteChar;
 
   return stripped.split(escapedPair).join(quoteChar);
 }

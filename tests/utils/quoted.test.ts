@@ -77,6 +77,10 @@ describe('stripOuterQuotes', () => {
     expect(stripOuterQuotes('no-quotes', '"')).toBe('no-quotes');
   });
 
+  it('returns the input unchanged for an empty quote string', () => {
+    expect(stripOuterQuotes('"abc"', '')).toBe('"abc"');
+  });
+
   it('handles unclosed starting quote leniently (default)', () => {
     expect(stripOuterQuotes('"abc', '"')).toBe('abc');
     expect(stripOuterQuotes('  "abc  ', '"')).toBe('  abc  ');
