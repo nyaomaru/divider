@@ -1,7 +1,7 @@
 import type { DividerArrayResult } from '@/types';
 import type { QueryDividerOptions, QueryDecodeMode } from '@/types/preset';
 import { QUERY_DECODE_MODES, QUERY_SEPARATORS } from '@/constants';
-import { dividePreserve } from '@/utils/quoted';
+import { dividePreserve } from '@/utils/divide-preserve';
 
 // WHY: Preserve consecutive and trailing empty segments to reflect query strings precisely
 // (e.g., 'a=&b&=c&' keeps empties). Split helpers isolate concerns for readability and testability.

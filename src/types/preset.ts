@@ -7,9 +7,9 @@ export type EmailDividerOptions = Pick<DividerOptions, 'trim'> & {
 };
 
 export type CsvDividerOptions = Pick<DividerOptions, 'trim'> & {
-  /** Character used for quoting values. */
+  /** Quote string used for quoting values. */
   readonly quoteChar?: string;
-  /** Character used to separate CSV fields. */
+  /** Delimiter string used to separate CSV fields. */
   readonly delimiter?: string;
 };
 
