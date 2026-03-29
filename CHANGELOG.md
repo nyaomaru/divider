@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.8] - 2026-03-28
+
+### Changed
+
+- split quoted parsing utilities by @nyaomaru in [#418](https://github.com/nyaomaru/divider/pull/418)
+
+### Chore
+
+- 2.0.7 by [bot] by @github-actions in [#416](https://github.com/nyaomaru/divider/pull/416)
+- Release: 2.0.8 by [bot] by @github-actions in [#419](https://github.com/nyaomaru/divider/pull/419)
+- Update pnpm to v10.33.0 by [bot] by @renovate in [#417](https://github.com/nyaomaru/divider/pull/417)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.7...v2.0.8
+
+[v2.0.8]: https://github.com/nyaomaru/divider/compare/v2.0.7...v2.0.8
+
 ## [v2.0.7] - 2026-03-21
 
 ### Changed
