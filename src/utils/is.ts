@@ -1,5 +1,10 @@
 import type { DividerOptions, DividerInput } from '@/types';
-import { DIVIDER_EXCLUDE_MODES, DIVIDER_OPTION_KEYS } from '@/constants';
+import {
+  DIVIDER_EXCLUDE_MODES,
+  DIVIDER_OPTION_KEYS,
+  TAB,
+  WHITE_SPACE,
+} from '@/constants';
 
 /**
  * Determines whether the provided value is a string.
@@ -109,6 +114,15 @@ export function isNestedStringArray(value: unknown): value is string[][] {
   // WHY: Divider outputs are trusted; checking only the first row avoids
   // a full scan while still distinguishing nested vs flat arrays.
   return Array.isArray(firstRow) && firstRow.every((item) => isString(item));
+}
+
+/**
+ * Determines whether the provided character is a supported field whitespace.
+ * @param value Character to inspect.
+ * @returns True when the character is a space or tab.
+ */
+export function isWhiteSpace(value: string): boolean {
+  return value === WHITE_SPACE || value === TAB;
 }
 
 /**

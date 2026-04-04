@@ -1,14 +1,11 @@
-import { TAB, WHITE_SPACE } from '@/constants';
+import { isWhiteSpace } from '@/utils/is';
 
-const findNonSpaceBounds = (
-  text: string,
-  isWhitespace: (char: string) => boolean,
-) => {
+const findNonSpaceBounds = (text: string) => {
   let left = 0;
   let right = text.length - 1;
 
-  while (left <= right && isWhitespace(text[left])) left++;
-  while (right >= left && isWhitespace(text[right])) right--;
+  while (left <= right && isWhiteSpace(text[left])) left++;
+  while (right >= left && isWhiteSpace(text[right])) right--;
 
   return { left, right };
 };
@@ -29,11 +26,10 @@ const removeQuoteAt = (text: string, start: number, quote: string) =>
 const stripTrailingQuote = (
   text: string,
   quote: string,
-  isWhitespace: (char: string) => boolean,
 ) => {
   const quoteLength = quote.length;
   let lastNonSpaceIndex = text.length - 1;
-  while (lastNonSpaceIndex >= 0 && isWhitespace(text[lastNonSpaceIndex])) {
+  while (lastNonSpaceIndex >= 0 && isWhiteSpace(text[lastNonSpaceIndex])) {
     lastNonSpaceIndex--;
   }
 
@@ -52,11 +48,10 @@ const stripOuterQuotesRaw = (
   text: string,
   quote: string,
   lenient: boolean,
-  isWhitespace: (char: string) => boolean,
 ) => {
   if (quote.length === 0) return text;
 
-  const { left, right } = findNonSpaceBounds(text, isWhitespace);
+  const { left, right } = findNonSpaceBounds(text);
   if (left > right) return text;
   if (!text.startsWith(quote, left)) return text;
 
@@ -71,7 +66,7 @@ const stripOuterQuotesRaw = (
   if (!lenient) return text;
 
   const withoutLeading = removeQuoteAt(text, left, quote);
-  return stripTrailingQuote(withoutLeading, quote, isWhitespace);
+  return stripTrailingQuote(withoutLeading, quote);
 };
 
 /**
@@ -88,8 +83,7 @@ export function stripOuterQuotes(
   quoteChar: string,
   { lenient = true }: { lenient?: boolean } = {},
 ): string {
-  const isWhitespace = (char: string) => char === WHITE_SPACE || char === TAB;
-  const stripped = stripOuterQuotesRaw(text, quoteChar, lenient, isWhitespace);
+  const stripped = stripOuterQuotesRaw(text, quoteChar, lenient);
   if (quoteChar.length === 0) return stripped;
 
   const escapedPair = quoteChar + quoteChar;

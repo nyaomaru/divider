@@ -6,6 +6,7 @@ import {
   isStringArray,
   isStringOrNumber,
   isNestedStringArray,
+  isWhiteSpace,
   isWhitespaceOnly,
   isEmptyString,
   isNoneMode,
@@ -229,6 +230,24 @@ describe('isWhitespaceOnly', () => {
 
   test('false for a string with spaces and characters', () => {
     expect(isWhitespaceOnly('  a  ')).toBe(false);
+  });
+});
+
+describe('isWhiteSpace', () => {
+  test('true for a space character', () => {
+    expect(isWhiteSpace(' ')).toBe(true);
+  });
+
+  test('true for a tab character', () => {
+    expect(isWhiteSpace('\t')).toBe(true);
+  });
+
+  test('false for a newline character', () => {
+    expect(isWhiteSpace('\n')).toBe(false);
+  });
+
+  test('false for a non-whitespace character', () => {
+    expect(isWhiteSpace('a')).toBe(false);
   });
 });
 
