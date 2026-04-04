@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.9] - 2026-04-04
+
+### Changed
+
+- extract quote whitespace predicate into shared utils by @nyaomaru in [#423](https://github.com/nyaomaru/divider/pull/423)
+
+### Chore
+
+- 2.0.8 by [bot] by @github-actions in [#420](https://github.com/nyaomaru/divider/pull/420)
+- block installing packages published within 2 days by @nyaomaru in [#422](https://github.com/nyaomaru/divider/pull/422)
+- Release: 2.0.9 by [bot] by @github-actions in [#424](https://github.com/nyaomaru/divider/pull/424)
+- Update dependency /node to v22.19.17 by @renovate[bot] by @types in [#421](https://github.com/nyaomaru/divider/pull/421)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.8...v2.0.9
+
+[v2.0.9]: https://github.com/nyaomaru/divider/compare/v2.0.8...v2.0.9
+
 ## [v2.0.8] - 2026-03-28
 
 ### Changed
