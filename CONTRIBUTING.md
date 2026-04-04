@@ -12,6 +12,10 @@ We welcome any improvements, whether it's a feature, bugfix, test, or documentat
 pnpm install
 ```
 
+This repository uses pnpm's `minimumReleaseAge` safeguard. Dependency versions
+published less than 2 days ago are blocked during install to reduce supply-chain
+risk.
+
 To run tests locally:
 
 ```sh

@@ -14,6 +14,10 @@ cd divider
 pnpm install
 ```
 
+Note: the repo enforces pnpm's minimum package age policy. Installs will block
+dependency versions published within the last 2 days (`minimumReleaseAge: 2880`)
+to reduce supply-chain risk.
+
 Using mise? It’s optional but comfy:
 
 - Install mise (pick one):
