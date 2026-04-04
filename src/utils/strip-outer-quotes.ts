@@ -1,11 +1,11 @@
-import { isWhiteSpace } from '@/utils/is';
+import { isSpaceOrTab } from '@/utils/is';
 
 const findNonSpaceBounds = (text: string) => {
   let left = 0;
   let right = text.length - 1;
 
-  while (left <= right && isWhiteSpace(text[left])) left++;
-  while (right >= left && isWhiteSpace(text[right])) right--;
+  while (left <= right && isSpaceOrTab(text[left])) left++;
+  while (right >= left && isSpaceOrTab(text[right])) right--;
 
   return { left, right };
 };
@@ -29,7 +29,7 @@ const stripTrailingQuote = (
 ) => {
   const quoteLength = quote.length;
   let lastNonSpaceIndex = text.length - 1;
-  while (lastNonSpaceIndex >= 0 && isWhiteSpace(text[lastNonSpaceIndex])) {
+  while (lastNonSpaceIndex >= 0 && isSpaceOrTab(text[lastNonSpaceIndex])) {
     lastNonSpaceIndex--;
   }
 

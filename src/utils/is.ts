@@ -117,11 +117,11 @@ export function isNestedStringArray(value: unknown): value is string[][] {
 }
 
 /**
- * Determines whether the provided character is a supported field whitespace.
+ * Determines whether the provided character is a space or tab.
  * @param value Character to inspect.
  * @returns True when the character is a space or tab.
  */
-export function isWhiteSpace(value: string): boolean {
+export function isSpaceOrTab(value: string): boolean {
   return value === WHITE_SPACE || value === TAB;
 }
 
