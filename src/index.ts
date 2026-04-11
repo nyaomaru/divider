@@ -8,3 +8,10 @@ export { emailDivider } from '@/presets/email-divider';
 export { pathDivider } from '@/presets/path-divider';
 export { queryDivider } from '@/presets/query-divider';
 export * from './types';
+export type {
+  CsvDividerOptions,
+  EmailDividerOptions,
+  PathDividerOptions,
+  QueryDecodeMode,
+  QueryDividerOptions,
+} from './types/preset';
