@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.11] - 2026-04-18
+
+### Fixed
+
+- pin Deno version for JSR publish by @nyaomaru in [#433](https://github.com/nyaomaru/divider/pull/433)
+
+### Changed
+
+- use while loop for variable-step quote scanning by @nyaomaru in [#432](https://github.com/nyaomaru/divider/pull/432)
+
+### Chore
+
+- 2.0.10 by [bot] by @github-actions in [#428](https://github.com/nyaomaru/divider/pull/428)
+- Release: 2.0.11 by [bot] by @github-actions in [#435](https://github.com/nyaomaru/divider/pull/435)
+- Update dependency bun-types to v1.3.12 by [bot] by @renovate in [#429](https://github.com/nyaomaru/divider/pull/429)
+- Update dependency prettier to v3.8.2 by [bot] by @renovate in [#430](https://github.com/nyaomaru/divider/pull/430)
+- Update dependency prettier to v3.8.3 by [bot] by @renovate in [#431](https://github.com/nyaomaru/divider/pull/431)
+- remove vulnerable jest path and pin transitive deps by @nyaomaru in [#434](https://github.com/nyaomaru/divider/pull/434)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.10...v2.0.11
+
+[v2.0.11]: https://github.com/nyaomaru/divider/compare/v2.0.10...v2.0.11
+
 ## [v2.0.10] - 2026-04-11
 
 ### Fixed
