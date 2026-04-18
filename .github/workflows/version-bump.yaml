@@ -65,6 +65,13 @@ jobs:
           jq --arg version "$version_no_v" '.version = $version' deno.json > "$tmp_deno"
           mv "$tmp_deno" deno.json
 
+      - name: Refresh Deno lockfile
+        run: |
+          # WHY: Deno tracks workspace package metadata in deno.lock. Version
+          # bumps make `mise run deno_check` rewrite the lockfile, so commit it
+          # here to keep later publish validation on a clean worktree.
+          mise run deno_check
+
       - name: Create new branch
         run: git checkout -b "release/${{ env.new_version }}"
 
@@ -80,7 +87,7 @@ jobs:
 
       - name: Commit & Push changes
         run: |
-          git add package.json pnpm-lock.yaml jsr.json deno.json || true
+          git add package.json pnpm-lock.yaml jsr.json deno.json deno.lock || true
           if ! git diff --cached --quiet; then
             git commit -m "chore(release): bump version to ${{ env.new_version }}"
           else
