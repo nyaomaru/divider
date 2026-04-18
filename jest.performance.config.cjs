@@ -1,3 +1,5 @@
+const { swcTransform } = require('./jest.swc-transform.cjs');
+
 /** @type {import('jest').Config} **/
 module.exports = {
   testEnvironment: 'node',
@@ -5,22 +7,7 @@ module.exports = {
   moduleNameMapper: {
     '^@/(.+)': '<rootDir>/src/$1',
   },
-  transform: {
-    '^.+\\.tsx?$': [
-      '@swc/jest',
-      {
-        module: {
-          type: 'commonjs',
-        },
-        jsc: {
-          parser: {
-            syntax: 'typescript',
-          },
-          target: 'es2022',
-        },
-      },
-    ],
-  },
+  transform: swcTransform,
   testMatch: [
     '**/tests/performance/**/*.performance.test.ts'
   ],
