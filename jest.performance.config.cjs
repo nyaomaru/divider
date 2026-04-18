@@ -1,10 +1,25 @@
-/** @type {import('ts-jest').JestConfigWithTsJest} **/
+/** @type {import('jest').Config} **/
 module.exports = {
-  preset: 'ts-jest',
   testEnvironment: 'node',
   roots: ['<rootDir>/tests'],
   moduleNameMapper: {
     '^@/(.+)': '<rootDir>/src/$1',
+  },
+  transform: {
+    '^.+\\.tsx?$': [
+      '@swc/jest',
+      {
+        module: {
+          type: 'commonjs',
+        },
+        jsc: {
+          parser: {
+            syntax: 'typescript',
+          },
+          target: 'es2022',
+        },
+      },
+    ],
   },
   testMatch: [
     '**/tests/performance/**/*.performance.test.ts'
