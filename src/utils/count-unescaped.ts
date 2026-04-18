@@ -21,7 +21,9 @@ const countUnescapedMultiChar = (text: string, quote: string) => {
   const escapedPairLength = escapedPair.length;
   let count = 0;
 
-  for (let index = 0; index < text.length; ) {
+  let index = 0;
+
+  while (index < text.length) {
     if (text.startsWith(escapedPair, index)) {
       index += escapedPairLength;
       continue;
