@@ -59,6 +59,26 @@ describe('applyDividerOptions', () => {
     ]);
   });
 
+  test('trim and exclude work for flat results through the shared pipeline', () => {
+    const result = ['  a ', '   ', ' b ', ''];
+
+    expect(
+      applyDividerOptions(result, {
+        trim: true,
+        preserveEmpty: true,
+        exclude: 'empty',
+      })
+    ).toEqual(['a', 'b']);
+  });
+
+  test('exclude removes empty nested rows when preserveEmpty is false', () => {
+    const result = [[' '], [' keep ', ''], ['\t']];
+
+    expect(applyDividerOptions(result, { exclude: 'whitespace' })).toEqual([
+      [' keep '],
+    ]);
+  });
+
   test('handles unknown exclude mode gracefully', () => {
     const result = [['a', '', ' '], ['b']];
 

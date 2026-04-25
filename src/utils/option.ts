@@ -18,6 +18,9 @@ import {
 } from '@/utils/is';
 import { excludePredicateMap } from '@/utils/exclude-predicate';
 
+type DividerOutput = DividerStringResult | DividerArrayResult;
+type SegmentTransformer = (segments: readonly string[]) => string[];
+
 /**
  * Extracts trailing options from a mixed argument list.
  *
@@ -50,6 +53,58 @@ export function extractOptions<const TArgs extends DividerArgs>(
 }
 
 /**
+ * Maps divider output while preserving its flat or nested shape.
+ * @param output Divider output to transform.
+ * @param transform Transformer applied to each row or flat segment list.
+ * @returns Output with the original shape preserved.
+ */
+function mapDividerOutput(
+  output: DividerOutput,
+  transform: SegmentTransformer,
+): DividerOutput {
+  return isNestedStringArray(output) ? output.map(transform) : transform(output);
+}
+
+/**
+ * Filters divider output while preserving shape and nested empty-row semantics.
+ * @param output Divider output to filter.
+ * @param shouldKeep Predicate used to retain segments.
+ * @param preserveEmpty When true, retain nested rows that become empty.
+ * @returns Filtered divider output.
+ */
+function filterDividerOutput(
+  output: DividerOutput,
+  shouldKeep: (segment: string) => boolean,
+  preserveEmpty: boolean,
+): DividerOutput {
+  if (!isNestedStringArray(output)) {
+    return output.filter(shouldKeep);
+  }
+
+  const filteredRows = output.map((row) => row.filter(shouldKeep));
+  return preserveEmpty
+    ? filteredRows
+    : filteredRows.filter((row) => row.length > 0);
+}
+
+/**
+ * Resolves a segment filter for the provided exclude mode.
+ * @param exclude Exclude mode candidate.
+ * @returns Predicate when the mode is supported; otherwise null.
+ */
+function resolveExcludePredicate(
+  exclude: DividerInferredOptions['exclude'] | unknown,
+): ((segment: string) => boolean) | null {
+  if (exclude == null || isNoneMode(exclude) || typeof exclude !== 'string') {
+    return null;
+  }
+
+  return Object.hasOwn(excludePredicateMap, exclude)
+    ? excludePredicateMap[exclude as keyof typeof excludePredicateMap]
+    : null;
+}
+
+/**
  * Trims segments while optionally preserving empty outputs.
  * WHY: centralize the flat trimming logic so higher-level option handling stays simple.
  * @param segments Segments to trim.
@@ -64,20 +119,6 @@ function trimSegments(
   return preserveEmpty
     ? trimmed
     : trimmed.filter((segment) => !isEmptyString(segment));
-}
-
-/**
- * Trims nested rows of segments while optionally keeping empties.
- * WHY: reuse the flat helper so nested handling mirrors flat semantics before flattening.
- * @param rows Nested segment rows to trim.
- * @param preserveEmpty When true, retain empty strings in each row after trimming.
- * @returns Trimmed rows, optionally filtered per row.
- */
-function trimNestedSegments(
-  rows: readonly string[][],
-  preserveEmpty: boolean,
-): string[][] {
-  return rows.map((row) => trimSegments(row, preserveEmpty));
 }
 
 /**
@@ -96,11 +137,11 @@ export function applyDividerOptions<
   T extends DividerInput,
   O extends DividerInferredOptions = DividerEmptyOptions,
 >(
-  result: DividerStringResult | DividerArrayResult,
+  result: DividerOutput,
   options: O,
 ): DividerResult<T, O> {
   const shouldPreserveEmpty = options.preserveEmpty === true;
-  let output = result;
+  let output: DividerOutput = result;
 
   output = applyTrimOption(output, options, shouldPreserveEmpty);
   output = applyFlattenOption(output, options);
@@ -117,14 +158,14 @@ export function applyDividerOptions<
  * @returns Trimmed output when enabled; otherwise unchanged output.
  */
 const applyTrimOption = (
-  output: DividerStringResult | DividerArrayResult,
+  output: DividerOutput,
   options: DividerInferredOptions,
   shouldPreserveEmpty: boolean,
 ) => {
   if (!options.trim) return output;
-  return isNestedStringArray(output)
-    ? trimNestedSegments(output, shouldPreserveEmpty)
-    : trimSegments(output, shouldPreserveEmpty);
+  return mapDividerOutput(output, (segments) =>
+    trimSegments(segments, shouldPreserveEmpty),
+  );
 };
 
 /**
@@ -134,9 +175,9 @@ const applyTrimOption = (
  * @returns Flattened output when enabled; otherwise unchanged output.
  */
 const applyFlattenOption = (
-  output: DividerStringResult | DividerArrayResult,
+  output: DividerOutput,
   options: DividerInferredOptions,
-) => (options.flatten ? output.flat() : output);
+) => (options.flatten && isNestedStringArray(output) ? output.flat() : output);
 
 /**
  * Applies exclude rules to filter out unwanted segments.
@@ -146,29 +187,12 @@ const applyFlattenOption = (
  * @returns Filtered output based on exclude mode.
  */
 const applyExcludeOption = (
-  output: DividerStringResult | DividerArrayResult,
+  output: DividerOutput,
   options: DividerInferredOptions,
   shouldPreserveEmpty: boolean,
 ) => {
-  if (options.exclude == null || isNoneMode(options.exclude)) return output;
-
-  const exclude = options.exclude;
-  let shouldKeep: (s: string) => boolean = () => true;
-
-  if (exclude in excludePredicateMap) {
-    shouldKeep = excludePredicateMap[exclude];
-  }
-
-  const filterNested = (arr: DividerArrayResult) => {
-    const filteredRows = arr.map((row) => row.filter(shouldKeep));
-    return shouldPreserveEmpty
-      ? filteredRows
-      : filteredRows.filter((row) => row.length > 0);
-  };
-
-  const filterFlat = (arr: DividerStringResult) => arr.filter(shouldKeep);
-
-  return isNestedStringArray(output)
-    ? filterNested(output)
-    : filterFlat(output);
+  const shouldKeep = resolveExcludePredicate(options.exclude);
+  return shouldKeep == null
+    ? output
+    : filterDividerOutput(output, shouldKeep, shouldPreserveEmpty);
 };
