@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.12] - 2026-04-25
+
+### Fixed
+
+- refresh deno.lock during version bump by @nyaomaru in [#437](https://github.com/nyaomaru/divider/pull/437)
+
+### Changed
+
+- simplify shared divider option handling by @nyaomaru in [#438](https://github.com/nyaomaru/divider/pull/438)
+
+### Chore
+
+- 2.0.11 by [bot] by @github-actions in [#436](https://github.com/nyaomaru/divider/pull/436)
+- Release: 2.0.12 by [bot] by @github-actions in [#439](https://github.com/nyaomaru/divider/pull/439)
+- Update pnpm to v10.33.2 by [bot] by @renovate in [#441](https://github.com/nyaomaru/divider/pull/441)
+- Update dependency bun-types to v1.3.13 by [bot] by @renovate in [#440](https://github.com/nyaomaru/divider/pull/440)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.11...v2.0.12
+
+[v2.0.12]: https://github.com/nyaomaru/divider/compare/v2.0.11...v2.0.12
+
 ## [v2.0.11] - 2026-04-18
 
 ### Fixed
