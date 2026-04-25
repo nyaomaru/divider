@@ -1,6 +1,6 @@
 [tools]
 node = "22"
-pnpm = "10.33.0"
+pnpm = "10.33.2"
 # WHY: `deno publish` enforces a clean worktree and may rewrite `deno.lock`
 # when lockfile normalization changes across Deno releases. Pin the exact
 # version so local runs and GitHub Actions produce the same lockfile output.
