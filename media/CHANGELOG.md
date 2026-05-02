@@ -5,6 +5,18 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.13] - 2026-05-02
+
+### Chore
+
+- 2.0.12 by [bot] by @github-actions in [#442](https://github.com/nyaomaru/divider/pull/442)
+- add characterization coverage and test TypeScript config by @nyaomaru in [#443](https://github.com/nyaomaru/divider/pull/443)
+- Release: 2.0.13 by [bot] by @github-actions in [#444](https://github.com/nyaomaru/divider/pull/444)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.12...v2.0.13
+
+[v2.0.13]: https://github.com/nyaomaru/divider/compare/v2.0.12...v2.0.13
+
 ## [v2.0.12] - 2026-04-25
 
 ### Fixed
