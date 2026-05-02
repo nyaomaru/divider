@@ -57,6 +57,14 @@ describe('csvDivider', () => {
     expect(result).toEqual(['a,b', 'c']);
   });
 
+  it('supports multi-character quoteChar values', () => {
+    const input = '<<a,b<<,c';
+
+    const result = csvDivider(input, { quoteChar: '<<' });
+
+    expect(result).toEqual(['a,b', 'c']);
+  });
+
   it('parses empty values correctly', () => {
     const input = 'a,,c,';
 

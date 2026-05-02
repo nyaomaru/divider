@@ -52,7 +52,7 @@ describe('applyDividerOptions', () => {
     ];
 
     expect(
-      applyDividerOptions(result, { trim: true, preserveEmpty: true })
+      applyDividerOptions(result, { trim: true, preserveEmpty: true }),
     ).toEqual([
       ['a', ''],
       ['', 'b'],
@@ -67,7 +67,7 @@ describe('applyDividerOptions', () => {
         trim: true,
         preserveEmpty: true,
         exclude: 'empty',
-      })
+      }),
     ).toEqual(['a', 'b']);
   });
 
@@ -77,6 +77,35 @@ describe('applyDividerOptions', () => {
     expect(applyDividerOptions(result, { exclude: 'whitespace' })).toEqual([
       [' keep '],
     ]);
+  });
+
+  test('trim runs before exclude for nested results', () => {
+    const result = [
+      ['  keep  ', '   '],
+      ['\t', ' trim me '],
+    ];
+
+    expect(
+      applyDividerOptions(result, {
+        trim: true,
+        exclude: 'empty',
+      }),
+    ).toEqual([['keep'], ['trim me']]);
+  });
+
+  test('flatten preserves trimmed empty segments when preserveEmpty is true', () => {
+    const result = [
+      ['  a  ', '   '],
+      [' b ', ' '],
+    ];
+
+    expect(
+      applyDividerOptions(result, {
+        trim: true,
+        flatten: true,
+        preserveEmpty: true,
+      }),
+    ).toEqual(['a', '', 'b', '']);
   });
 
   test('handles unknown exclude mode gracefully', () => {

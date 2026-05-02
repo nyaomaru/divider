@@ -63,7 +63,17 @@ describe('divider with string', () => {
 
     test('combines trim and exclude options', () => {
       expect(
-        divider('a, ,b', ',', { trim: true, exclude: 'whitespace' })
+        divider('a, ,b', ',', { trim: true, exclude: 'whitespace' }),
+      ).toEqual(['a', 'b']);
+    });
+
+    test('applies trim before exclude when preserving empty splits', () => {
+      expect(
+        divider(' a ,   , b , ', ',', {
+          trim: true,
+          preserveEmpty: true,
+          exclude: 'empty',
+        }),
       ).toEqual(['a', 'b']);
     });
   });
@@ -97,6 +107,14 @@ describe('divider with string', () => {
     expect(divider('hello.world', '.')).toEqual(['hello', 'world']);
     expect(divider('hello*world', '*')).toEqual(['hello', 'world']);
     expect(divider('hello+world', '+')).toEqual(['hello', 'world']);
+  });
+
+  test('prefers longer overlapping separators in public API', () => {
+    expect(divider('a---b', '--', '-', { preserveEmpty: true })).toEqual([
+      'a',
+      '',
+      'b',
+    ]);
   });
 });
 
@@ -141,7 +159,7 @@ describe('divider with string[]', () => {
 
     test('trim with flatten removes whitespace', () => {
       expect(
-        divider(['  abc  ', ' de f '], ' ', { flatten: true, trim: true })
+        divider(['  abc  ', ' de f '], ' ', { flatten: true, trim: true }),
       ).toEqual(['abc', 'de', 'f']);
     });
 
@@ -150,7 +168,7 @@ describe('divider with string[]', () => {
         divider(['a', ', ,', 'b'], ',', {
           flatten: true,
           exclude: 'whitespace',
-        })
+        }),
       ).toEqual(['a', 'b']);
     });
 
@@ -160,7 +178,7 @@ describe('divider with string[]', () => {
           flatten: true,
           trim: true,
           exclude: 'whitespace',
-        })
+        }),
       ).toEqual(['a', 'b', 'c', 'd']);
     });
   });
