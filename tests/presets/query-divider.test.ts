@@ -29,6 +29,10 @@ describe('queryDivider', () => {
     expect(queryDivider('a=%2B', { mode: 'raw' })).toEqual([['a', '%2B']]);
   });
 
+  it('keeps malformed percent-escapes unchanged in auto mode', () => {
+    expect(queryDivider('a=%E0%A4%A')).toEqual([['a', '%E0%A4%A']]);
+  });
+
   it('preserves empty values and keys', () => {
     expect(queryDivider('a=&b&=c&')).toEqual([
       ['a', ''],
@@ -63,6 +67,10 @@ describe('queryDivider', () => {
       ['a', '1'],
       ['b', '2'],
     ]);
+  });
+
+  it('does not treat ? inside an existing raw query as a URL boundary', () => {
+    expect(queryDivider('a=b?c=d')).toEqual([['a', 'b?c=d']]);
   });
 
   it('removes fragment from query-like input with leading question mark', () => {

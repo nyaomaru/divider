@@ -165,6 +165,10 @@ describe('quotedDivide', () => {
     expect(quotedDivide('"a,b')).toEqual(['a,b']);
   });
 
+  it('handles unclosed multi-character quotes leniently', () => {
+    expect(quotedDivide('<<a,b', { quote: '<<' })).toEqual(['a,b']);
+  });
+
   it('supports custom delimiter', () => {
     expect(quotedDivide('"a;b";c;"";d;', { delimiter: ';' })).toEqual([
       'a;b',
