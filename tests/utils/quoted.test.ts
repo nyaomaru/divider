@@ -23,6 +23,14 @@ describe('dividePreserve', () => {
   it('returns single empty field for empty input', () => {
     expect(dividePreserve('', ',')).toEqual(['']);
   });
+
+  it('treats regex metacharacters as literal separators', () => {
+    expect(dividePreserve('a.b.', '.')).toEqual(['a', 'b', '']);
+  });
+
+  it('returns original input when separator is empty', () => {
+    expect(dividePreserve('abc', '')).toEqual(['abc']);
+  });
 });
 
 describe('countUnescaped', () => {

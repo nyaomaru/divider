@@ -1,12 +1,12 @@
-import { divider } from '@/core/divider';
 import { isEmptyString } from '@/utils/is';
+import { getRegex } from '@/utils/regex';
 
 /**
  * Divide a string by a single separator while preserving empty fields.
  *
- * WHY: This reuses the core divider behavior so delimiter handling stays
- * consistent with the rest of the library while keeping consecutive and
- * trailing empty segments intact.
+ * WHY: Presets and quoted parsing need preserving split behavior without
+ * depending on the public `divider` API. Reusing the regex builder keeps
+ * delimiter escaping and normalization consistent with core division.
  *
  * @param input Source string to divide. Empty string yields a single empty field.
  * @param separator Separator used to divide the string.
@@ -14,5 +14,7 @@ import { isEmptyString } from '@/utils/is';
  */
 export function dividePreserve(input: string, separator: string): string[] {
   if (isEmptyString(input)) return [''];
-  return divider(input, separator, { preserveEmpty: true });
+
+  const regex = getRegex([separator]);
+  return regex == null ? [input] : input.split(regex);
 }
