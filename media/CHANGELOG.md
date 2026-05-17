@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.15] - 2026-05-16
+
+### Changed
+
+- decouple dividePreserve from divider by @nyaomaru in [#454](https://github.com/nyaomaru/divider/pull/454)
+
+### Chore
+
+- 2.0.14 by [bot] by @github-actions in [#450](https://github.com/nyaomaru/divider/pull/450)
+- Release: 2.0.15 by [bot] by @github-actions in [#455](https://github.com/nyaomaru/divider/pull/455)
+- Update dependency /node to v22.19.18 by @renovate[bot] by @types in [#451](https://github.com/nyaomaru/divider/pull/451)
+- Update pnpm to v10.33.4 by [bot] by @renovate in [#448](https://github.com/nyaomaru/divider/pull/448)
+- Update dependency /node to v22.19.19 by @renovate[bot] by @types in [#452](https://github.com/nyaomaru/divider/pull/452)
+- Update dependency bun-types to v1.3.14 by [bot] by @renovate in [#453](https://github.com/nyaomaru/divider/pull/453)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.14...v2.0.15
+
+[v2.0.15]: https://github.com/nyaomaru/divider/compare/v2.0.14...v2.0.15
+
 ## [v2.0.14] - 2026-05-09
 
 ### Changed
