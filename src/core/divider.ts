@@ -2,9 +2,8 @@ import type { DividerInput, DividerArgs, DividerReturn } from '@/types';
 import { divideString } from '@/utils/parser';
 import { isEmptyArray, isValidInput } from '@/utils/is';
 import { ensureStringArray } from '@/utils/array';
-import { extractOptions } from '@/utils/option';
-import { classifySeparators } from '@/utils/separator';
 import { transformDividerInput } from '@/utils/transform-divider-input';
+import { createDividerPlan } from '@/core/divider-plan';
 
 /**
  * Main divider function that splits input based on numeric positions or string delimiters.
@@ -36,9 +35,7 @@ export function divider(input: DividerInput, ...args: DividerArgs) {
     return ensureStringArray(input);
   }
 
-  // Extract options and clean arguments
-  const { cleanedArgs, options } = extractOptions(args);
-  const { numSeparators, strSeparators } = classifySeparators(cleanedArgs);
+  const { numSeparators, strSeparators, options } = createDividerPlan(args);
 
   const applyDivision = (str: string) =>
     divideString(str, numSeparators, strSeparators, {
