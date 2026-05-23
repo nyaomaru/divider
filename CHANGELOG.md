@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.16] - 2026-05-23
+
+### Changed
+
+- extract divider argument plan by @nyaomaru in [#458](https://github.com/nyaomaru/divider/pull/458)
+
+### Chore
+
+- 2.0.15 by [bot] by @github-actions in [#456](https://github.com/nyaomaru/divider/pull/456)
+- Release: 2.0.16 by [bot] by @github-actions in [#459](https://github.com/nyaomaru/divider/pull/459)
+- Update dependency tsx to v4.22.3 by [bot] by @renovate in [#457](https://github.com/nyaomaru/divider/pull/457)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.15...v2.0.16
+
+[v2.0.16]: https://github.com/nyaomaru/divider/compare/v2.0.15...v2.0.16
+
 ## [v2.0.15] - 2026-05-16
 
 ### Changed
