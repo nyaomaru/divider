@@ -31,8 +31,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Lint, test, and build
-        run: pnpm lint && pnpm test && pnpm build
+      - name: Lint, test, type-test, and build
+        run: pnpm lint && pnpm test && pnpm run test:types && pnpm build
 
       - name: Publish Package
         run: pnpm publish --access public --no-git-checks --ignore-scripts
