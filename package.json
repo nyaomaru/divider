@@ -17,6 +17,7 @@
   },
   "scripts": {
     "test": "jest",
+    "test:types": "tsc -p tests/tsconfig.json",
     "test:performance": "jest --config jest.performance.config.cjs",
     "test:unit": "jest --testPathIgnorePatterns=performance",
     "lint": "eslint .",

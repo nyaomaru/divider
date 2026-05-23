@@ -3,6 +3,10 @@
   "compilerOptions": {
     "noEmit": true,
     "rootDir": "..",
+    "paths": {
+      "@/*": ["./src/*"],
+      "@nyaomaru/divider": ["./src/index.ts"]
+    },
     "types": ["jest", "node"]
   },
   "include": ["./**/*.ts", "../src/**/*.ts"],

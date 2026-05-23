@@ -19,6 +19,9 @@ run = "pnpm build"
 [tasks.test]
 run = "pnpm test"
 
+[tasks.test_types]
+run = "pnpm run test:types"
+
 [tasks.test_unit]
 run = "pnpm run test:unit"
 
@@ -26,7 +29,7 @@ run = "pnpm run test:unit"
 run = "pnpm run test:performance"
 
 [tasks.qa]
-run = ["pnpm lint", "pnpm test", "pnpm build"]
+run = ["pnpm lint", "pnpm test", "pnpm run test:types", "pnpm build"]
 
 [tasks.typedoc_build]
 run = "pnpm typedoc --out docs-temp"
