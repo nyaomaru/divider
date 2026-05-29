@@ -1,7 +1,26 @@
+# WHY: pnpm 11 requires explicit approval for install scripts. These packages
+# provide native binaries or hooks used by this toolchain.
+allowBuilds:
+  '@swc/core': true
+  esbuild: true
+  lefthook: true
+  unrs-resolver: true
+
 # WHY: Delay dependency installs for newly published versions to reduce
 # exposure to compromised releases before the ecosystem has time to react.
 minimumReleaseAge: 2880
 
 overrides:
+  brace-expansion@<1.1.13: '>=1.1.13 <2'
+  brace-expansion@>=2.0.0 <2.0.3: '^2.0.3'
+  diff@<4.0.4: '^4.0.4'
+  flatted@<3.4.2: '^3.4.2'
   js-yaml@<3.14.2: '>=3.14.2 <4.0.0'
   js-yaml@>=4.0.0 <4.1.1: '^4.1.1'
+  markdown-it@<14.1.1: '^14.1.1'
+  minimatch@>=9.0.0 <9.0.7: '^9.0.7'
+  picomatch@<2.3.2: '>=2.3.2 <3'
+  picomatch@>=4.0.0 <4.0.4: '^4.0.4'
+  rollup@<4.59.0: '^4.59.0'
+  smol-toml@<1.6.1: '^1.6.1'
+  yaml@<2.8.3: '^2.8.3'
