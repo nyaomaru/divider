@@ -1,5 +1,5 @@
 import type { DividerSeparators } from '@/types';
-import { isString, isNumber } from '@/utils/is';
+import { isNumber, isString } from '@/utils/guards/primitives';
 
 /**
  * Classifies a mixed array of strings and numbers into separate arrays.

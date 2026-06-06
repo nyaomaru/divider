@@ -1,6 +1,6 @@
 import { countUnescaped } from '@/utils/count-unescaped';
 import { dividePreserve } from '@/utils/divide-preserve';
-import { isEmptyString } from '@/utils/is';
+import { isEmptyString } from '@/utils/guards/whitespace';
 import { stripOuterQuotes } from '@/utils/strip-outer-quotes';
 
 /**

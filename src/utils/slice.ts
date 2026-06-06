@@ -1,4 +1,4 @@
-import { isEmptyArray } from '@/utils/is';
+import { isEmptyArray } from '@/utils/guards/array';
 
 /**
  * Slices a string into segments based on an array of index positions.

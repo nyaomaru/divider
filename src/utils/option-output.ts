@@ -3,7 +3,8 @@ import type {
   SegmentPredicate,
   SegmentTransformer,
 } from '@/utils/option-types';
-import { isEmptyString, isNestedStringArray } from '@/utils/is';
+import { isNestedStringArray } from '@/utils/guards/array';
+import { isEmptyString } from '@/utils/guards/whitespace';
 
 /**
  * Maps divider output while preserving its flat or nested shape.

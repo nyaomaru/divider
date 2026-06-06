@@ -2,7 +2,7 @@ import { divider } from '@/core/divider';
 import type { DividerStringResult } from '@/types';
 import type { PathDividerOptions } from '@/types/preset';
 import { dividePreserve } from '@/utils/divide-preserve';
-import { isEmptyString } from '@/utils/is';
+import { isEmptyString } from '@/utils/guards/whitespace';
 import { PATH_SEPARATORS } from '@/constants';
 
 /**

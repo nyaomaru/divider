@@ -1,5 +1,5 @@
 import type { DividerInput } from '@/types';
-import { isString } from '@/utils/is';
+import { isString } from '@/utils/guards/primitives';
 
 /**
  * Ensures that the input is returned as a string array.

@@ -3,7 +3,8 @@ import type {
   DividerSeparator,
   ExtractedDividerOptions,
 } from '@/types';
-import { isOptions, isStringOrNumber } from '@/utils/is';
+import { isOptions } from '@/utils/guards/options';
+import { isStringOrNumber } from '@/utils/guards/primitives';
 
 /**
  * Extracts trailing options from a mixed argument list.

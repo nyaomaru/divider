@@ -1,4 +1,5 @@
-import { isEmptyArray, isEmptyString } from '@/utils/is';
+import { isEmptyArray } from '@/utils/guards/array';
+import { isEmptyString } from '@/utils/guards/whitespace';
 import { PERFORMANCE_CONSTANTS, CACHE_KEY_SEPARATOR } from '@/constants';
 
 // WHY: Normalizing separators (dedupe + remove empties) is needed both for

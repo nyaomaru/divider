@@ -6,7 +6,7 @@ import {
   mapDividerOutput,
   trimSegments,
 } from '@/utils/option-output';
-import { isNestedStringArray } from '@/utils/is';
+import { isNestedStringArray } from '@/utils/guards/array';
 
 /**
  * Trims segments when the `trim` option is enabled.

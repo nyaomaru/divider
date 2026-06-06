@@ -1,4 +1,6 @@
-import { isEmptyArray, isEmptyString, isNumber } from '@/utils/is';
+import { isEmptyArray } from '@/utils/guards/array';
+import { isNumber } from '@/utils/guards/primitives';
+import { isEmptyString } from '@/utils/guards/whitespace';
 import { getRegex } from '@/utils/regex';
 import { sliceByIndexes } from '@/utils/slice';
 import { sortAscending } from '@/utils/sort';
