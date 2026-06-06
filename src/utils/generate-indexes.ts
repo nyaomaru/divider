@@ -1,4 +1,4 @@
-import { isPositiveInteger } from '@/utils/is';
+import { isPositiveInteger } from '@/utils/guards/primitives';
 
 /**
  * Generates an array of index positions to divide a string into chunks.

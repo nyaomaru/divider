@@ -1,5 +1,8 @@
 import type { DividerExcludeMode } from '@/types';
-import { isEmptyString, isWhitespaceOnly } from '@/utils/is';
+import {
+  isEmptyString,
+  isWhitespaceOnly,
+} from '@/utils/guards/whitespace';
 
 /**
  * A mapping of `exclude` modes to their corresponding filter predicates.

@@ -1,7 +1,7 @@
 import type { DividerInferredOptions } from '@/types';
 import type { SegmentPredicate } from '@/utils/option-types';
 import { excludePredicateMap } from '@/utils/exclude-predicate';
-import { isNoneMode } from '@/utils/is';
+import { isNoneMode } from '@/utils/guards/options';
 
 /**
  * Resolves a segment filter for the provided exclude mode.

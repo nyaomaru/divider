@@ -1,4 +1,4 @@
-import { isEmptyString } from '@/utils/is';
+import { isEmptyString } from '@/utils/guards/whitespace';
 import { getRegex } from '@/utils/regex';
 
 /**

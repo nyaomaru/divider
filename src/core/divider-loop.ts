@@ -1,4 +1,4 @@
-import { isPositiveInteger } from '@/utils/is';
+import { isPositiveInteger } from '@/utils/guards/primitives';
 import { generateIndexes } from '@/utils/generate-indexes';
 import { shouldTruncateChunks, truncateChunksToMax } from '@/utils/chunk';
 import type {

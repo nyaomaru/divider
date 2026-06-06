@@ -1,4 +1,4 @@
-import { isSpaceOrTab } from '@/utils/is';
+import { isSpaceOrTab } from '@/utils/guards/whitespace';
 
 const findNonSpaceBounds = (text: string) => {
   let left = 0;

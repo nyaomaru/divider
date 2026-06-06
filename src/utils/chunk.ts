@@ -1,4 +1,4 @@
-import { isNumber } from '@/utils/is';
+import { isNumber } from '@/utils/guards/primitives';
 
 // Constants for better maintainability
 const MIN_ALLOWED_CHUNKS = 0;

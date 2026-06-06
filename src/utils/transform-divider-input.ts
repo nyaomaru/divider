@@ -6,7 +6,7 @@ import type {
   DividerResult,
   DividerStringResult,
 } from '@/types';
-import { isString } from '@/utils/is';
+import { isString } from '@/utils/guards/primitives';
 import { applyDividerOptions } from '@/utils/option';
 
 /**

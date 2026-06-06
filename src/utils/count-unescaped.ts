@@ -1,4 +1,4 @@
-import { isEmptyString } from '@/utils/is';
+import { isEmptyString } from '@/utils/guards/whitespace';
 
 const countUnescapedSingleChar = (text: string, quote: string) => {
   let count = 0;
