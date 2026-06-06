@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.18] - 2026-06-06
+
+### Changed
+
+- split guard utilities by concern by @nyaomaru in [#468](https://github.com/nyaomaru/divider/pull/468)
+
+### Chore
+
+- 2.0.17 by [bot] by @github-actions in [#466](https://github.com/nyaomaru/divider/pull/466)
+- Release: 2.0.18 by [bot] by @github-actions in [#469](https://github.com/nyaomaru/divider/pull/469)
+- Update dependency tsx to v4.22.4 by [bot] by @renovate in [#467](https://github.com/nyaomaru/divider/pull/467)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.17...v2.0.18
+
+[v2.0.18]: https://github.com/nyaomaru/divider/compare/v2.0.17...v2.0.18
+
 ## [v2.0.17] - 2026-05-30
 
 ### Fixed
