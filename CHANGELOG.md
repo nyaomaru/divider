@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.19] - 2026-06-13
+
+### Changed
+
+- normalize divider options before applying transforms by @nyaomaru in [#473](https://github.com/nyaomaru/divider/pull/473)
+
+### Chore
+
+- 2.0.18 by [bot] by @github-actions in [#470](https://github.com/nyaomaru/divider/pull/470)
+- Release: 2.0.19 by [bot] by @github-actions in [#474](https://github.com/nyaomaru/divider/pull/474)
+- Update dependency prettier to v3.8.4 by [bot] by @renovate in [#472](https://github.com/nyaomaru/divider/pull/472)
+- Update dependency /node to v22.19.21 by @renovate[bot] by @types in [#471](https://github.com/nyaomaru/divider/pull/471)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.18...v2.0.19
+
+[v2.0.19]: https://github.com/nyaomaru/divider/compare/v2.0.18...v2.0.19
+
 ## [v2.0.18] - 2026-06-06
 
 ### Changed
