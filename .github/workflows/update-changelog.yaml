@@ -12,6 +12,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
+      issues: write
     with:
       changelog_path: CHANGELOG.md
       provider: openai
