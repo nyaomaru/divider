@@ -1,5 +1,7 @@
-import type { DividerInferredOptions } from '@/types';
-import type { DividerOutput } from '@/utils/option-types';
+import type {
+  DividerOutput,
+  ResolvedDividerOptions,
+} from '@/utils/option-types';
 import { resolveExcludePredicate } from '@/utils/option-exclude';
 import {
   filterDividerOutput,
@@ -17,12 +19,11 @@ import { isNestedStringArray } from '@/utils/guards/array';
  */
 export function applyTrimOption(
   output: DividerOutput,
-  options: DividerInferredOptions,
-  shouldPreserveEmpty: boolean,
+  options: ResolvedDividerOptions,
 ): DividerOutput {
   if (!options.trim) return output;
   return mapDividerOutput(output, (segments) =>
-    trimSegments(segments, shouldPreserveEmpty),
+    trimSegments(segments, options.preserveEmpty),
   );
 }
 
@@ -34,7 +35,7 @@ export function applyTrimOption(
  */
 export function applyFlattenOption(
   output: DividerOutput,
-  options: DividerInferredOptions,
+  options: ResolvedDividerOptions,
 ): DividerOutput {
   return options.flatten && isNestedStringArray(output) ? output.flat() : output;
 }
@@ -48,11 +49,10 @@ export function applyFlattenOption(
  */
 export function applyExcludeOption(
   output: DividerOutput,
-  options: DividerInferredOptions,
-  shouldPreserveEmpty: boolean,
+  options: ResolvedDividerOptions,
 ): DividerOutput {
   const shouldKeep = resolveExcludePredicate(options.exclude);
   return shouldKeep == null
     ? output
-    : filterDividerOutput(output, shouldKeep, shouldPreserveEmpty);
+    : filterDividerOutput(output, shouldKeep, options.preserveEmpty);
 }
