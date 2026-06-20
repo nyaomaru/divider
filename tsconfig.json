@@ -8,11 +8,11 @@
     "declarationDir": "dist/types",
     "strict": true,
     "declaration": true,
+    "ignoreDeprecations": "6.0",
     "paths": {
       "@/*": ["./src/*"]
     },
-    "esModuleInterop": true,
-    "baseUrl": "."
+    "esModuleInterop": true
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist", "tests"]

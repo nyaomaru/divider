@@ -4,8 +4,8 @@
     "noEmit": true,
     "rootDir": "..",
     "paths": {
-      "@/*": ["./src/*"],
-      "@nyaomaru/divider": ["./src/index.ts"]
+      "@/*": ["../src/*"],
+      "@nyaomaru/divider": ["../src/index.ts"]
     },
     "types": ["jest", "node"]
   },
