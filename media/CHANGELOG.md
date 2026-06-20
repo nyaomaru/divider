@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.20] - 2026-06-20
+
+### Fixed
+
+- separate unit and integration test commands by @nyaomaru in [#477](https://github.com/nyaomaru/divider/pull/477)
+
+### Chore
+
+- 2.0.19 by [bot] by @github-actions in [#475](https://github.com/nyaomaru/divider/pull/475)
+- allow changelog bot to apply labels by @nyaomaru in [#476](https://github.com/nyaomaru/divider/pull/476)
+- Release: 2.0.20 by [bot] by @github-actions in [#479](https://github.com/nyaomaru/divider/pull/479)
+- upgrade dependencies and migrate to TypeScript 6 by @nyaomaru in [#478](https://github.com/nyaomaru/divider/pull/478)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.19...v2.0.20
+
+[v2.0.20]: https://github.com/nyaomaru/divider/compare/v2.0.19...v2.0.20
+
 ## [v2.0.19] - 2026-06-13
 
 ### Changed
