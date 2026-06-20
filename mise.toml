@@ -65,7 +65,7 @@ run = "bun test tests-bun"
 
 # Integration test (Node)
 [tasks.test_integration]
-run = "pnpm exec tsx tests/integration/usage.test.ts"
+run = "pnpm run test:integration"
 
 [tasks.publish_npm]
 run = "pnpm publish --access public --no-git-checks"

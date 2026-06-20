@@ -17,9 +17,10 @@
   },
   "scripts": {
     "test": "jest",
+    "test:integration": "tsx tests/integration/usage.test.ts",
     "test:types": "tsc -p tests/tsconfig.json",
     "test:performance": "jest --config jest.performance.config.cjs",
-    "test:unit": "jest --testPathIgnorePatterns=performance",
+    "test:unit": "jest",
     "lint": "eslint .",
     "build": "tsup",
     "prepack": "pnpm run build",
