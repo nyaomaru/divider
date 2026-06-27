@@ -1,5 +1,4 @@
-import { divider } from '@/core/divider';
-import { getFirstElement } from '@/utils/array';
+import { selectDividerSegment } from '@/core/divider-segment';
 import type { DividerInput, DividerSeparators } from '@/types';
 
 /**
@@ -16,6 +15,5 @@ export function dividerFirst(
   input: DividerInput,
   ...args: DividerSeparators
 ): string {
-  const result = divider(input, ...args, { flatten: true });
-  return getFirstElement(result, '');
+  return selectDividerSegment(input, args, (segments) => segments[0]);
 }
