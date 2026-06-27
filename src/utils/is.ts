@@ -1,8 +1,5 @@
 export {
-  isNumber,
-  isPlainObject,
   isPositiveInteger,
-  isString,
   isStringOrNumber,
 } from '@/utils/guards/primitives';
 export {

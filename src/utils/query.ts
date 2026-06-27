@@ -27,7 +27,7 @@ export function extractQuery(input: string): string {
  * @param input Raw input string that may contain path, query, or fragment text.
  * @returns Query portion when `?` is a URL boundary; otherwise the input without fragment.
  */
-export function extractQueryFromQuestionMark(input: string): string {
+function extractQueryFromQuestionMark(input: string): string {
   const fragmentIndex = input.indexOf('#');
   const withoutFragment =
     fragmentIndex >= 0 ? input.slice(0, fragmentIndex) : input;
