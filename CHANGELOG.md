@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.21] - 2026-06-27
+
+### Fixed
+
+- publish package with npm trusted publishing by @nyaomaru in [#481](https://github.com/nyaomaru/divider/pull/481)
+
+### Changed
+
+- shared divider segment selector by @nyaomaru in [#483](https://github.com/nyaomaru/divider/pull/483)
+
+### Chore
+
+- 2.0.20 by [bot] by @github-actions in [#480](https://github.com/nyaomaru/divider/pull/480)
+- Release: 2.0.21 by [bot] by @github-actions in [#484](https://github.com/nyaomaru/divider/pull/484)
+- Update dependency /node to v22.20.0 by @renovate[bot] by @types in [#482](https://github.com/nyaomaru/divider/pull/482)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.20...v2.0.21
+
+[v2.0.21]: https://github.com/nyaomaru/divider/compare/v2.0.20...v2.0.21
+
 ## [v2.0.20] - 2026-06-20
 
 ### Fixed
