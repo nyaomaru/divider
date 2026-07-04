@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.22] - 2026-07-04
+
+### Fixed
+
+- upgrade js-yaml override by @nyaomaru in [#489](https://github.com/nyaomaru/divider/pull/489)
+- override esbuild to patched version by @nyaomaru in [#490](https://github.com/nyaomaru/divider/pull/490)
+
+### Changed
+
+- simplify divider loop chunk handling by @nyaomaru in [#488](https://github.com/nyaomaru/divider/pull/488)
+
+### Chore
+
+- 2.0.21 by [bot] by @github-actions in [#485](https://github.com/nyaomaru/divider/pull/485)
+- Release: 2.0.22 by [bot] by @github-actions in [#491](https://github.com/nyaomaru/divider/pull/491)
+- Update dependency eslint to v10.6.0 by [bot] by @renovate in [#486](https://github.com/nyaomaru/divider/pull/486)
+- Update dependency prettier to v3.9.4 by [bot] by @renovate in [#487](https://github.com/nyaomaru/divider/pull/487)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.21...v2.0.22
+
+[v2.0.22]: https://github.com/nyaomaru/divider/compare/v2.0.21...v2.0.22
+
 ## [v2.0.21] - 2026-06-27
 
 ### Fixed
