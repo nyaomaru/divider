@@ -1,4 +1,5 @@
 import {
+  applyMaxChunks,
   shouldTruncateChunks,
   truncateChunksToMax,
 } from '../../src/utils/chunk';
@@ -78,5 +79,22 @@ describe('truncateChunksToMax', () => {
     const result = truncateChunksToMax(input, 3);
 
     expect(result).toEqual(['a', 'b', 'cd']);
+  });
+});
+
+describe('applyMaxChunks', () => {
+  it('returns a shallow copy when no limit applies', () => {
+    const input = ['a', 'b', 'c'];
+
+    const result = applyMaxChunks(input, 0);
+
+    expect(result).toEqual(input);
+    expect(result).not.toBe(input);
+  });
+
+  it('merges tail chunks when a limit applies', () => {
+    const result = applyMaxChunks(['ab', 'cd', 'ef', 'gh'], 2);
+
+    expect(result).toEqual(['ab', 'cdefgh']);
   });
 });

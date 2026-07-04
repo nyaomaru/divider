@@ -1,15 +1,40 @@
 import { isPositiveInteger } from '@/utils/guards/primitives';
 import { generateIndexes } from '@/utils/generate-indexes';
-import { shouldTruncateChunks, truncateChunksToMax } from '@/utils/chunk';
+import { applyMaxChunks } from '@/utils/chunk';
 import type {
   DividerInput,
   DividerLoopEmptyOptions,
+  DividerLoopOptions,
   DividerLoopOptionsLike,
   DividerResult,
 } from '@/types';
 import { divider } from '@/core/divider';
 import { PERFORMANCE_CONSTANTS } from '@/constants';
 import { transformDividerInput } from '@/utils/transform-divider-input';
+
+type ResolvedDividerLoopOptions = Required<
+  Pick<DividerLoopOptions, 'startOffset' | 'maxChunks'>
+>;
+
+const DEFAULT_DIVIDER_LOOP_OPTIONS = {
+  startOffset: PERFORMANCE_CONSTANTS.DEFAULT_START_OFFSET,
+  maxChunks: PERFORMANCE_CONSTANTS.DEFAULT_MAX_CHUNKS,
+} as const satisfies ResolvedDividerLoopOptions;
+
+/**
+ * Resolves loop-specific options to concrete runtime values.
+ * @param options Optional divider loop configuration.
+ * @returns Start offset and max chunk settings with defaults applied.
+ */
+function resolveDividerLoopOptions(
+  options?: DividerLoopOptionsLike
+): ResolvedDividerLoopOptions {
+  return {
+    startOffset:
+      options?.startOffset ?? DEFAULT_DIVIDER_LOOP_OPTIONS.startOffset,
+    maxChunks: options?.maxChunks ?? DEFAULT_DIVIDER_LOOP_OPTIONS.maxChunks,
+  };
+}
 
 /**
  * Splits the input string into chunks based on size and offset,
@@ -30,9 +55,7 @@ function createChunksFromString(
   const indexes = generateIndexes(str, size, startOffset);
   const chunks = divider(str, ...indexes);
 
-  return shouldTruncateChunks(chunks, maxChunks)
-    ? truncateChunksToMax(chunks, maxChunks)
-    : chunks;
+  return applyMaxChunks(chunks, maxChunks);
 }
 
 /**
@@ -64,10 +87,7 @@ export function dividerLoop<
     return [];
   }
 
-  const {
-    startOffset = PERFORMANCE_CONSTANTS.DEFAULT_START_OFFSET,
-    maxChunks = PERFORMANCE_CONSTANTS.DEFAULT_MAX_CHUNKS,
-  } = (options ?? {}) as O;
+  const { startOffset, maxChunks } = resolveDividerLoopOptions(options);
 
   return transformDividerInput(
     input,
