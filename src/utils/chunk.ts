@@ -39,3 +39,22 @@ export function truncateChunksToMax(
   const tail = chunks.slice(headCount).join('');
   return [...head, tail];
 }
+
+/**
+ * Applies a max-chunk limit when configured.
+ *
+ * WHY: Callers should not need to duplicate the guard before truncating; this
+ * keeps the "0 means unlimited" contract and tail-merge behavior together.
+ *
+ * @param chunks - The original array of string chunks.
+ * @param maxChunks - The maximum number of chunks to retain.
+ * @returns Original chunks when no limit applies, otherwise truncated chunks.
+ */
+export function applyMaxChunks(
+  chunks: readonly string[],
+  maxChunks: number
+): string[] {
+  return shouldTruncateChunks(chunks, maxChunks)
+    ? truncateChunksToMax(chunks, maxChunks)
+    : [...chunks];
+}
