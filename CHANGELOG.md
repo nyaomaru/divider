@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.23] - 2026-07-11
+
+### Changed
+
+- centralize divider input validation by @nyaomaru in [#495](https://github.com/nyaomaru/divider/pull/495)
+
+### Chore
+
+- 2.0.22 by [bot] by @github-actions in [#492](https://github.com/nyaomaru/divider/pull/492)
+- Release: 2.0.23 by [bot] by @github-actions in [#496](https://github.com/nyaomaru/divider/pull/496)
+- Update dependency tsx to v4.23.0 by [bot] by @renovate in [#493](https://github.com/nyaomaru/divider/pull/493)
+- Update dependency /node to v22.20.1 by @renovate[bot] by @types in [#494](https://github.com/nyaomaru/divider/pull/494)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.22...v2.0.23
+
+[v2.0.23]: https://github.com/nyaomaru/divider/compare/v2.0.22...v2.0.23
+
 ## [v2.0.22] - 2026-07-04
 
 ### Fixed
