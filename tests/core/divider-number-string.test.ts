@@ -18,6 +18,17 @@ describe('dividerNumberString with string', () => {
   test('handles empty string', () => {
     expect(dividerNumberString(TEST_STRINGS.EMPTY)).toEqual([]);
   });
+
+  test('handles invalid input gracefully', () => {
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation();
+
+    expect(dividerNumberString(null as unknown as string)).toEqual([]);
+    expect(
+      dividerNumberString([123] as unknown as readonly string[])
+    ).toEqual([]);
+
+    warnSpy.mockRestore();
+  });
 });
 
 describe('dividerNumberString with string[]', () => {
