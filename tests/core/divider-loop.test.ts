@@ -81,6 +81,25 @@ describe('dividerLoop with string', () => {
       })
     ).toEqual([]);
   });
+
+  test('handles invalid input gracefully', () => {
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation();
+
+    expect(
+      dividerLoop(
+        null as unknown as string,
+        TEST_SEPARATORS.NUMBERS.SINGLE
+      )
+    ).toEqual([]);
+    expect(
+      dividerLoop(
+        [123] as unknown as readonly string[],
+        TEST_SEPARATORS.NUMBERS.SINGLE
+      )
+    ).toEqual([]);
+
+    warnSpy.mockRestore();
+  });
 });
 
 describe('dividerLoop with string[]', () => {

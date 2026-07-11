@@ -6,6 +6,7 @@ import type {
   DividerResult,
   DividerStringResult,
 } from '@/types';
+import { isValidInput, warnInvalidInput } from '@/utils/guards/divider-input';
 import { isString } from '@/utils/guards/primitives';
 import { applyDividerOptions } from '@/utils/option';
 
@@ -31,6 +32,11 @@ export function transformDividerInput<
   transform: (value: string) => DividerStringResult,
   options?: O,
 ): DividerResult<T, O> {
+  if (!isValidInput(input)) {
+    warnInvalidInput();
+    return [] as DividerResult<T, O>;
+  }
+
   const result: DividerStringResult | DividerArrayResult = isString(input)
     ? transform(input)
     : input.map(transform);

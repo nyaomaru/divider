@@ -1,7 +1,7 @@
 import type { DividerInput, DividerArgs, DividerReturn } from '@/types';
 import { divideString } from '@/utils/parser';
 import { isEmptyArray } from '@/utils/guards/array';
-import { isValidInput } from '@/utils/guards/divider-input';
+import { isValidInput, warnInvalidInput } from '@/utils/guards/divider-input';
 import { ensureStringArray } from '@/utils/array';
 import { transformDividerInput } from '@/utils/transform-divider-input';
 import { createDividerPlan } from '@/core/divider-plan';
@@ -25,9 +25,7 @@ export function divider<
 export function divider(input: DividerInput, ...args: DividerArgs) {
   // Validate input
   if (!isValidInput(input)) {
-    console.warn(
-      "divider: 'input' must be a string or an array of strings. So returning an empty array.",
-    );
+    warnInvalidInput();
     return [];
   }
 
