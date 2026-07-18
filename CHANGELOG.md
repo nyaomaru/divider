@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.24] - 2026-07-18
+
+### Fixed
+
+- prevent cache key collisions by @nyaomaru in [#501](https://github.com/nyaomaru/divider/pull/501)
+
+### Chore
+
+- 2.0.23 by [bot] by @github-actions in [#497](https://github.com/nyaomaru/divider/pull/497)
+- Release: 2.0.24 by [bot] by @github-actions in [#502](https://github.com/nyaomaru/divider/pull/502)
+- Update dependency prettier to v3.9.5 by [bot] by @renovate in [#498](https://github.com/nyaomaru/divider/pull/498)
+- Update dependency eslint to v10.7.0 by [bot] by @renovate in [#499](https://github.com/nyaomaru/divider/pull/499)
+- Update dependency tsx to v4.23.1 by [bot] by @renovate in [#500](https://github.com/nyaomaru/divider/pull/500)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.23...v2.0.24
+
+[v2.0.24]: https://github.com/nyaomaru/divider/compare/v2.0.23...v2.0.24
+
 ## [v2.0.23] - 2026-07-11
 
 ### Changed
