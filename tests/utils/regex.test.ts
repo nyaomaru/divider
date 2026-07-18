@@ -77,6 +77,14 @@ describe('getRegex', () => {
     expect(regex?.source).toBe('(?:-|,|;)'); // Duplicates should be removed
     expect(regex?.flags).toBe('g');
   });
+
+  test('keeps cache entries distinct when separators contain control characters', () => {
+    getRegex(['a\0b']);
+    const regex = getRegex(['a', 'b']);
+
+    expect(regex?.source).toBe('(?:a|b)');
+    expect(regexCache.size).toBe(2);
+  });
 });
 
 describe('RegexCache', () => {

@@ -45,11 +45,6 @@ export const PERFORMANCE_CONSTANTS = {
 } as const;
 
 /**
- * Separator character used for cache key concatenation.
- */
-export const CACHE_KEY_SEPARATOR = '\x00';
-
-/**
  * A constant representing a single whitespace character.
  */
 export const WHITE_SPACE = ' ';
