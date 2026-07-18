@@ -1,6 +1,6 @@
 import { isEmptyArray } from '@/utils/guards/array';
 import { isEmptyString } from '@/utils/guards/whitespace';
-import { PERFORMANCE_CONSTANTS, CACHE_KEY_SEPARATOR } from '@/constants';
+import { PERFORMANCE_CONSTANTS } from '@/constants';
 
 // WHY: Normalizing separators (dedupe + remove empties) is needed both for
 // cache key creation and pattern generation. Sorting by length descending
@@ -15,13 +15,18 @@ function normalizeSeparators(separators: readonly string[]): string[] {
 /**
  * Creates a cache key from already-normalized separators.
  *
+ * WHY: Length prefixes keep the encoding unambiguous even when a separator
+ * contains control characters or text that resembles another cache entry.
+ *
  * @param normalizedSeparators - Separators after dedupe/filter/sort normalization
  * @returns Cache key string
  */
 function createCacheKey(
   normalizedSeparators: readonly string[],
 ): string {
-  return normalizedSeparators.join(CACHE_KEY_SEPARATOR);
+  return normalizedSeparators
+    .map((separator) => `${separator.length}:${separator}`)
+    .join('');
 }
 
 /**
@@ -37,23 +42,12 @@ class RegexCache {
   }
 
   /**
-   * Retrieves a cached RegExp for the given separators.
-   *
-   * @param separators - Array of string separators
-   * @returns Cached RegExp or null if not found
-   */
-  get(separators: readonly string[]): RegExp | null {
-    const key = this.createKey(separators);
-    return this.getByKey(key);
-  }
-
-  /**
-   * Retrieves a cached RegExp for a precomputed cache key.
+   * Retrieves a cached RegExp and marks it as recently used.
    *
    * @param key - Cache key string
    * @returns Cached RegExp or null if not found
    */
-  getByKey(key: string): RegExp | null {
+  get(key: string): RegExp | null {
     const regex = this.cache.get(key);
 
     if (regex) {
@@ -66,23 +60,12 @@ class RegexCache {
   }
 
   /**
-   * Stores a RegExp in the cache with LRU eviction if needed.
-   *
-   * @param separators - Array of string separators
-   * @param regex - Compiled RegExp to cache
-   */
-  set(separators: readonly string[], regex: RegExp): void {
-    const key = this.createKey(separators);
-    this.setByKey(key, regex);
-  }
-
-  /**
-   * Stores a RegExp in the cache for a precomputed cache key.
+   * Stores a RegExp and evicts the least-recently-used entry when full.
    *
    * @param key - Cache key string
    * @param regex - Compiled RegExp to cache
    */
-  setByKey(key: string, regex: RegExp): void {
+  set(key: string, regex: RegExp): void {
     // If key already exists, remove it first to update position
     if (this.cache.has(key)) {
       this.cache.delete(key);
@@ -97,20 +80,6 @@ class RegexCache {
     }
 
     this.cache.set(key, regex);
-  }
-
-  /**
-   * Creates a cache key from separators array.
-   * More efficient than JSON.stringify for large arrays.
-   *
-   * @param separators - Array of string separators
-   * @returns Cache key string
-   */
-  private createKey(separators: readonly string[]): string {
-    // Normalize separators: dedupe and filter out empty strings
-    const normalizedSeparators = normalizeSeparators(separators);
-    // Use join with separator that's unlikely to appear in actual separators
-    return createCacheKey(normalizedSeparators);
   }
 
   /**
@@ -159,7 +128,7 @@ export function getRegex(separators: readonly string[]): RegExp | null {
   const cacheKey = createCacheKey(uniqueSeparators);
 
   // Check cache first
-  const cached = regexCache.getByKey(cacheKey);
+  const cached = regexCache.get(cacheKey);
   if (cached) return cached;
 
   // Compile new regex and cache it
@@ -167,7 +136,7 @@ export function getRegex(separators: readonly string[]): RegExp | null {
   const pattern = uniqueSeparators.map(escapeRegExp).join('|');
   const regex = new RegExp(`(?:${pattern})`, 'g');
 
-  regexCache.setByKey(cacheKey, regex);
+  regexCache.set(cacheKey, regex);
   return regex;
 }
 
