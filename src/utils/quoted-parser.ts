@@ -4,18 +4,6 @@ import { isEmptyString } from '@/utils/guards/whitespace';
 import { stripOuterQuotes } from '@/utils/strip-outer-quotes';
 
 /**
- * Mutable parser state used while rebuilding quoted fields from split pieces.
- */
-type QuotedParserState = {
-  /** Parsed fields collected so far */
-  fields: string[];
-  /** Buffered content for the field currently being rebuilt */
-  current: string;
-  /** Whether the parser is currently inside a quoted field */
-  insideQuotes: boolean;
-};
-
-/**
  * Options for quoted-aware field division.
  */
 type QuotedDivideOptions = {
@@ -27,6 +15,25 @@ type QuotedDivideOptions = {
   trim?: boolean;
   /** Whether to tolerate unclosed leading quotes */
   lenient?: boolean;
+};
+
+type ResolvedQuotedDivideOptions = Required<QuotedDivideOptions>;
+
+/**
+ * Parser context used while rebuilding quoted fields from split pieces.
+ *
+ * WHY: Keeping immutable parse options beside the mutable state avoids
+ * threading the same related arguments through each parser transition.
+ */
+type QuotedParserContext = {
+  /** Parsed fields collected so far */
+  fields: string[];
+  /** Buffered content for the field currently being rebuilt */
+  current: string;
+  /** Whether the parser is currently inside a quoted field */
+  insideQuotes: boolean;
+  /** Options shared by every transition in the current parse */
+  readonly options: ResolvedQuotedDivideOptions;
 };
 
 /**
@@ -59,23 +66,16 @@ const advanceQuoteState = (
 
 /**
  * Finalize the current buffered field and reset parser state for the next one.
- * @param state Mutable parser state.
- * @param quote Quote string used for the current parse.
- * @param trim Whether to trim the field after unquoting.
- * @param lenient Whether to tolerate unclosed leading quotes.
+ * @param context Parser state and options.
  */
-const flushField = (
-  state: QuotedParserState,
-  quote: string,
-  trim: boolean,
-  lenient: boolean,
-) => {
-  let fieldValue = stripOuterQuotes(state.current, quote, { lenient });
+const flushField = (context: QuotedParserContext) => {
+  const { quote, trim, lenient } = context.options;
+  let fieldValue = stripOuterQuotes(context.current, quote, { lenient });
   if (trim) fieldValue = fieldValue.trim();
 
-  state.fields.push(fieldValue);
-  state.current = '';
-  state.insideQuotes = false;
+  context.fields.push(fieldValue);
+  context.current = '';
+  context.insideQuotes = false;
 };
 
 /**
@@ -84,66 +84,51 @@ const flushField = (
  * WHY: The delimiter is reattached when rebuilding the buffered field so
  * delimiters inside quoted sections remain part of the same logical value.
  *
- * @param state Mutable parser state.
+ * @param context Parser state and options.
  * @param piece Next split piece.
- * @param delimiter Delimiter used to split the original line.
- * @param quote Quote string used for the current parse.
- * @param trim Whether to trim the field after unquoting.
- * @param lenient Whether to tolerate unclosed leading quotes.
  */
-const appendPiece = (
-  state: QuotedParserState,
-  piece: string,
-  delimiter: string,
-  quote: string,
-  trim: boolean,
-  lenient: boolean,
-) => {
-  const segment = isEmptyString(state.current) ? piece : delimiter + piece;
-  state.current += segment;
+const appendPiece = (context: QuotedParserContext, piece: string) => {
+  const { delimiter, quote } = context.options;
+  const segment = isEmptyString(context.current) ? piece : delimiter + piece;
+  context.current += segment;
 
-  state.insideQuotes =
+  context.insideQuotes =
     quote.length === 1
-      ? advanceQuoteState(state.insideQuotes, segment, quote)
-      : countUnescaped(state.current, quote) % 2 === 1;
+      ? advanceQuoteState(context.insideQuotes, segment, quote)
+      : countUnescaped(context.current, quote) % 2 === 1;
 
-  if (!state.insideQuotes) {
-    flushField(state, quote, trim, lenient);
+  if (!context.insideQuotes) {
+    flushField(context);
   }
 };
 
 /**
  * Rebuild quoted-aware fields from delimiter-split pieces.
  * @param line Source line to parse.
- * @param delimiter Field delimiter.
- * @param quote Quote string used for the current parse.
- * @param trim Whether to trim fields after unquoting.
- * @param lenient Whether to tolerate unclosed leading quotes.
+ * @param options Resolved options shared by the parser transitions.
  * @returns Parsed field values.
  */
 const buildQuotedFields = (
   line: string,
-  delimiter: string,
-  quote: string,
-  trim: boolean,
-  lenient: boolean,
+  options: ResolvedQuotedDivideOptions,
 ) => {
-  const pieces = dividePreserve(line, delimiter);
-  const state: QuotedParserState = {
+  const pieces = dividePreserve(line, options.delimiter);
+  const context: QuotedParserContext = {
     fields: [],
     current: '',
     insideQuotes: false,
+    options,
   };
 
   for (const piece of pieces) {
-    appendPiece(state, piece, delimiter, quote, trim, lenient);
+    appendPiece(context, piece);
   }
 
-  if (!isEmptyString(state.current)) {
-    flushField(state, quote, trim, lenient);
+  if (!isEmptyString(context.current)) {
+    flushField(context);
   }
 
-  return state.fields;
+  return context.fields;
 };
 
 /**
@@ -166,5 +151,5 @@ export function quotedDivide(
   }: QuotedDivideOptions = {},
 ): string[] {
   if (isEmptyString(line)) return [''];
-  return buildQuotedFields(line, delimiter, quote, trim, lenient);
+  return buildQuotedFields(line, { delimiter, quote, trim, lenient });
 }
