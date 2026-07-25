@@ -35,7 +35,7 @@
         "npm:prettier@^3.8.4",
         "npm:tsup@^8.5.1",
         "npm:tsx@^4.22.4",
-        "npm:typedoc@~0.28.19",
+        "npm:typedoc@~0.28.20",
         "npm:typescript@^6.0.3"
       ]
     }
