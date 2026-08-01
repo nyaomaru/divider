@@ -17,9 +17,6 @@
     <a href="https://www.npmjs.com/package/@nyaomaru/divider">
         <img src="https://img.shields.io/npm/dt/@nyaomaru/divider.svg" alt="npm downloads">
     </a>
-    <a href="https://github.com/nyaomaru/divider/actions">
-        <img src="https://github.com/nyaomaru/divider/actions/workflows/release.yml/badge.svg" alt="Build Status">
-    </a>
 </p>
 
 A simple utility to divide a `string` or `string[]` based on given indexes or delimiters.
