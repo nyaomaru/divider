@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.25] - 2026-07-25
+
+### Changed
+
+- consolidate quoted parser context by @nyaomaru in [#505](https://github.com/nyaomaru/divider/pull/505)
+
+### Chore
+
+- 2.0.24 by [bot] by @github-actions in [#503](https://github.com/nyaomaru/divider/pull/503)
+- Release: 2.0.25 by [bot] by @github-actions in [#507](https://github.com/nyaomaru/divider/pull/507)
+- Update dependency prettier to v3.9.6 by [bot] by @renovate in [#504](https://github.com/nyaomaru/divider/pull/504)
+- update TypeDoc to resolve linkify-it vulnerability by @nyaomaru in [#506](https://github.com/nyaomaru/divider/pull/506)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.24...v2.0.25
+
+[v2.0.25]: https://github.com/nyaomaru/divider/compare/v2.0.24...v2.0.25
+
 ## [v2.0.24] - 2026-07-18
 
 ### Fixed
