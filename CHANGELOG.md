@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.26] - 2026-08-01
+
+### Changed
+
+- reuse compiled string divider by @nyaomaru in [#510](https://github.com/nyaomaru/divider/pull/510)
+
+### Chore
+
+- 2.0.25 by [bot] by @github-actions in [#508](https://github.com/nyaomaru/divider/pull/508)
+- Release: 2.0.26 by [bot] by @github-actions in [#511](https://github.com/nyaomaru/divider/pull/511)
+- Update dependency eslint to v10.8.0 by [bot] by @renovate in [#509](https://github.com/nyaomaru/divider/pull/509)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.25...v2.0.26
+
+[v2.0.26]: https://github.com/nyaomaru/divider/compare/v2.0.25...v2.0.26
+
 ## [v2.0.25] - 2026-07-25
 
 ### Changed
