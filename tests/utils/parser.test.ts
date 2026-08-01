@@ -1,4 +1,26 @@
-import { divideString } from '../../src/utils/parser';
+import {
+  createStringDivider,
+  divideString,
+} from '../../src/utils/parser';
+
+describe('createStringDivider', () => {
+  test('reuses one separator configuration across multiple inputs', () => {
+    const divide = createStringDivider([3], ['-']);
+
+    expect(['abc-def', 'ghi-jkl'].map(divide)).toEqual([
+      ['abc', 'def'],
+      ['ghi', 'jkl'],
+    ]);
+  });
+
+  test('does not mutate numeric separators while compiling them', () => {
+    const separators = [4, 2];
+    const divide = createStringDivider(separators, []);
+
+    expect(divide('abcdef')).toEqual(['ab', 'cd', 'ef']);
+    expect(separators).toEqual([4, 2]);
+  });
+});
 
 describe('divideString', () => {
   test('divide by index positions', () => {
