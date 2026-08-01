@@ -10,6 +10,45 @@ type DivideStringOptions = {
   readonly preserveEmpty?: boolean;
 };
 
+type StringDivider = (input: string) => string[];
+
+/**
+ * Creates a reusable string divider from normalized separator groups.
+ *
+ * WHY: Array input applies the same separators to every string. Sorting numeric
+ * indexes and resolving the separator regex here avoids repeating invariant
+ * setup for each item while keeping the per-string operation focused on slicing.
+ *
+ * @param numSeparators Numeric index positions used to slice each input.
+ * @param strSeparators String delimiters used to split each sliced part.
+ * @param options Division behavior shared by every input.
+ * @returns String transformer that applies the compiled separator configuration.
+ */
+export function createStringDivider(
+  numSeparators: readonly number[],
+  strSeparators: readonly string[],
+  options?: DivideStringOptions,
+): StringDivider {
+  if (hasNoSeparators(numSeparators, strSeparators)) {
+    return (input) => [input];
+  }
+
+  assertValidNumSeparators(numSeparators);
+
+  const sortedNumSeparators = sortAscending(numSeparators);
+  const regex = getRegex(strSeparators);
+  const shouldPreserveEmpty = options?.preserveEmpty === true;
+
+  return (input) => {
+    const parts = sliceByIndexes(input, sortedNumSeparators);
+    const segments = regex ? parts.flatMap((part) => part.split(regex)) : parts;
+
+    return shouldPreserveEmpty
+      ? segments
+      : segments.filter((segment) => !isEmptyString(segment));
+  };
+}
+
 /**
  * Divides a string using both numeric index positions and string delimiters.
  *
@@ -20,34 +59,16 @@ type DivideStringOptions = {
  * @param input - The input string to be divided.
  * @param numSeparators - An array of numeric index positions to slice the string at.
  * @param strSeparators - An array of string delimiters to further split the result.
+ * @param options Division behavior for the input.
  * @returns An array of divided string segments.
  */
 export function divideString(
   input: string,
   numSeparators: readonly number[],
   strSeparators: readonly string[],
-  options?: DivideStringOptions
+  options?: DivideStringOptions,
 ): string[] {
-  if (hasNoSeparators(numSeparators, strSeparators)) {
-    return [input];
-  }
-
-  assertValidNumSeparators(numSeparators);
-
-  // Precompile regex for string separators
-  const regex = getRegex(strSeparators);
-  const shouldPreserveEmpty = options?.preserveEmpty === true;
-
-  // Divide by number delimiters
-  const sortedNumSeparators = sortAscending(numSeparators);
-  const parts: string[] = sliceByIndexes(input, sortedNumSeparators);
-
-  // Divide by string delimiters
-  const segments = regex ? parts.flatMap((part) => part.split(regex)) : parts;
-
-  return shouldPreserveEmpty
-    ? segments
-    : segments.filter((segment) => !isEmptyString(segment));
+  return createStringDivider(numSeparators, strSeparators, options)(input);
 }
 
 /**
@@ -58,7 +79,7 @@ export function divideString(
  */
 const hasNoSeparators = (
   numSeparators: readonly number[],
-  strSeparators: readonly string[]
+  strSeparators: readonly string[],
 ) => isEmptyArray(numSeparators) && isEmptyArray(strSeparators);
 
 /**

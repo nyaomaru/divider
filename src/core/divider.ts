@@ -1,5 +1,5 @@
 import type { DividerInput, DividerArgs, DividerReturn } from '@/types';
-import { divideString } from '@/utils/parser';
+import { createStringDivider } from '@/utils/parser';
 import { isEmptyArray } from '@/utils/guards/array';
 import { isValidInput, warnInvalidInput } from '@/utils/guards/divider-input';
 import { ensureStringArray } from '@/utils/array';
@@ -23,23 +23,20 @@ export function divider<
   const TArgs extends DividerArgs,
 >(input: T, ...args: TArgs): DividerReturn<T, TArgs>;
 export function divider(input: DividerInput, ...args: DividerArgs) {
-  // Validate input
   if (!isValidInput(input)) {
     warnInvalidInput();
     return [];
   }
 
-  // Handle empty args case
   if (isEmptyArray(args)) {
     return ensureStringArray(input);
   }
 
   const { numSeparators, strSeparators, options } = createDividerPlan(args);
 
-  const applyDivision = (str: string) =>
-    divideString(str, numSeparators, strSeparators, {
-      preserveEmpty: options.preserveEmpty,
-    });
+  const applyDivision = createStringDivider(numSeparators, strSeparators, {
+    preserveEmpty: options.preserveEmpty,
+  });
 
   return transformDividerInput(input, applyDivision, options);
 }
