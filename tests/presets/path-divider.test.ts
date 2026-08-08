@@ -45,6 +45,19 @@ describe('pathDivider', () => {
     ]);
   });
 
+  it('preserves empty trimmed segments when collapse=false', () => {
+    expect(
+      pathDivider('  / a /   | b / ', { trim: true, collapse: false }),
+    ).toEqual(['', 'a', '', 'b', '']);
+  });
+
+  it('collapses whitespace-only segments after trimming', () => {
+    expect(pathDivider('  / a /   | b / ', { trim: true })).toEqual([
+      'a',
+      'b',
+    ]);
+  });
+
   it('handles empty input', () => {
     expect(pathDivider('', { collapse: false })).toEqual(['']);
     // collapse=true drops empties that arise only from separators,
