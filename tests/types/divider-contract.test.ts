@@ -14,6 +14,7 @@ import type {
   DividerArrayResult,
   DividerLoopOptions,
   DividerOptions,
+  DividerSegmentOptions,
   DividerStringResult,
   EmailDividerOptions,
   PathDividerOptions,
@@ -50,6 +51,12 @@ describe('root public API contract', () => {
   it('exports divider functions with stable return types', () => {
     expectType<DividerStringResult[number]>(dividerFirst('a,b', ','));
     expectType<DividerStringResult[number]>(dividerLast('a,b', ','));
+    expectType<DividerStringResult[number]>(
+      dividerFirst(' a,b', ',', { trim: true }),
+    );
+    expectType<DividerStringResult[number]>(
+      dividerLast('a,b ', ',', { exclude: 'whitespace' }),
+    );
     expectType<DividerStringResult>(dividerLoop('abcdef', 2));
     expectType<DividerArrayResult>(dividerLoop(['abcdef'], 2));
     expectType<DividerStringResult>(
@@ -81,6 +88,11 @@ describe('root public API contract', () => {
       maxChunks: 2,
       startOffset: 1,
     };
+    const segmentOptions: DividerSegmentOptions = {
+      trim: true,
+      preserveEmpty: true,
+      exclude: 'empty',
+    };
     const csvOptions: CsvDividerOptions = {
       delimiter: ',',
       quoteChar: '"',
@@ -101,6 +113,7 @@ describe('root public API contract', () => {
 
     expectType<DividerOptions>(dividerOptions);
     expectType<DividerLoopOptions>(loopOptions);
+    expectType<DividerSegmentOptions>(segmentOptions);
     expectType<CsvDividerOptions>(csvOptions);
     expectType<EmailDividerOptions>(emailOptions);
     expectType<PathDividerOptions>(pathOptions);

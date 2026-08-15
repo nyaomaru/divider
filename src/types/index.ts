@@ -122,6 +122,22 @@ export type DividerArgs =
   | readonly [...DividerSeparator[], DividerOptions];
 
 /**
+ * Shared options accepted by single-segment divider helpers.
+ *
+ * WHY: `dividerFirst` and `dividerLast` always flatten before selecting a
+ * segment, so exposing `flatten` would suggest a behavior callers cannot
+ * meaningfully control.
+ */
+export type DividerSegmentOptions = Omit<DividerOptions, 'flatten'>;
+
+/**
+ * Divider arguments accepted by single-segment divider helpers.
+ */
+export type DividerSegmentArgs =
+  | DividerSeparators
+  | readonly [...DividerSeparator[], DividerSegmentOptions];
+
+/**
  * Extracts trailing divider options from a variadic argument tuple.
  */
 export type ExtractedDividerOptions<TArgs extends readonly unknown[]> =
