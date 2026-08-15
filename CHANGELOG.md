@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.28] - 2026-08-15
+
+### Added
+
+- support options in divider segment helpers by @nyaomaru in [#519](https://github.com/nyaomaru/divider/pull/519)
+
+### Chore
+
+- 2.0.27 by [bot] by @github-actions in [#516](https://github.com/nyaomaru/divider/pull/516)
+- Release: 2.0.28 by [bot] by @github-actions in [#520](https://github.com/nyaomaru/divider/pull/520)
+- Update dependency tsx to v4.23.12 by [bot] by @renovate in [#517](https://github.com/nyaomaru/divider/pull/517)
+- Update dependency eslint to v10.8.1 by [bot] by @renovate in [#518](https://github.com/nyaomaru/divider/pull/518)
+- update js-yaml to 4.3.1 by @nyaomaru in [#521](https://github.com/nyaomaru/divider/pull/521)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.27...v2.0.28
+
+[v2.0.28]: https://github.com/nyaomaru/divider/compare/v2.0.27...v2.0.28
+
 ## [v2.0.27] - 2026-08-08
 
 ### Changed
