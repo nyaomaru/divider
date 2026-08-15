@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.0.27] - 2026-08-08
+
+### Changed
+
+- reuse core divider in path preset by @nyaomaru in [#514](https://github.com/nyaomaru/divider/pull/514)
+
+### Chore
+
+- Update README.md by @nyaomaru in [#513](https://github.com/nyaomaru/divider/pull/513)
+- 2.0.26 by [bot] by @github-actions in [#512](https://github.com/nyaomaru/divider/pull/512)
+- Release: 2.0.27 by [bot] by @github-actions in [#515](https://github.com/nyaomaru/divider/pull/515)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.26...v2.0.27
+
+[v2.0.27]: https://github.com/nyaomaru/divider/compare/v2.0.26...v2.0.27
+
 ## [v2.0.26] - 2026-08-01
 
 ### Changed
