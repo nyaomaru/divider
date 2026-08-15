@@ -1,5 +1,6 @@
 import { divider } from '@/core/divider';
-import type { DividerInput, DividerSeparators } from '@/types';
+import type { DividerInput, DividerSegmentArgs } from '@/types';
+import { extractOptions } from '@/utils/option';
 
 type DividerSegmentSelector = (segments: readonly string[]) => string | undefined;
 
@@ -17,9 +18,15 @@ type DividerSegmentSelector = (segments: readonly string[]) => string | undefine
  */
 export function selectDividerSegment(
   input: DividerInput,
-  args: DividerSeparators,
+  args: DividerSegmentArgs,
   select: DividerSegmentSelector,
 ): string {
-  const result = divider(input, ...args, { flatten: true });
+  const { cleanedArgs, options } = extractOptions(args);
+  const result = divider(input, ...cleanedArgs, {
+    ...options,
+    // WHY: Segment selectors operate across every row of array input.
+    flatten: true,
+  });
+
   return select(result) ?? '';
 }

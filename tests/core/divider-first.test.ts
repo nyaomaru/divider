@@ -86,3 +86,24 @@ runDividerFirstTests(
   TEST_ARRAYS.HELLO_WORLD,
   EXPECTED_RESULTS.DIVIDER_FIRST.ARRAY
 );
+
+describe('dividerFirst with options', () => {
+  test('applies trim before selecting the first segment', () => {
+    expect(dividerFirst('  hello , world  ', ',', { trim: true })).toBe(
+      'hello'
+    );
+  });
+
+  test('can preserve an empty first segment', () => {
+    expect(dividerFirst(',hello', ',', { preserveEmpty: true })).toBe('');
+  });
+
+  test('applies exclusion before selecting the first segment', () => {
+    expect(
+      dividerFirst('   ,hello', ',', {
+        preserveEmpty: true,
+        exclude: 'whitespace',
+      })
+    ).toBe('hello');
+  });
+});

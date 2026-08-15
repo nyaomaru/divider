@@ -1,11 +1,11 @@
 import { selectDividerSegment } from '@/core/divider-segment';
-import type { DividerInput, DividerSeparators } from '@/types';
+import type { DividerInput, DividerSegmentArgs } from '@/types';
 
 /**
  * Extracts the first segment after dividing the input using specified separators.
  *
  * @param input - A string or array of strings to divide
- * @param args - Array of separators (numbers/strings) to use for division
+ * @param args - Separators and optional segment-processing options
  * @returns The first segment after division, or an empty string if no segments are found
  * @example
  * dividerFirst("hello-world", "-") // returns "hello"
@@ -13,7 +13,7 @@ import type { DividerInput, DividerSeparators } from '@/types';
  */
 export function dividerFirst(
   input: DividerInput,
-  ...args: DividerSeparators
+  ...args: DividerSegmentArgs
 ): string {
   return selectDividerSegment(input, args, (segments) => segments[0]);
 }

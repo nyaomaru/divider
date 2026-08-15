@@ -86,3 +86,24 @@ runDividerLastTests(
   TEST_ARRAYS.HELLO_WORLD,
   EXPECTED_RESULTS.DIVIDER_LAST.ARRAY
 );
+
+describe('dividerLast with options', () => {
+  test('applies trim before selecting the last segment', () => {
+    expect(dividerLast('  hello , world  ', ',', { trim: true })).toBe(
+      'world'
+    );
+  });
+
+  test('can preserve an empty last segment', () => {
+    expect(dividerLast('hello,', ',', { preserveEmpty: true })).toBe('');
+  });
+
+  test('applies exclusion before selecting the last segment', () => {
+    expect(
+      dividerLast('hello,   ', ',', {
+        preserveEmpty: true,
+        exclude: 'whitespace',
+      })
+    ).toBe('hello');
+  });
+});

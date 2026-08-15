@@ -133,6 +133,11 @@ const firstElement = dividerFirst('hello world', ' ');
 
 const firstArrayElement = dividerFirst(['hello', 'world'], 2);
 // 'he'
+
+const firstTrimmedElement = dividerFirst('  hello , world', ',', {
+  trim: true,
+});
+// 'hello'
 ```
 
 ### 📌 `dividerLast()` Usage
@@ -147,6 +152,11 @@ const lastElement = dividerLast('hello world', ' ');
 
 const lastArrayElement = dividerLast(['hello', 'world'], 2);
 // 'rld'
+
+const lastPreservedElement = dividerLast('hello,', ',', {
+  preserveEmpty: true,
+});
+// ''
 ```
 
 ### 📌 `dividerLoop()` Usage
