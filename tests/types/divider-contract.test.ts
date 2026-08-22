@@ -6,6 +6,7 @@ import {
   dividerLoop,
   dividerNumberString,
   emailDivider,
+  lineDivider,
   pathDivider,
   queryDivider,
 } from '../../src';
@@ -17,6 +18,7 @@ import type {
   DividerSegmentOptions,
   DividerStringResult,
   EmailDividerOptions,
+  LineDividerOptions,
   PathDividerOptions,
   QueryDividerOptions,
 } from '../../src';
@@ -70,6 +72,7 @@ describe('root public API contract', () => {
 
     expectType<DividerStringResult>(csvDivider('a,b'));
     expectType<DividerStringResult>(emailDivider('name@example.com'));
+    expectType<DividerStringResult>(lineDivider('first\nsecond'));
     expectType<DividerStringResult>(pathDivider('/a/b'));
     expectType<DividerArrayResult>(queryDivider('a=1&b=2'));
 
@@ -106,6 +109,10 @@ describe('root public API contract', () => {
       collapse: true,
       trim: true,
     };
+    const lineOptions: LineDividerOptions = {
+      preserveEmpty: true,
+      trim: true,
+    };
     const queryOptions: QueryDividerOptions = {
       mode: 'auto',
       trim: true,
@@ -116,6 +123,7 @@ describe('root public API contract', () => {
     expectType<DividerSegmentOptions>(segmentOptions);
     expectType<CsvDividerOptions>(csvOptions);
     expectType<EmailDividerOptions>(emailOptions);
+    expectType<LineDividerOptions>(lineOptions);
     expectType<PathDividerOptions>(pathOptions);
     expectType<QueryDividerOptions>(queryOptions);
   });

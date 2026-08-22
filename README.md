@@ -215,6 +215,7 @@ Some common use cases are wrapped as presets for convenience.
 | -------------- | --------------------------------------------------------- |
 | `emailDivider` | Divide email into [local-part, domain] (by '@')           |
 | `csvDivider`   | Divide comma-separated strings, with quoted field support |
+| `lineDivider`  | Divide text across Unix, Windows, and legacy Mac newlines  |
 | `pathDivider`  | Divide file paths by / or \|                              |
 | `queryDivider` | Divide query strings into [key, value] pairs (URL-safe)   |
 

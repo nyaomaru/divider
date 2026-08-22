@@ -194,3 +194,38 @@ queryDivider('a=%2B', { mode: 'raw' });
 | ------ | -------- | ---------------------------------------------------------------------------------------- |
 | `mode` | `'auto'` | Decoding mode: `'auto'` applies standard URL decoding; `'raw'` leaves values as-is.     |
 | `trim` | `false`  | Trim whitespace around keys and values after decoding (or in raw mode, without decoding). |
+
+## `lineDivider()`
+
+Divides text into lines across Unix (`\n`), Windows (`\r\n`), and legacy Mac (`\r`) line endings.
+
+```ts
+import { lineDivider } from '@nyaomaru/divider';
+
+lineDivider('first\r\nsecond\nthird');
+// ['first', 'second', 'third']
+```
+
+Blank lines and trailing line endings are preserved by default:
+
+```ts
+lineDivider('first\n\nthird\n');
+// ['first', '', 'third', '']
+
+lineDivider('first\n\nthird\n', { preserveEmpty: false });
+// ['first', 'third']
+```
+
+Trim whitespace from each line:
+
+```ts
+lineDivider(' first \n second ', { trim: true });
+// ['first', 'second']
+```
+
+### Options
+
+| name            | default | description                                                     |
+| --------------- | ------- | --------------------------------------------------------------- |
+| `trim`          | `false` | If true, trims leading and trailing whitespace from each line.  |
+| `preserveEmpty` | `true`  | If true, preserves blank lines and trailing line-ending output. |
