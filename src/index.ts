@@ -5,12 +5,14 @@ export { dividerLoop } from '@/core/divider-loop';
 export { dividerNumberString } from '@/core/divider-number-string';
 export { csvDivider } from '@/presets/csv-divider';
 export { emailDivider } from '@/presets/email-divider';
+export { lineDivider } from '@/presets/line-divider';
 export { pathDivider } from '@/presets/path-divider';
 export { queryDivider } from '@/presets/query-divider';
 export * from './types';
 export type {
   CsvDividerOptions,
   EmailDividerOptions,
+  LineDividerOptions,
   PathDividerOptions,
   QueryDecodeMode,
   QueryDividerOptions,

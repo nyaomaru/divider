@@ -18,6 +18,12 @@ export type PathDividerOptions = Pick<DividerOptions, 'trim'> & {
   readonly collapse?: boolean;
 };
 
+/** Options supported by `lineDivider`. */
+export type LineDividerOptions = Pick<
+  DividerOptions,
+  'trim' | 'preserveEmpty'
+>;
+
 export type QueryDecodeMode =
   (typeof QUERY_DECODE_MODES)[keyof typeof QUERY_DECODE_MODES];
 
