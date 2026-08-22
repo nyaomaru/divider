@@ -5,6 +5,43 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.1.0] - 2026-08-22
+
+### Added
+
+- add lineDivider preset by @nyaomaru in [#523](https://github.com/nyaomaru/divider/pull/523)
+
+### Chore
+
+- 2.0.28 by [bot] by @github-actions in [#522](https://github.com/nyaomaru/divider/pull/522)
+- Release: 2.1.0 by [bot] by @github-actions in [#524](https://github.com/nyaomaru/divider/pull/524)
+
+### What's new 🚀
+
+#### Divide text across different line endings
+
+The new lineDivider preset splits text using Unix (\n), Windows (\r\n), and legacy Mac (\r) line endings. Blank lines are preserved by default, with options for trimming lines or removing empty entries.
+
+```ts
+import { lineDivider } from '@nyaomaru/divider';
+
+lineDivider('first\r\nsecond\nthird');
+// ['first', 'second', 'third']
+
+lineDivider('first\n\nthird\n');
+// ['first', '', 'third', '']
+
+lineDivider(' first \n\n second ', {
+  trim: true,
+  preserveEmpty: false,
+});
+// ['first', 'second']
+```
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.0.28...v2.1.0
+
+[v2.1.0]: https://github.com/nyaomaru/divider/compare/v2.0.28...v2.1.0
+
 ## [v2.0.28] - 2026-08-15
 
 ### Added
