@@ -5,6 +5,56 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.2.0] - 2026-08-29
+
+### Added
+
+- add dividerAt segment helper by @nyaomaru in [#529](https://github.com/nyaomaru/divider/pull/529)
+
+### Chore
+
+- 2.1.0 by [bot] by @github-actions in [#525](https://github.com/nyaomaru/divider/pull/525)
+- Release: 2.2.0 by [bot] by @github-actions in [#530](https://github.com/nyaomaru/divider/pull/530)
+- Update dependency bun-types to v1.4.0 by [bot] by @renovate in [#526](https://github.com/nyaomaru/divider/pull/526)
+- Update dependency eslint to v10.9.0 by [bot] by @renovate in [#527](https://github.com/nyaomaru/divider/pull/527)
+- Update dependency eslint to v10.9.1 by [bot] by @renovate in [#528](https://github.com/nyaomaru/divider/pull/528)
+
+### What's new 🚀
+
+#### Select any divided segment by index
+
+The new `dividerAt()` helper returns a segment at a zero-based index after dividing the input. Negative indexes count backward from the end.
+
+```ts
+import { dividerAt } from '@nyaomaru/divider';
+
+dividerAt('first/middle/last', 1, '/');
+// 'middle'
+
+dividerAt('first/middle/last', -2, '/');
+// 'middle'
+
+dividerAt(['first/middle', 'last/end'], 2, '/');
+// 'last'
+```
+
+It also supports the same segment-processing options as dividerFirst() and dividerLast():
+
+```ts
+dividerAt(' first ,   , middle , last ', 1, ',', {
+  trim: true,
+  preserveEmpty: true,
+  exclude: 'whitespace',
+});
+// 'middle'
+```
+
+Invalid or out-of-range indexes return an empty string.
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.1.0...v2.2.0
+
+[v2.2.0]: https://github.com/nyaomaru/divider/compare/v2.1.0...v2.2.0
+
 ## [v2.1.0] - 2026-08-22
 
 ### Added
