@@ -1,6 +1,7 @@
 import { test, expect } from 'bun:test';
 import {
   divider,
+  dividerAt,
   dividerFirst,
   dividerLast,
   dividerLoop,
@@ -21,6 +22,10 @@ test('divider: string separator', () => {
 test('dividerFirst/Last helpers', () => {
   expect(dividerFirst('hello world', ' ')).toBe('hello');
   expect(dividerLast('hello world', ' ')).toBe('world');
+});
+
+test('dividerAt helper', () => {
+  expect(dividerAt('first/middle/last', -2, '/')).toBe('middle');
 });
 
 test('dividerLoop: chunk size', () => {

@@ -1,6 +1,7 @@
 import {
   csvDivider,
   divider,
+  dividerAt,
   dividerFirst,
   dividerLast,
   dividerLoop,
@@ -51,6 +52,7 @@ describe('divider type contract', () => {
 
 describe('root public API contract', () => {
   it('exports divider functions with stable return types', () => {
+    expectType<DividerStringResult[number]>(dividerAt('a,b', 1, ','));
     expectType<DividerStringResult[number]>(dividerFirst('a,b', ','));
     expectType<DividerStringResult[number]>(dividerLast('a,b', ','));
     expectType<DividerStringResult[number]>(

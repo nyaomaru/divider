@@ -1,6 +1,7 @@
 import { assertEquals } from 'jsr:@std/assert';
 import {
   divider,
+  dividerAt,
   dividerFirst,
   dividerLast,
   dividerLoop,
@@ -23,6 +24,10 @@ Deno.test('divider: string separator', () => {
 Deno.test('dividerFirst/Last helpers', () => {
   assertEquals(dividerFirst('hello world', ' '), 'hello');
   assertEquals(dividerLast('hello world', ' '), 'world');
+});
+
+Deno.test('dividerAt helper', () => {
+  assertEquals(dividerAt('first/middle/last', -2, '/'), 'middle');
 });
 
 Deno.test('dividerLoop: chunk size', () => {

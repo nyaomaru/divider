@@ -159,6 +159,24 @@ const lastPreservedElement = dividerLast('hello,', ',', {
 // ''
 ```
 
+### 📌 `dividerAt()` Usage
+
+`dividerAt()` returns the divided element at a zero-based index. Negative
+indexes count backward from the end, and a missing index returns an empty string.
+
+```ts
+import { dividerAt } from '@nyaomaru/divider';
+
+const middleElement = dividerAt('first/middle/last', 1, '/');
+// 'middle'
+
+const secondFromEnd = dividerAt('first/middle/last', -2, '/');
+// 'middle'
+
+const arrayElement = dividerAt(['first/middle', 'last/end'], 2, '/');
+// 'last'
+```
+
 ### 📌 `dividerLoop()` Usage
 
 ```ts
