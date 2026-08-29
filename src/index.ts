@@ -1,4 +1,5 @@
 export { divider } from '@/core/divider';
+export { dividerAt } from '@/core/divider-at';
 export { dividerFirst } from '@/core/divider-first';
 export { dividerLast } from '@/core/divider-last';
 export { dividerLoop } from '@/core/divider-loop';
