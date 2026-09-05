@@ -56,6 +56,31 @@ describe('emailDivider', () => {
     warnSpy.mockRestore();
   });
 
+  it('should warn when consecutive "@" symbols produce an empty segment', () => {
+    const input = 'a@@b';
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+
+    const result = emailDivider(input);
+
+    expect(result).toEqual(['a', 'b']);
+    expect(warnSpy).toHaveBeenCalledWith(
+      `[divider/emailDivider] Too many "@" symbols in "${input}". Expected at most one.`
+    );
+
+    warnSpy.mockRestore();
+  });
+
+  it('should not split a domain when repeated "@" symbols are present', () => {
+    const input = 'a@@b.example';
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+
+    const result = emailDivider(input, { splitTLD: true });
+
+    expect(result).toEqual(['a', 'b.example']);
+
+    warnSpy.mockRestore();
+  });
+
   it('should trim whitespace if trim option is enabled', () => {
     const input = '  user@domain.com  ';
     const options = { trim: true };
