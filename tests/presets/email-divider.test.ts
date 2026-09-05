@@ -41,6 +41,19 @@ describe('emailDivider', () => {
     expect(result).toEqual(['noatsymbol']);
   });
 
+  it('should handle invalid runtime input gracefully', () => {
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});
+
+    const result = emailDivider(null as unknown as string);
+
+    expect(result).toEqual([]);
+    expect(warnSpy).toHaveBeenCalledWith(
+      "divider: 'input' must be a string or an array of strings. So returning an empty array.",
+    );
+
+    warnSpy.mockRestore();
+  });
+
   it('should return all segments and log a warning when multiple "@" are present', () => {
     const input = 'a@b@c';
     const warnSpy = jest.spyOn(console, 'warn').mockImplementation(() => {});

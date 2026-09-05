@@ -1,6 +1,7 @@
 import { divider } from '@/core/divider';
 import type { DividerStringResult } from '@/types';
 import type { EmailDividerOptions } from '@/types/preset';
+import { isString } from '@/utils/guards/primitives';
 
 const MAX_EMAIL_PARTS = 2;
 
@@ -10,11 +11,11 @@ const MAX_EMAIL_PARTS = 2;
  * WHY: Empty segments are omitted by the core divider, so the divided result
  * cannot reliably reveal repeated separators such as those in `a@@b`.
  *
- * @param input Email-like input to inspect.
+ * @param input Runtime input to inspect.
  * @returns True when more than one at sign is present.
  */
-const hasMultipleAtSigns = (input: string): boolean =>
-  input.indexOf('@') !== input.lastIndexOf('@');
+const hasMultipleAtSigns = (input: unknown): boolean =>
+  isString(input) && input.indexOf('@') !== input.lastIndexOf('@');
 
 /**
  * Divides an email address string at the "@" symbol into its local and domain parts.
