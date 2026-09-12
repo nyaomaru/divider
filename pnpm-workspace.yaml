@@ -1,6 +1,8 @@
-# WHY: pnpm 11 requires explicit approval for install scripts. These packages
-# provide native binaries or hooks used by this toolchain.
+# WHY: pnpm 11 requires explicit approval for install scripts. Enable only
+# native binaries and hooks this toolchain needs; Jest can fall back when its
+# optional file-watcher build is disabled.
 allowBuilds:
+  '@parcel/watcher': false
   '@swc/core': true
   esbuild: true
   lefthook: true
