@@ -5,6 +5,23 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v2.2.2] - 2026-09-12
+
+### Chore
+
+- 2.2.1 by [bot] by @github-actions in [#534](https://github.com/nyaomaru/divider/pull/534)
+- override vulnerable browserslist versions by @nyaomaru in [#535](https://github.com/nyaomaru/divider/pull/535)
+- Update dependency tsx to v4.23.13 by [bot] by @renovate in [#536](https://github.com/nyaomaru/divider/pull/536)
+- Update dependency bun-types to v1.4.2 by [bot] by @renovate in [#538](https://github.com/nyaomaru/divider/pull/538)
+- Update dependency eslint to v10.10.0 by [bot] by @renovate in [#537](https://github.com/nyaomaru/divider/pull/537)
+- Update dependency /node to v22.20.2 by @renovate[bot] by @types in [#539](https://github.com/nyaomaru/divider/pull/539)
+- update development dependencies by @nyaomaru in [#540](https://github.com/nyaomaru/divider/pull/540)
+- Release: 2.2.2 by [bot] by @github-actions in [#541](https://github.com/nyaomaru/divider/pull/541)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.2.1...v2.2.2
+
+[v2.2.2]: https://github.com/nyaomaru/divider/compare/v2.2.1...v2.2.2
+
 ## [v2.2.1] - 2026-09-05
 
 ### Fixed
