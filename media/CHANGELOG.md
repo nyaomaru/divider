@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.0.0] - 2026-09-19
+
+### Docs
+
+- 2.2.2 by [bot] by @github-actions in [#542](https://github.com/nyaomaru/divider/pull/542)
+
+### Chore
+
+- migrate from tsup to tsdown by @nyaomaru in [#543](https://github.com/nyaomaru/divider/pull/543)
+- Release: 3.0.0 by [bot] by @github-actions in [#544](https://github.com/nyaomaru/divider/pull/544)
+
+### Breaking Changes ⚠️
+
+- Drop support for Node.js 20. Building, testing, and publishing now require Node.js 22.18+, 24.11+, or 26+.
+
+### Migration 📢
+
+- Upgrade to a supported Node.js version, then run `corepack enable` and `pnpm install` before running project tasks.
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v2.2.2...v3.0.0
+
+[v3.0.0]: https://github.com/nyaomaru/divider/compare/v2.2.2...v3.0.0
+
 ## [v2.2.2] - 2026-09-12
 
 ### Chore
