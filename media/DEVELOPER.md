@@ -4,7 +4,7 @@ Welcome! This is the developer guide for `divider`. It keeps things light, pract
 
 ## Quick Start 🚀
 
-- Requirements: Node.js ≥ 20, pnpm
+- Requirements: Node.js 22.18+, 24.11+, or 26+, pnpm
 - Recommended: enable pnpm via corepack
 
 ```sh
@@ -42,14 +42,14 @@ Using mise? It’s optional but comfy:
   - Integration: `tests/integration/`
   - Performance: `tests/performance/`
 - `tests-deno/`, `tests-bun/` Deno/Bun checks
-- `dist/` built by tsup — don’t edit
+- `dist/` built by tsdown — don’t edit
 - Alias: `@/…` → `src/` (see `tsconfig.json` / `deno.json`)
 
 ## Everyday Commands 🛠
 
 | Command                 | Description                                   |
 | ----------------------- | --------------------------------------------- |
-| `pnpm build`            | Build the library using tsup                  |
+| `pnpm build`            | Build the library using tsdown                |
 | `pnpm test`             | Run all tests (unit + performance) via vitest |
 | `pnpm test:performance` | Benchmark `divider` against common scenarios  |
 | `pnpm test:unit`        | Run isolated unit tests                       |
@@ -76,7 +76,7 @@ Using mise instead:
 - Add short WHY comments where behavior isn’t obvious
 - Prefer `@/…` imports over deep relative paths
 
-Handy configs: `eslint.config.js`, `tsconfig.json`, `tsup.config.ts`, `jest.config.cjs`, `jest.performance.config.cjs`
+Handy configs: `eslint.config.js`, `tsconfig.json`, `tsdown.config.ts`, `jest.config.cjs`, `jest.performance.config.cjs`
 
 ## Testing 🧪 (Jest + ts‑jest)
 
@@ -87,7 +87,7 @@ Handy configs: `eslint.config.js`, `tsconfig.json`, `tsup.config.ts`, `jest.conf
 
 ## Build & Distribution 📦
 
-- Bundled by `tsup` → ESM/CJS + `.d.ts` in `dist/`
+- Bundled by `tsdown` → ESM/CJS + `.d.ts` in `dist/`
 - Don’t edit `dist/` manually
 - Node/NPM consumers use `package.json` `exports`
 - JSR (Deno/Bun) uses `deno.json` / `jsr.json` and `src/mod.ts`
