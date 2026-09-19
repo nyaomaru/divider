@@ -63,17 +63,17 @@
     "knip": "^6.35.1",
     "lefthook": "^2.1.12",
     "prettier": "^3.9.6",
-    "tsdown": "^0.21.10",
+    "tsdown": "^0.23.0",
     "tsx": "^4.23.13",
     "typedoc": "^0.28.20",
     "typescript": "^6.0.3"
   },
   "engines": {
-    "node": ">=20.19.0"
+    "node": "^22.18.0 || ^24.11.0 || >=26.0.0"
   },
   "sideEffects": false,
   "bugs": {
     "url": "https://github.com/nyaomaru/divider/issues"
   },
-  "packageManager": "pnpm@10.34.5"
+  "packageManager": "pnpm@11.2.2"
 }

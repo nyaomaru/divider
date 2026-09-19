@@ -33,7 +33,7 @@
         "npm:knip@^6.35.1",
         "npm:lefthook@^2.1.12",
         "npm:prettier@^3.9.6",
-        "npm:tsdown@~0.21.10",
+        "npm:tsdown@0.23",
         "npm:tsx@^4.23.13",
         "npm:typedoc@~0.28.20",
         "npm:typescript@^6.0.3"

@@ -4,7 +4,7 @@ Welcome! This is the developer guide for `divider`. It keeps things light, pract
 
 ## Quick Start 🚀
 
-- Requirements: Node.js ≥ 20.19.0, pnpm
+- Requirements: Node.js 22.18+, 24.11+, or 26+, pnpm
 - Recommended: enable pnpm via corepack
 
 ```sh
