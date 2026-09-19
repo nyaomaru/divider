@@ -22,7 +22,7 @@
     "test:performance": "jest --config jest.performance.config.cjs",
     "test:unit": "jest",
     "lint": "eslint .",
-    "build": "tsup",
+    "build": "tsdown",
     "prepack": "pnpm run build",
     "typedoc": "typedoc",
     "prepare": "lefthook install",
@@ -63,7 +63,7 @@
     "knip": "^6.35.1",
     "lefthook": "^2.1.12",
     "prettier": "^3.9.6",
-    "tsup": "^8.5.1",
+    "tsdown": "^0.23.0",
     "tsx": "^4.23.13",
     "typedoc": "^0.28.20",
     "typescript": "^6.0.3"
