@@ -5,6 +5,29 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.0.1] - 2026-09-26
+
+### Fixed
+
+- validate divider numeric separator indexe by @nyaomaru in [#547](https://github.com/nyaomaru/divider/pull/547)
+
+### Docs
+
+- 3.0.0 by [bot] by @github-actions in [#545](https://github.com/nyaomaru/divider/pull/545)
+
+### Chore
+
+- Update dependency prettier to v3.9.8 by [bot] by @renovate in [#546](https://github.com/nyaomaru/divider/pull/546)
+- Update dependency /node to v22.20.4 by @renovate[bot] by @types in [#549](https://github.com/nyaomaru/divider/pull/549)
+- Update dependency prettier to v3.9.9 by [bot] by @renovate in [#550](https://github.com/nyaomaru/divider/pull/550)
+- Update dependency tsx to v4.23.15 by [bot] by @renovate in [#551](https://github.com/nyaomaru/divider/pull/551)
+- Update dependency eslint to v10.11.0 by [bot] by @renovate in [#552](https://github.com/nyaomaru/divider/pull/552)
+- Release: 3.0.1 by [bot] by @github-actions in [#548](https://github.com/nyaomaru/divider/pull/548)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v3.0.0...v3.0.1
+
+[v3.0.1]: https://github.com/nyaomaru/divider/compare/v3.0.0...v3.0.1
+
 ## [v3.0.0] - 2026-09-19
 
 ### Docs
