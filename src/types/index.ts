@@ -87,7 +87,7 @@ export type DividerResult<
     : DividerArrayResult;
 
 /**
- * Numeric separator interpreted as an index.
+ * Numeric separator interpreted as a finite integer index.
  */
 export type NumericSeparator = number;
 
