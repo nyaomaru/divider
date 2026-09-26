@@ -66,17 +66,24 @@ describe('divideString', () => {
     expect(divideString('hello--world', [], ['-'])).toEqual(['hello', 'world']);
   });
 
-  test('throws an error if numSeparators contains non-number values', () => {
+  test('throws an error if numSeparators contains non-integer values', () => {
     expect(() =>
       // @ts-expect-error intentional misuse
       divideString('hello', ['not-a-number'], [])
-    ).toThrow('Invalid numeric separators');
+    ).toThrow('Numeric separators must be finite integers');
+
+    expect(() => divideString('hello', [Number.NaN], [])).toThrow(
+      'Numeric separators must be finite integers',
+    );
+    expect(() => divideString('hello', [2.5], [])).toThrow(
+      'Numeric separators must be finite integers',
+    );
   });
 
   test('throws an error if numSeparators is not an array', () => {
     expect(() =>
       // @ts-expect-error intentional misuse
       divideString('hello', 'not-an-array', [])
-    ).toThrow('Invalid numeric separators');
+    ).toThrow('Numeric separators must be finite integers');
   });
 });

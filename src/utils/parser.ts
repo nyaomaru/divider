@@ -1,5 +1,4 @@
 import { isEmptyArray } from '@/utils/guards/array';
-import { isNumber } from '@/utils/guards/primitives';
 import { isEmptyString } from '@/utils/guards/whitespace';
 import { getRegex } from '@/utils/regex';
 import { sliceByIndexes } from '@/utils/slice';
@@ -88,7 +87,7 @@ const hasNoSeparators = (
  * @returns Throws when the separators are not numeric.
  */
 const assertValidNumSeparators = (numSeparators: readonly number[]) => {
-  if (!Array.isArray(numSeparators) || !numSeparators.every(isNumber)) {
-    throw new Error('Invalid numeric separators');
+  if (!Array.isArray(numSeparators) || !numSeparators.every(Number.isInteger)) {
+    throw new Error('Numeric separators must be finite integers');
   }
 };
