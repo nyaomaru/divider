@@ -1,6 +1,16 @@
 import { divider } from '../../src/core/divider';
 
 describe('divider', () => {
+  it('handles invalid input consistently with and without separators', () => {
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation();
+
+    expect(divider(null as unknown as string)).toEqual([]);
+    expect(divider(undefined as unknown as string, ',')).toEqual([]);
+    expect(warnSpy).toHaveBeenCalledTimes(2);
+
+    warnSpy.mockRestore();
+  });
+
   it('omits empty segments by default', () => {
     expect(divider('foo,,bar,', ',')).toEqual(['foo', 'bar']);
   });

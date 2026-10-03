@@ -23,12 +23,12 @@ export function divider<
   const TArgs extends DividerArgs,
 >(input: T, ...args: TArgs): DividerReturn<T, TArgs>;
 export function divider(input: DividerInput, ...args: DividerArgs) {
-  if (!isValidInput(input)) {
-    warnInvalidInput();
-    return [];
-  }
-
   if (isEmptyArray(args)) {
+    if (!isValidInput(input)) {
+      warnInvalidInput();
+      return [];
+    }
+
     return ensureStringArray(input);
   }
 
@@ -38,5 +38,8 @@ export function divider(input: DividerInput, ...args: DividerArgs) {
     preserveEmpty: options.preserveEmpty,
   });
 
+  // WHY: All transforming divider APIs validate input through this shared
+  // pipeline. The no-argument branch remains separate because it preserves
+  // array input as-is instead of producing nested rows.
   return transformDividerInput(input, applyDivision, options);
 }
