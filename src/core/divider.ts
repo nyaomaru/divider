@@ -23,6 +23,9 @@ export function divider<
   const TArgs extends DividerArgs,
 >(input: T, ...args: TArgs): DividerReturn<T, TArgs>;
 export function divider(input: DividerInput, ...args: DividerArgs) {
+  // WHY: Divider construction validates numeric separators, so invalid input
+  // must short-circuit before separator processing to retain the public
+  // graceful-invalid-input contract.
   if (!isValidInput(input)) {
     warnInvalidInput();
     return [];
