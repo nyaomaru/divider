@@ -5,6 +5,24 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.0.2] - 2026-10-03
+
+### Changed
+
+- centralize divider input validation flow by @nyaomaru in [#554](https://github.com/nyaomaru/divider/pull/554)
+
+### Docs
+
+- 3.0.1 by [bot] by @github-actions in [#553](https://github.com/nyaomaru/divider/pull/553)
+
+### Chore
+
+- Release: 3.0.2 by [bot] by @github-actions in [#555](https://github.com/nyaomaru/divider/pull/555)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v3.0.1...v3.0.2
+
+[v3.0.2]: https://github.com/nyaomaru/divider/compare/v3.0.1...v3.0.2
+
 ## [v3.0.1] - 2026-09-26
 
 ### Fixed
