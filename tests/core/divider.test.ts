@@ -6,7 +6,8 @@ describe('divider', () => {
 
     expect(divider(null as unknown as string)).toEqual([]);
     expect(divider(undefined as unknown as string, ',')).toEqual([]);
-    expect(warnSpy).toHaveBeenCalledTimes(2);
+    expect(divider(null as unknown as string, 1.5)).toEqual([]);
+    expect(warnSpy).toHaveBeenCalledTimes(3);
 
     warnSpy.mockRestore();
   });
