@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.0.3] - 2026-10-10
+
+### Fixed
+
+- preserve delimiters after quotes in unquoted CSV fields by @nyaomaru in [#559](https://github.com/nyaomaru/divider/pull/559)
+
+### Docs
+
+- 3.0.2 by [bot] by @github-actions in [#556](https://github.com/nyaomaru/divider/pull/556)
+
+### Chore
+
+- Update dependency /node to v22.20.5 by @renovate[bot] by @types in [#557](https://github.com/nyaomaru/divider/pull/557)
+- Update dependency eslint to v10.12.0 by [bot] by @renovate in [#558](https://github.com/nyaomaru/divider/pull/558)
+- Release: 3.0.3 by [bot] by @github-actions in [#560](https://github.com/nyaomaru/divider/pull/560)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v3.0.2...v3.0.3
+
+[v3.0.3]: https://github.com/nyaomaru/divider/compare/v3.0.2...v3.0.3
+
 ## [v3.0.2] - 2026-10-03
 
 ### Changed
