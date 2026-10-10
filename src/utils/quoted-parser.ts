@@ -1,6 +1,6 @@
 import { countUnescaped } from '@/utils/count-unescaped';
 import { dividePreserve } from '@/utils/divide-preserve';
-import { isEmptyString } from '@/utils/guards/whitespace';
+import { isEmptyString, isSpaceOrTab } from '@/utils/guards/whitespace';
 import { stripOuterQuotes } from '@/utils/strip-outer-quotes';
 
 /**
@@ -65,6 +65,23 @@ const advanceQuoteState = (
 };
 
 /**
+ * Determines whether a field is quoted, allowing the whitespace that is
+ * preserved around quoted values by this parser.
+ *
+ * @param value Field content collected so far.
+ * @param quote Quote string used for the current parse.
+ * @returns True when the field begins with a quote after spaces or tabs.
+ */
+const startsQuotedField = (value: string, quote: string) => {
+  if (isEmptyString(quote)) return false;
+
+  let start = 0;
+  while (start < value.length && isSpaceOrTab(value[start])) start++;
+
+  return value.startsWith(quote, start);
+};
+
+/**
  * Finalize the current buffered field and reset parser state for the next one.
  * @param context Parser state and options.
  */
@@ -92,10 +109,15 @@ const appendPiece = (context: QuotedParserContext, piece: string) => {
   const segment = isEmptyString(context.current) ? piece : delimiter + piece;
   context.current += segment;
 
-  context.insideQuotes =
-    quote.length === 1
-      ? advanceQuoteState(context.insideQuotes, segment, quote)
-      : countUnescaped(context.current, quote) % 2 === 1;
+  // WHY: A quote is structural only when it starts a field. Treating a quote
+  // in an unquoted value as an opener would incorrectly merge every following
+  // delimiter into that value.
+  if (context.insideQuotes || startsQuotedField(context.current, quote)) {
+    context.insideQuotes =
+      quote.length === 1
+        ? advanceQuoteState(context.insideQuotes, segment, quote)
+        : countUnescaped(context.current, quote) % 2 === 1;
+  }
 
   if (!context.insideQuotes) {
     flushField(context);
