@@ -117,6 +117,14 @@ describe('quotedDivide', () => {
     expect(quotedDivide('"a,b",c')).toEqual(['a,b', 'c']);
   });
 
+  it('does not treat quotes within unquoted values as field wrappers', () => {
+    expect(quotedDivide('a"b,c,d')).toEqual(['a"b', 'c', 'd']);
+    expect(quotedDivide('value<<text;next', { delimiter: ';', quote: '<<' })).toEqual([
+      'value<<text',
+      'next',
+    ]);
+  });
+
   it('handles multiple quoted fields with commas and spaces around', () => {
     expect(quotedDivide('"a, b"," c, d"," e"')).toEqual([
       'a, b',
