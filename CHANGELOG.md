@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.0.4] - 2026-10-17
+
+### Fixed
+
+- upgrade smol-toml for security advisory by @nyaomaru in [#564](https://github.com/nyaomaru/divider/pull/564)
+
+### Docs
+
+- 3.0.3 by [bot] by @github-actions in [#561](https://github.com/nyaomaru/divider/pull/561)
+
+### Chore
+
+- Update dependency bun-types to v1.4.3 by [bot] by @renovate in [#562](https://github.com/nyaomaru/divider/pull/562)
+- Update dependency prettier to v3.9.10 by [bot] by @renovate in [#563](https://github.com/nyaomaru/divider/pull/563)
+- Release: 3.0.4 by [bot] by @github-actions in [#565](https://github.com/nyaomaru/divider/pull/565)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v3.0.3...v3.0.4
+
+[v3.0.4]: https://github.com/nyaomaru/divider/compare/v3.0.3...v3.0.4
+
 ## [v3.0.3] - 2026-10-10
 
 ### Fixed
