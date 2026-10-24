@@ -1,4 +1,5 @@
 export {
+  isNonNegativeInteger,
   isPositiveInteger,
   isStringOrNumber,
 } from '@/utils/guards/primitives';

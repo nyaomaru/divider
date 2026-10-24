@@ -1,6 +1,7 @@
 import {
   isOptions,
   isEmptyArray,
+  isNonNegativeInteger,
   isPositiveInteger,
   isValidInput,
   isStringArray,
@@ -91,6 +92,20 @@ describe('isPositiveInteger', () => {
     expect(isPositiveInteger(NaN)).toBe(false);
     expect(isPositiveInteger({})).toBe(false);
     expect(isPositiveInteger([])).toBe(false);
+  });
+});
+
+describe('isNonNegativeInteger', () => {
+  test('true for zero and positive integers', () => {
+    expect(isNonNegativeInteger(0)).toBe(true);
+    expect(isNonNegativeInteger(1)).toBe(true);
+  });
+
+  test('false for negative, fractional, and non-number values', () => {
+    expect(isNonNegativeInteger(-1)).toBe(false);
+    expect(isNonNegativeInteger(1.5)).toBe(false);
+    expect(isNonNegativeInteger(Number.NaN)).toBe(false);
+    expect(isNonNegativeInteger('0')).toBe(false);
   });
 });
 

@@ -48,6 +48,15 @@ export function isPositiveInteger(value: unknown): boolean {
 }
 
 /**
+ * Determines whether the provided value is a non-negative integer.
+ * @param value Value to inspect.
+ * @returns True when the value is an integer greater than or equal to zero.
+ */
+export function isNonNegativeInteger(value: unknown): value is number {
+  return typeof value === 'number' && Number.isInteger(value) && value >= 0;
+}
+
+/**
  * Determines whether the value is a string or a number.
  * @param value Value to inspect.
  * @returns True when the value is a primitive string or number.

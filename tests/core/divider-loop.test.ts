@@ -37,6 +37,19 @@ describe('dividerLoop with string', () => {
         })
       ).toEqual(['abc']);
     });
+
+    test('falls back to the default for invalid startOffset values', () => {
+      expect(
+        dividerLoop(TEST_STRINGS.ABCDEF, TEST_SEPARATORS.NUMBERS.SINGLE, {
+          startOffset: 0.5,
+        })
+      ).toEqual(['ab', 'cd', 'ef']);
+      expect(
+        dividerLoop(TEST_STRINGS.ABCDEF, TEST_SEPARATORS.NUMBERS.SINGLE, {
+          startOffset: -1,
+        })
+      ).toEqual(['ab', 'cd', 'ef']);
+    });
   });
 
   describe('with maxChunks option', () => {
@@ -62,6 +75,19 @@ describe('dividerLoop with string', () => {
           maxChunks: 1,
         })
       ).toEqual(['abcdef']);
+    });
+
+    test('falls back to unlimited chunks for invalid maxChunks values', () => {
+      expect(
+        dividerLoop(TEST_STRINGS.ABCDEF, TEST_SEPARATORS.NUMBERS.SINGLE, {
+          maxChunks: 1.5,
+        })
+      ).toEqual(['ab', 'cd', 'ef']);
+      expect(
+        dividerLoop(TEST_STRINGS.ABCDEF, TEST_SEPARATORS.NUMBERS.SINGLE, {
+          maxChunks: -1,
+        })
+      ).toEqual(['ab', 'cd', 'ef']);
     });
   });
 

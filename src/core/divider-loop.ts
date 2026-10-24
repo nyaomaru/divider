@@ -1,4 +1,7 @@
-import { isPositiveInteger } from '@/utils/guards/primitives';
+import {
+  isNonNegativeInteger,
+  isPositiveInteger,
+} from '@/utils/guards/primitives';
 import { generateIndexes } from '@/utils/generate-indexes';
 import { applyMaxChunks } from '@/utils/chunk';
 import type {
@@ -29,10 +32,19 @@ const DEFAULT_DIVIDER_LOOP_OPTIONS = {
 function resolveDividerLoopOptions(
   options?: DividerLoopOptionsLike
 ): ResolvedDividerLoopOptions {
+  const startOffset = options?.startOffset;
+  const maxChunks = options?.maxChunks;
+
+  // WHY: Numeric options can arrive from untyped JavaScript callers. Passing a
+  // fractional offset to `divider` eventually creates invalid slice indexes,
+  // while fractional chunk limits are coerced inconsistently by `Array#slice`.
   return {
-    startOffset:
-      options?.startOffset ?? DEFAULT_DIVIDER_LOOP_OPTIONS.startOffset,
-    maxChunks: options?.maxChunks ?? DEFAULT_DIVIDER_LOOP_OPTIONS.maxChunks,
+    startOffset: isNonNegativeInteger(startOffset)
+      ? startOffset
+      : DEFAULT_DIVIDER_LOOP_OPTIONS.startOffset,
+    maxChunks: isNonNegativeInteger(maxChunks)
+      ? maxChunks
+      : DEFAULT_DIVIDER_LOOP_OPTIONS.maxChunks,
   };
 }
 
