@@ -5,6 +5,26 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.0.5] - 2026-10-24
+
+### Fixed
+
+- validate divider loop numeric options by @nyaomaru in [#569](https://github.com/nyaomaru/divider/pull/569)
+
+### Docs
+
+- 3.0.4 by @github-actions[bot] in [#566](https://github.com/nyaomaru/divider/pull/566)
+
+### Chore
+
+- Update dependency eslint to v10.13.0 by @renovate[bot] in [#567](https://github.com/nyaomaru/divider/pull/567)
+- pin Node.js 22.23.4 for the October 2026 security release by @nyaomaru in [#568](https://github.com/nyaomaru/divider/pull/568)
+- Release: 3.0.5 by @github-actions[bot] in [#570](https://github.com/nyaomaru/divider/pull/570)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v3.0.4...v3.0.5
+
+[v3.0.5]: https://github.com/nyaomaru/divider/compare/v3.0.4...v3.0.5
+
 ## [v3.0.4] - 2026-10-17
 
 ### Fixed
