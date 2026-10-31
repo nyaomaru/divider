@@ -36,8 +36,6 @@ export const DIVIDER_OPTION_KEYS = [
 export const PERFORMANCE_CONSTANTS = {
   /** Maximum number of cached regex patterns to prevent memory leaks */
   MAX_REGEX_CACHE_SIZE: 100,
-  /** Default chunk size for dividerLoop when not specified */
-  DEFAULT_CHUNK_SIZE: 1,
   /** Default start offset for dividerLoop */
   DEFAULT_START_OFFSET: 0,
   /** Default max chunks for dividerLoop (0 = no limit) */

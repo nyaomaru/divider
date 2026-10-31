@@ -3,6 +3,7 @@ import {
   isPositiveInteger,
 } from '@/utils/guards/primitives';
 import { generateIndexes } from '@/utils/generate-indexes';
+import { sliceByIndexes } from '@/utils/slice';
 import { applyMaxChunks } from '@/utils/chunk';
 import type {
   DividerInput,
@@ -11,7 +12,6 @@ import type {
   DividerLoopOptionsLike,
   DividerResult,
 } from '@/types';
-import { divider } from '@/core/divider';
 import { PERFORMANCE_CONSTANTS } from '@/constants';
 import { transformDividerInput } from '@/utils/transform-divider-input';
 
@@ -64,8 +64,11 @@ function createChunksFromString(
   startOffset: number,
   maxChunks: number
 ): string[] {
+  // WHY: These indexes are already sorted integers. Slicing directly avoids
+  // sending them back through `divider`, which would reclassify separators and
+  // apply a second default option pass before maxChunks can merge the tail.
   const indexes = generateIndexes(str, size, startOffset);
-  const chunks = divider(str, ...indexes);
+  const chunks = sliceByIndexes(str, indexes);
 
   return applyMaxChunks(chunks, maxChunks);
 }

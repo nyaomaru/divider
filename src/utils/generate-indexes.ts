@@ -4,8 +4,8 @@ import { isPositiveInteger } from '@/utils/guards/primitives';
  * Generates an array of index positions to divide a string into chunks.
  *
  * This function calculates split points by repeatedly adding the given `size`
- * starting from the specified `startOffset`. These split points can be used
- * with the `divider()` function to chunk a string.
+ * starting from the specified `startOffset`. These split points are consumed
+ * by `sliceByIndexes` to chunk a string.
  *
  * @param str - The target string to be divided
  * @param size - The chunk size (must be a positive integer)

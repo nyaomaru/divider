@@ -18,25 +18,3 @@ export function ensureStringArray<T extends DividerInput>(
 ): T extends string ? string[] : T {
   return (isString(input) ? [input] : input) as T extends string ? string[] : T;
 }
-
-/**
- * Extracts the first element from an array with a fallback value.
- *
- * @param array - The array to extract from
- * @param fallback - The fallback value if array is empty (default: '')
- * @returns The first element or fallback value
- */
-export function getFirstElement<T>(array: readonly T[], fallback: T): T {
-  return array[0] ?? fallback;
-}
-
-/**
- * Extracts the last element from an array with a fallback value.
- *
- * @param array - The array to extract from
- * @param fallback - The fallback value if array is empty (default: '')
- * @returns The last element or fallback value
- */
-export function getLastElement<T>(array: readonly T[], fallback: T): T {
-  return array.at(-1) ?? fallback;
-}
