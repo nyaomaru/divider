@@ -39,6 +39,9 @@ describe('query utilities', () => {
     it('preserves missing keys and values', () => {
       expect(splitQueryPair('b')).toEqual(['b', '']);
       expect(splitQueryPair('=c')).toEqual(['', 'c']);
+      expect(splitQueryPair('')).toEqual(['', '']);
+      expect(splitQueryPair('a=')).toEqual(['a', '']);
+      expect(splitQueryPair('==')).toEqual(['', '=']);
     });
   });
 

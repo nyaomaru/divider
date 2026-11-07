@@ -71,12 +71,10 @@ export function stripLeadingQuestionMark(query: string): string {
  * @returns Tuple with empty strings for missing key or value positions.
  */
 export function splitQueryPair(part: string): [string, string] {
-  const keyValue = dividePreserve(part, QUERY_SEPARATORS.EQUALS);
-  if (keyValue.length === 1) return [keyValue[0] ?? '', ''];
-  return [
-    keyValue[0] ?? '',
-    keyValue.slice(1).join(QUERY_SEPARATORS.EQUALS),
-  ];
+  const separatorIndex = part.indexOf(QUERY_SEPARATORS.EQUALS);
+  if (separatorIndex === -1) return [part, ''];
+
+  return [part.slice(0, separatorIndex), part.slice(separatorIndex + 1)];
 }
 
 /**
