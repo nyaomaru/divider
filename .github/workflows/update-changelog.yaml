@@ -8,7 +8,7 @@ on:
 
 jobs:
   call-shared:
-    uses: nyaomaru/changelog-bot/.github/workflows/changelog.yaml@main
+    uses: necoz-oss/changelog-bot/.github/workflows/changelog.yaml@main
     permissions:
       contents: write
       pull-requests: write
