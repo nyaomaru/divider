@@ -20,7 +20,12 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v6
         with:
-          node-version: "24"
+          # WHY: "24" matches the runner toolcache (24.22.2). check-latest stays
+          # false and the actions/node-versions manifest also stops at 24.22.2,
+          # so neither the cache nor the manifest installs the November 2026
+          # patch. This floor stays on Node 24 and resolves 24.22.3 from
+          # nodejs.org until the cache and manifest catch up.
+          node-version: ">=24.22.3 <25"
           registry-url: "https://registry.npmjs.org"
           package-manager-cache: false
 
