@@ -14,13 +14,17 @@ import { isNumber, isString } from '@/utils/guards/primitives';
  * @param args - An array containing strings and/or numbers
  * @returns An object with `numSeparators` and `strSeparators` arrays
  */
-export function classifySeparators(args: DividerSeparators) {
-  return args.reduce<{ numSeparators: number[]; strSeparators: string[] }>(
-    (acc, arg) => {
-      if (isNumber(arg)) acc.numSeparators.push(arg);
-      else if (isString(arg)) acc.strSeparators.push(arg);
-      return acc;
-    },
-    { numSeparators: [], strSeparators: [] }
-  );
+export function classifySeparators(args: DividerSeparators): {
+  numSeparators: number[];
+  strSeparators: string[];
+} {
+  const numSeparators: number[] = [];
+  const strSeparators: string[] = [];
+
+  for (const arg of args) {
+    if (isNumber(arg)) numSeparators.push(arg);
+    else if (isString(arg)) strSeparators.push(arg);
+  }
+
+  return { numSeparators, strSeparators };
 }

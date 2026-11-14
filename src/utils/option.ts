@@ -48,10 +48,11 @@ const resolveDividerOptions = (
 /**
  * Applies `DividerOptions` to a divided result.
  *
- * This function modifies the result array based on the given options:
+ * Returns a new result based on the given options:
  *
  * - If `trim` is enabled, all string segments are trimmed of surrounding whitespace.
  * - If `flatten` is enabled, nested arrays are flattened into a single-level array.
+ * - If `exclude` removes segments, those segments are filtered out.
  *
  * @param result - The divided result to process (could be flat or nested).
  * @param options - The `DividerOptions` that determine how to modify the result.
@@ -65,11 +66,9 @@ export function applyDividerOptions<
   options: O,
 ): DividerResult<T, O> {
   const resolvedOptions = resolveDividerOptions(options);
-  let output: DividerOutput = result;
+  const trimmed = applyTrimOption(result, resolvedOptions);
+  const flattened = applyFlattenOption(trimmed, resolvedOptions);
+  const excluded = applyExcludeOption(flattened, resolvedOptions);
 
-  output = applyTrimOption(output, resolvedOptions);
-  output = applyFlattenOption(output, resolvedOptions);
-  output = applyExcludeOption(output, resolvedOptions);
-
-  return output as DividerResult<T, O>;
+  return excluded as DividerResult<T, O>;
 }
