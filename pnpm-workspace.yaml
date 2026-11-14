@@ -16,12 +16,15 @@ overrides:
   brace-expansion@<1.1.13: '>=1.1.13 <2'
   brace-expansion@>=2.0.0 <2.0.3: '^2.0.3'
   browserslist@<4.28.7: '^4.28.7'
+  # WHY: 4.2.0–4.3.1 have no patched release (GHSA-gcqx-w48m-w2h4).
+  deepmerge@>=4.2.0 <=4.3.1: 4.1.2
   diff@<4.0.4: '^4.0.4'
   esbuild@<0.28.1: '^0.28.1'
   flatted@<3.4.2: '^3.4.2'
   js-yaml@<4.3.1: '^4.3.1'
   markdown-it@<14.3.3: '^14.3.3'
-  minimatch@>=9.0.0 <9.0.7: '^9.0.7'
+  # WHY: GHSA-g3hv-75wg-m249 is fixed only in 11.0.1+. Replaces the 9.0.7 pin.
+  minimatch@>=7.0.0 <11.0.1: '^11.0.1'
   picomatch@<2.3.2: '>=2.3.2 <3'
   picomatch@>=4.0.0 <4.0.4: '^4.0.4'
   rollup@<4.59.0: '^4.59.0'
