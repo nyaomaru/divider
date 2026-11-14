@@ -21,6 +21,9 @@ overrides:
   smol-toml@<1.9.0: ^1.9.0
   yaml@<2.8.3: ^2.8.3
 
+patchedDependencies:
+  typedoc@0.28.20: 4eb2a5eee37ac16c3a1dbb605735e32ddf489203fb40316f51ff3cf548e330a8
+
 importers:
 
   .:
@@ -78,7 +81,7 @@ importers:
         version: 4.23.15
       typedoc:
         specifier: ^0.28.20
-        version: 0.28.20(typescript@6.0.3)
+        version: 0.28.20(patch_hash=4eb2a5eee37ac16c3a1dbb605735e32ddf489203fb40316f51ff3cf548e330a8)(typescript@6.0.3)
       typescript:
         specifier: ^6.0.3
         version: 6.0.3
@@ -5375,7 +5378,7 @@ snapshots:
 
   type-fest@0.21.3: {}
 
-  typedoc@0.28.20(typescript@6.0.3):
+  typedoc@0.28.20(patch_hash=4eb2a5eee37ac16c3a1dbb605735e32ddf489203fb40316f51ff3cf548e330a8)(typescript@6.0.3):
     dependencies:
       '@gerrit0/mini-shiki': 3.23.0
       lunr: 2.3.9

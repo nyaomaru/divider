@@ -30,3 +30,7 @@ overrides:
   rollup@<4.59.0: '^4.59.0'
   smol-toml@<1.9.0: '^1.9.0'
   yaml@<2.8.3: '^2.8.3'
+
+# WHY: TypeDoc 0.28.20 calls minimatch matchOne, which 11.x removed.
+patchedDependencies:
+  typedoc@0.28.20: patches/typedoc@0.28.20.patch
