@@ -5,6 +5,27 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [v3.0.8] - 2026-11-14
+
+### Fixed
+
+- update changelog workflow repository by @nyaomaru in [#577](https://github.com/nyaomaru/divider/pull/577)
+- override vulnerable minimatch and deepmerge by @nyaomaru in [#581](https://github.com/nyaomaru/divider/pull/581)
+- keep TypeDoc working with minimatch 11 by @nyaomaru in [#582](https://github.com/nyaomaru/divider/pull/582)
+
+### Changed
+
+- collapse duplicated divider checks by @nyaomaru in [#580](https://github.com/nyaomaru/divider/pull/580)
+
+### Chore
+
+- use patched Node.js for the November 2026 security release by @nyaomaru in [#579](https://github.com/nyaomaru/divider/pull/579)
+- Release: 3.0.8 by @github-actions[bot] in [#583](https://github.com/nyaomaru/divider/pull/583)
+
+**Full Changelog**: https://github.com/nyaomaru/divider/compare/v3.0.7...v3.0.8
+
+[v3.0.8]: https://github.com/nyaomaru/divider/compare/v3.0.7...v3.0.8
+
 ## [v3.0.5] - 2026-10-24
 
 ### Fixed
