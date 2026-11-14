@@ -1,0 +1,21 @@
+diff --git a/dist/node-utils.js b/dist/node-utils.js
+index 96a483d44c9ca066a5128dc40abcffdb8a3aee4b..0d7151c5edd5fecf2b8643a0111073041fe659c0 100644
+--- a/dist/node-utils.js
++++ b/dist/node-utils.js
+@@ -325,12 +325,10 @@ function glob(pattern, root, options = {}) {
+       if (childPath[childPath.length - 1] === "node_modules" && !shouldIncludeNodeModules) {
+         return false;
+       }
+-      return mini.set.some((row) => mini.matchOne(
+-        childPath,
+-        row,
+-        /* partial */
+-        true
+-      ));
++      // WHY: minimatch 11 removed matchOne. match(path, true) is the
++      // supported partial-directory check, so the 11.x security override
++      // can stay in place.
++      return mini.match(childPath.join("/"), true);
+     },
+     matchDirectories: options.includeDirectories,
+     followSymlinks: options.followSymlinks
