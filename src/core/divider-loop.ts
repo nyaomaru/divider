@@ -98,7 +98,7 @@ export function dividerLoop<
 >(input: T, size: number, options?: O): DividerResult<T, O> {
   // Validate chunk size
   if (!isPositiveInteger(size)) {
-    console.warn('dividerLoop: chunk size must be a positive number');
+    console.warn('dividerLoop: chunk size must be a positive integer');
     return [];
   }
 

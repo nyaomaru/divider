@@ -25,8 +25,8 @@ export function isStringArray(value: unknown): value is string[] {
  */
 export function isNestedStringArray(value: unknown): value is string[][] {
   if (!Array.isArray(value) || value.length === 0) return false;
-  const firstRow = value[0];
+
   // WHY: Divider outputs are trusted; checking only the first row avoids
   // a full scan while still distinguishing nested vs flat arrays.
-  return Array.isArray(firstRow) && firstRow.every((item) => isString(item));
+  return isStringArray(value[0]);
 }

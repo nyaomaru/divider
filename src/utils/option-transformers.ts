@@ -13,8 +13,7 @@ import { isNestedStringArray } from '@/utils/guards/array';
 /**
  * Trims segments when the `trim` option is enabled.
  * @param output Current divider output (flat or nested).
- * @param options Options to check for `trim`.
- * @param shouldPreserveEmpty When true, keep empty segments after trimming.
+ * @param options Options to check for `trim` and `preserveEmpty`.
  * @returns Trimmed output when enabled; otherwise unchanged output.
  */
 export function applyTrimOption(
@@ -44,7 +43,6 @@ export function applyFlattenOption(
  * Applies exclude rules to filter out unwanted segments.
  * @param output Current divider output (flat or nested).
  * @param options Options that determine exclusion behavior.
- * @param shouldPreserveEmpty When true, keep empty rows after filtering.
  * @returns Filtered output based on exclude mode.
  */
 export function applyExcludeOption(

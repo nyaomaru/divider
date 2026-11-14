@@ -37,34 +37,6 @@ type QuotedParserContext = {
 };
 
 /**
- * Advance quote state using only the newly appended segment.
- *
- * WHY: For single-character quotes, escaped pairs contribute an even number of
- * quote markers, so toggling parity on each encountered quote is enough to
- * track whether the parser is currently inside a quoted field. Multi-character
- * quote strings use `countUnescaped` instead because scanning one character at
- * a time cannot detect escaped quote tokens correctly.
- *
- * @param insideQuotes Current parser quote state.
- * @param segment Newly appended text segment.
- * @param quote Quote character used for the current parse.
- * @returns Next quote state after scanning `segment`.
- */
-const advanceQuoteState = (
-  insideQuotes: boolean,
-  segment: string,
-  quote: string,
-) => {
-  let nextInsideQuotes = insideQuotes;
-
-  for (const char of segment) {
-    if (char === quote) nextInsideQuotes = !nextInsideQuotes;
-  }
-
-  return nextInsideQuotes;
-};
-
-/**
  * Determines whether a field is quoted, allowing the whitespace that is
  * preserved around quoted values by this parser.
  *
@@ -109,14 +81,11 @@ const appendPiece = (context: QuotedParserContext, piece: string) => {
   const segment = isEmptyString(context.current) ? piece : delimiter + piece;
   context.current += segment;
 
-  // WHY: A quote is structural only when it starts a field. Treating a quote
-  // in an unquoted value as an opener would incorrectly merge every following
-  // delimiter into that value.
+  // WHY: A quote is structural only when it starts a field. Recounting the
+  // buffer applies one escaped-pair rule to both single- and multi-character
+  // quotes, instead of toggling every matching character.
   if (context.insideQuotes || startsQuotedField(context.current, quote)) {
-    context.insideQuotes =
-      quote.length === 1
-        ? advanceQuoteState(context.insideQuotes, segment, quote)
-        : countUnescaped(context.current, quote) % 2 === 1;
+    context.insideQuotes = countUnescaped(context.current, quote) % 2 === 1;
   }
 
   if (!context.insideQuotes) {

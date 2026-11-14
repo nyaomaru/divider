@@ -43,7 +43,7 @@ export function isPlainObject(
  * @param value Value to inspect.
  * @returns True when the value is an integer greater than zero.
  */
-export function isPositiveInteger(value: unknown): boolean {
+export function isPositiveInteger(value: unknown): value is number {
   return typeof value === 'number' && Number.isInteger(value) && value > 0;
 }
 

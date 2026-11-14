@@ -1,4 +1,5 @@
 import type { DividerInput } from '@/types';
+import { isStringArray } from '@/utils/guards/array';
 import { isString } from '@/utils/guards/primitives';
 
 const INVALID_INPUT_WARNING =
@@ -10,7 +11,7 @@ const INVALID_INPUT_WARNING =
  * @returns True when the value is a string or an array of strings.
  */
 export function isValidInput(value: unknown): value is DividerInput {
-  return isString(value) || (Array.isArray(value) && value.every(isString));
+  return isString(value) || isStringArray(value);
 }
 
 /**
