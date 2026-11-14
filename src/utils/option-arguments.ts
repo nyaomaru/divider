@@ -22,17 +22,17 @@ export function extractOptions<const TArgs extends DividerArgs>(
   cleanedArgs: DividerSeparator[];
   options: ExtractedDividerOptions<TArgs>;
 } {
-  const lastArg = args.at(-1);
-  const hasTrailingOptions = isOptions(lastArg);
-  // WHY: `filter` on a generic readonly tuple does not apply the separator
-  // predicate. Copying first gives a plain array whose elements can narrow.
-  const separatorArgs = hasTrailingOptions ? args.slice(0, -1) : args;
-  const cleanedArgs = [...separatorArgs].filter(isStringOrNumber);
+  const clonedArgs = [...args];
+  const lastArg = clonedArgs.at(-1);
+
+  const options = (
+    isOptions(lastArg) ? (clonedArgs.pop(), lastArg) : {}
+  ) as ExtractedDividerOptions<TArgs>;
+
+  const cleanedArgs = clonedArgs.filter(isStringOrNumber);
 
   return {
     cleanedArgs,
-    options: (hasTrailingOptions
-      ? lastArg
-      : {}) as ExtractedDividerOptions<TArgs>,
+    options,
   };
 }

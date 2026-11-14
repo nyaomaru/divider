@@ -2,6 +2,7 @@ import type { DividerInferredOptions } from '@/types';
 import type { SegmentPredicate } from '@/utils/option-types';
 import { excludePredicateMap } from '@/utils/exclude-predicate';
 import { isNoneMode } from '@/utils/guards/options';
+import { isString } from '@/utils/guards/primitives';
 
 const isMappedExcludeMode = (
   value: string,
@@ -18,7 +19,7 @@ export function resolveExcludePredicate(
 ): SegmentPredicate | null {
   // WHY: `none` already keeps every segment. Skipping the filter leaves the
   // existing array in place instead of copying it.
-  if (typeof exclude !== 'string' || isNoneMode(exclude)) return null;
+  if (!isString(exclude) || isNoneMode(exclude)) return null;
   if (!isMappedExcludeMode(exclude)) return null;
 
   return excludePredicateMap[exclude];
